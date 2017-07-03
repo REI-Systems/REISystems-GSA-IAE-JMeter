@@ -7,7 +7,7 @@
 
     // These variables are configurable
     var index = "ent"; // index name. Valid values: cfda, opp, fh, ent, ex, wd, fpds
-	var is_active = "true"; // active toggle. Valid: true, false
+    var is_active = "true"; // active toggle. Valid: true, false
     var max_searches =  100; // Max searches/api calls to make
     var max_ids = 50; // max IDs to fetch before stopping
 
@@ -15,7 +15,7 @@
     var api_base_url = "https://api.sam.gov";
     var environment_path = "prodlike";
     var search_api_path = "sgs/v1/search";
-    var api_key = "O4kzViWGVYNumPqhAzUhYGiZZZwW3RKUEYJOI6ii";
+    var api_key = "PUT YOUR API KEY HERE";
     
     // Nothing below here is supposed to be configurable. 
     // Edit at your own risk.
