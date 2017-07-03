@@ -55,12 +55,8 @@
       	if (index === 'ent') { // entities use dunsNumber, not _id
       		identifierAttribute = "dunsNumber";
       	}
-		try {
-          var id = data._embedded.results[i][identifierAttribute];
-          ids.push(id);
-		} catch (ex) {
-		  console.dir(ex);
-		}
+        var id = data._embedded.results[i][identifierAttribute];
+        ids.push(id);
       }      
     }
 
@@ -69,11 +65,14 @@
 	var main = function(){	   
 	    while (searches_performed < max_searches && ids.length < max_ids) {
 	      // console.log("page " + searches_performed);
-	      var currentURL = search_url + "&page=" + searches_performed;      
-	      parseIds(getURL(currentURL));
+	      var currentURL = search_url + "&page=" + searches_performed;    
+	      try {
+	        parseIds(getURL(currentURL));
+	      } catch (ex) { 
+		console.dir(ex); 
+	      }
 	      searches_performed++;
 	    }
-
 	    console.log(ids.length + " found for index " + index);
 	    console.log(ids.join(","));
     }
