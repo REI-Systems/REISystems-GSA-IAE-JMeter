@@ -1,7 +1,12 @@
-// Parses IDs for entities out of the search API and dumps to console as
-// a comma separated list. Used for pulling list of IDs as input to
-// load testing procedures. This runs syncronously to reduce load on search API.
-// Edit the configurable variables below then copy/paste this into the chrome dev tools console to run it.
+// Parses IDs for entities out of the search API and dumps to console as a comma separated list. 
+// This script is used for pulling lists of IDs out of the search API into a text file to be used
+// in load testing.
+
+// To use, edit the configurable variables below to your needs. Then, copy/paste into chrome dev tools
+// and execute.  IDs are dumped to console as a single comma separated line. You can use notepad++ to 
+// convert , into \r\n to create a file usable by JMeter CSV Data feature. 
+
+// The searches run synchronously. 
 
 (function(){
 
