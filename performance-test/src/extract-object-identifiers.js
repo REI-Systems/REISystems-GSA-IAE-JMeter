@@ -11,10 +11,10 @@
 (function(){
 
     // These variables are configurable
-    var index = "ent"; // index name. Valid values: cfda, opp, fh, ent, ex, wd, fpds
+    var index = "cfda"; // index name. Valid values: cfda, opp, fh, ent, ex, wd, fpds
     var is_active = "true"; // active toggle. Valid: true, false
-    var max_searches =  100; // Max searches/api calls to make
-    var max_ids = 50; // max IDs to fetch before stopping
+    var max_searches =  600; // Max searches/api calls to make
+    var max_ids = 6000; // max IDs to fetch before stopping
 
     // Environment information
     var api_base_url = "https://api.sam.gov";
@@ -55,8 +55,12 @@
       	if (index === 'ent') { // entities use dunsNumber, not _id
       		identifierAttribute = "dunsNumber";
       	}
-        var id = data._embedded.results[i][identifierAttribute];
-        ids.push(id);
+		try {
+          var id = data._embedded.results[i][identifierAttribute];
+          ids.push(id);
+		} catch (ex) {
+		  console.dir(ex);
+		}
       }      
     }
 
@@ -73,6 +77,9 @@
 	    console.log(ids.length + " found for index " + index);
 	    console.log(ids.join(","));
     }
-
-    main();	
+    if (api_key === "PUT YOUR API KEY HERE") {
+	    console.log("You must enter an API key");
+    } else {
+        main();	
+    }
 })();
