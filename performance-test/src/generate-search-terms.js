@@ -58,7 +58,7 @@
   api: {
     base_url: "https://api.sam.gov/prodlike",
     api_path: "sgs/v1/suggestions",
-    api_key: "O4kzViWGVYNumPqhAzUhYGiZZZwW3RKUEYJOI6ii",
+    api_key: "YOUR API KEY HERE",
     suggestion_count: 20, // max allowed is 100
     index_name: ""        // valid values are: cfda, opp, ex, ent, wd, fh, fpds or "" for all
   },
