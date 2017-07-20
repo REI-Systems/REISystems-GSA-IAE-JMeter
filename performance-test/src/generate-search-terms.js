@@ -1,72 +1,466 @@
-// Uses the suggestion API to get a list of text to be used as mutli term search queries
-// Used for pulling list of terms as input to
-// load testing procedures. This runs syncronously to reduce load on search API.
-// Edit the configurable variables below then copy/paste this into the chrome dev tools console to run it.
+// Uses the suggestion API to get a list of suggestion results.
+// Useful for generating multi term search queries for load testing.
+// Edit the configurable variables below then copy/paste this into
+// the chrome dev tools console to run it. It will output to console.
 
-(function(){
-
-    // These variables are configurable
-    
-    // Environment information
-    var api_base_url = "https://api.sam.gov";
-    var environment_path = "prodlike";
-    var search_api_path = "sgs/v1/suggestions";
-    var api_key = "PUT YOUR API KEY HERE";
-    var suggestion_size=100;
-    var index_name=""; // cfda, opp, ex, ent, wd, fh, fpds or use empty string "" for all
-    
-    // Nothing below here is supposed to be configurable. 
-    // Edit at your own risk.
-
-    var search_url = api_base_url 
-      + "/" + environment_path 
-      + "/" + search_api_path 
-      + "" + "?" + "api_key=" + api_key
-      + "&size=" + suggestion_size;
-  
-    // 3 spaces are added to each suggestion in this array and ran against the suggestion API
-    var suggestions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    
-    // holds returned terms from suggestions API
-    var terms = [];
-
-    // xhr helper to get the json responses from a url
-    var getURL = function(url){
-      var jsonResponse = {};
+(function(args){
+  /*
+    SuggestionFetcher fetches results from suggestion API based on suggestion terms    
+  */
+  class SuggestionFetcher {
+    constructor(api, index_name, suggestion_terms) {
+      this.api = api;
+      this.index_name = index_name;
+      this.suggestion_terms = suggestion_terms;
+      this.suggestion_results = [];
+      this.baseurl = this.api.base_url + "/" + this.api.api_path
+                  + "?api_key=" + this.api.api_key
+                  + "&size=" + this.api.suggestion_count;
+    }
+    getSuggestions() {
+      for (var i=0; i<this.suggestion_terms.length; i++){
+        var url = this.baseurl + "&q=" + this.suggestion_terms[i];
+        var data = this.getURL(url);
+        this.extractSuggestions(data);
+      }   
+    }
+    extractSuggestions(data){
+      for (var i=0; i<data.length; i++){          
+        this.suggestion_results.push(data[i]);
+      }  
+    }
+    getURL(url) {   
       var xhr = new XMLHttpRequest();
-      console.log(url);
       xhr.open('GET', url, false);  //false means syncronous
       xhr.send(null);   
       if (xhr.status === 200) {
-        jsonResponse = JSON.parse(xhr.responseText);
+        return JSON.parse(xhr.responseText);
       } else {
-        // bad, hope this doesn't occur
+        return {};
       }     
-      return jsonResponse;
     }
+  }
 
-    // helper to get suggestions from json and push to the terms array
-    var parseTerms = function(data){
-      for (var i=0; i<data.length; i++){          
-        terms.push(data[i]);
-      }      
-    }
+  var do_output = function(sf){
+    console.log("Found " + sf.suggestion_results.length + " results for index " + sf.index_name);
+    console.log(sf.suggestion_results.join("\n"));
+  }
 
-    var do_output = function(data){
-      //add_results_to_ui(data.join(String.fromCharCode(13, 10)));
-      console.log(data.length + " terms found for index " + index_name);
-      console.log(data.join("\n"));
-    }
+  var main = function(args){     
+    var sf = new SuggestionFetcher(args.api, args.api.index_name, args.suggestion_terms);
+    sf.getSuggestions();
+    do_output(sf);       
+  }
 
-    // main body. hits suggestion API for each suggestion fragment
-    // and stores results, then outputs scraped suggestions to console.
-    var main = function(){     
-     for (var i=0; i<suggestions.length; i++){
-        var currentURL = search_url + "&q=" + suggestions[i] + "%20%20%20";
-        parseTerms(getURL(currentURL))
-     }   
-      do_output(terms);       
-    }
-
-    main();    
-})();
+  main(args);    
+})({
+  // Edit these arguments as needed. 
+  api: {
+    base_url: "https://api.sam.gov/prodlike",
+    api_path: "sgs/v1/suggestions",
+    api_key: "O4kzViWGVYNumPqhAzUhYGiZZZwW3RKUEYJOI6ii",
+    suggestion_count: 20, // max allowed is 100
+    index_name: ""        // valid values are: cfda, opp, ex, ent, wd, fh, fpds or "" for all
+  },
+  // these terms are just from a subset of top 10k most frequent english words
+  // there is nothing special about them
+  suggestion_terms: [ "information",
+                      "business",
+                      "services",
+                      "products",
+                      "available",
+                      "copyright",
+                      "software",
+                      "research",
+                      "university",
+                      "management",
+                      "international",
+                      "comments",
+                      "development",
+                      "education",
+                      "national",
+                      "internet",
+                      "community",
+                      "shipping",
+                      "reserved",
+                      "technology",
+                      "security",
+                      "american",
+                      "computer",
+                      "following",
+                      "download",
+                      "resources",
+                      "pictures",
+                      "personal",
+                      "including",
+                      "directory",
+                      "location",
+                      "government",
+                      "children",
+                      "students",
+                      "shopping",
+                      "previous",
+                      "department",
+                      "description",
+                      "insurance",
+                      "property",
+                      "customer",
+                      "december",
+                      "different",
+                      "training",
+                      "categories",
+                      "advanced",
+                      "conditions",
+                      "category",
+                      "register",
+                      "november",
+                      "features",
+                      "industry",
+                      "provided",
+                      "required",
+                      "accessories",
+                      "september",
+                      "questions",
+                      "application",
+                      "articles",
+                      "feedback",
+                      "complete",
+                      "financial",
+                      "standard",
+                      "equipment",
+                      "programs",
+                      "performance",
+                      "language",
+                      "experience",
+                      "important",
+                      "activities",
+                      "additional",
+                      "password",
+                      "something",
+                      "question",
+                      "building",
+                      "february",
+                      "analysis",
+                      "possible",
+                      "professional",
+                      "committee",
+                      "problems",
+                      "washington",
+                      "interest",
+                      "california",
+                      "reference",
+                      "companies",
+                      "learning",
+                      "delivery",
+                      "computers",
+                      "president",
+                      "original",
+                      "includes",
+                      "australia",
+                      "discussion",
+                      "entertainment",
+                      "agreement",
+                      "messages",
+                      "marketing",
+                      "association",
+                      "provides",
+                      "specific",
+                      "collection",
+                      "solutions",
+                      "director",
+                      "electronics",
+                      "planning",
+                      "database",
+                      "official",
+                      "technical",
+                      "microsoft",
+                      "conference",
+                      "environment",
+                      "district",
+                      "calendar",
+                      "statement",
+                      "downloads",
+                      "resource",
+                      "applications",
+                      "document",
+                      "material",
+                      "requirements",
+                      "individual",
+                      "together",
+                      "function",
+                      "economic",
+                      "projects",
+                      "subscribe",
+                      "included",
+                      "everything",
+                      "production",
+                      "commercial",
+                      "advertising",
+                      "received",
+                      "treatment",
+                      "newsletter",
+                      "archives",
+                      "knowledge",
+                      "magazine",
+                      "currently",
+                      "construction",
+                      "registered",
+                      "protection",
+                      "policies",
+                      "position",
+                      "listings",
+                      "engineering",
+                      "wireless",
+                      "published",
+                      "corporate",
+                      "purchase",
+                      "customers",
+                      "response",
+                      "practice",
+                      "hardware",
+                      "materials",
+                      "designed",
+                      "countries",
+                      "discount",
+                      "remember",
+                      "standards",
+                      "political",
+                      "increase",
+                      "advertise",
+                      "environmental",
+                      "availability",
+                      "european",
+                      "activity",
+                      "although",
+                      "employment",
+                      "commission",
+                      "contents",
+                      "regional",
+                      "supplies",
+                      "administration",
+                      "institute",
+                      "exchange",
+                      "sponsored",
+                      "electronic",
+                      "continue",
+                      "benefits",
+                      "anything",
+                      "condition",
+                      "effective",
+                      "organization",
+                      "selection",
+                      "mortgage",
+                      "corporation",
+                      "solution",
+                      "addition",
+                      "executive",
+                      "necessary",
+                      "according",
+                      "clothing",
+                      "particular",
+                      "homepage",
+                      "military",
+                      "decision",
+                      "facilities",
+                      "opportunities",
+                      "division",
+                      "appropriate",
+                      "actually",
+                      "statistics",
+                      "investment",
+                      "saturday",
+                      "christmas",
+                      "starting",
+                      "registration",
+                      "thursday",
+                      "consumer",
+                      "furniture",
+                      "wednesday",
+                      "structure",
+                      "contract",
+                      "releases",
+                      "virginia",
+                      "multiple",
+                      "distribution",
+                      "industrial",
+                      "potential",
+                      "featured",
+                      "responsible",
+                      "communications",
+                      "associated",
+                      "foundation",
+                      "friendly",
+                      "schedule",
+                      "documents",
+                      "communication",
+                      "everyone",
+                      "independent",
+                      "approach",
+                      "physical",
+                      "operating",
+                      "medicine",
+                      "developed",
+                      "telephone",
+                      "population",
+                      "navigation",
+                      "operations",
+                      "therefore",
+                      "evidence",
+                      "christian",
+                      "favorite",
+                      "understand",
+                      "recently",
+                      "probably",
+                      "publications",
+                      "worldwide",
+                      "connection",
+                      "publisher",
+                      "networks",
+                      "transfer",
+                      "introduction",
+                      "carolina",
+                      "properties",
+                      "hospital",
+                      "overview",
+                      "accommodation",
+                      "excellent",
+                      "opportunity",
+                      "distance",
+                      "assessment",
+                      "involved",
+                      "especially",
+                      "interface",
+                      "partners",
+                      "operation",
+                      "existing",
+                      "selected",
+                      "patients",
+                      "restaurants",
+                      "beautiful",
+                      "locations",
+                      "significant",
+                      "technologies",
+                      "directly",
+                      "manufacturer",
+                      "providing",
+                      "searches",
+                      "authority",
+                      "considered",
+                      "programme",
+                      "strategy",
+                      "teaching",
+                      "canadian",
+                      "enterprise",
+                      "educational",
+                      "positive",
+                      "football",
+                      "abstract",
+                      "employees",
+                      "alternative",
+                      "processing",
+                      "responsibility",
+                      "resolution",
+                      "publication",
+                      "relations",
+                      "contains",
+                      "photography",
+                      "republic",
+                      "components",
+                      "vacation",
+                      "academic",
+                      "assistance",
+                      "completed",
+                      "graphics",
+                      "expected",
+                      "mountain",
+                      "organizations",
+                      "consider",
+                      "northern",
+                      "proposed",
+                      "otherwise",
+                      "reported",
+                      "transportation",
+                      "politics",
+                      "disclaimer",
+                      "membership",
+                      "modified",
+                      "released",
+                      "internal",
+                      "recommended",
+                      "detailed",
+                      "japanese",
+                      "approved",
+                      "background",
+                      "character",
+                      "maintenance",
+                      "functions",
+                      "trademarks",
+                      "phentermine",
+                      "southern",
+                      "yourself",
+                      "pressure",
+                      "submitted",
+                      "keywords",
+                      "television",
+                      "interested",
+                      "purposes",
+                      "throughout",
+                      "established",
+                      "programming",
+                      "external",
+                      "regarding",
+                      "instructions",
+                      "teachers",
+                      "subjects",
+                      "increased",
+                      "understanding",
+                      "beginning",
+                      "associates",
+                      "capacity",
+                      "requires",
+                      "electric",
+                      "instruments",
+                      "businesses",
+                      "specified",
+                      "restaurant",
+                      "procedures",
+                      "relationship",
+                      "traditional",
+                      "creative",
+                      "progress",
+                      "sometimes",
+                      "families",
+                      "themselves",
+                      "transport",
+                      "interesting",
+                      "evaluation",
+                      "accepted",
+                      "implementation",
+                      "galleries",
+                      "references",
+                      "presented",
+                      "agencies",
+                      "literature",
+                      "respective",
+                      "michigan",
+                      "columbia",
+                      "critical",
+                      "definition",
+                      "secretary",
+                      "networking",
+                      "australian",
+                      "employee",
+                      "magazines",
+                      "packages",
+                      "francisco",
+                      "individuals",
+                      "colorado",
+                      "relevant",
+                      "guidelines",
+                      "installation",
+                      "described",
+                      "attention",
+                      "difference",
+                      "illinois",
+                      "regulations"]
+});
