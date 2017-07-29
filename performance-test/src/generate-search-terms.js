@@ -1,11 +1,13 @@
-// Uses the suggestion API to get a list of suggestion results.
-// Useful for generating multi term search queries for load testing.
-// Edit the configurable variables below then copy/paste this into
-// the chrome dev tools console to run it. It will output to console.
+/*
+  Uses the suggestion API to get a list of suggestion results.
+  Useful for generating multi term search queries for load testing.
+  Edit the configurable variables below then copy/paste this into
+  the chrome dev tools console to run it. It will output to console.
+*/
 
 (function(args){
   /*
-    SuggestionFetcher fetches results from suggestion API based on suggestion terms    
+    SuggestionFetcher fetches results from suggestion API   
   */
   class SuggestionFetcher {
     constructor(api, index_name, suggestion_terms) {
