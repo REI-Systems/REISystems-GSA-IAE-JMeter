@@ -114,7 +114,7 @@
 })({
   index: "cfda",     // index name. Valid values: cfda, opp, fh, ei, wd, fpds 
   is_active: "true", // active toggle. Valid values: true, false
-  max_searches: 10, // max searches (api calls) to make
+  max_searches: 100, // max searches (api calls) to make
   max_ids: 20000,    // max ids to fetch before stopping (not exact, page size can cause overrun)
   page_size: 100,    // size of each search result page (max 100)
   start_page: 0,     // page to start from, allows for offset/slice the search result dataset
