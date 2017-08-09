@@ -34,6 +34,9 @@
     this.ei = function(data){
       return this.genericExtractor(data, "dunsNumber");
     };
+    this.ex = function(data){
+      return this.genericExtractor(data, "samNumber");
+    };
     this.fpds = function(data){
       return this.genericExtractor(data, "_id");
     };
@@ -77,6 +80,14 @@
 
   // Get a reference to the extractor function based on index argument
   var extractorFunction = identifierExtractionFunctions()[args.index];
+  
+  // Rewrite the exclusions to entity information index AFTER the extractor
+  // function has been set
+  var query = "";
+  if (args.index === "ex") {
+    args.index = "ei";
+    query = "&q=exclusion osama"; // used to fetch some exclusions
+  }
 
   // Build the base URL
   var search_url = args.api.base_url
@@ -84,7 +95,8 @@
     + "/?api_key=" + args.api.api_key
     + "&index=" + args.index
     + "&is_active=" + args.is_active
-    + "&size=" + args.page_size;
+    + "&size=" + args.page_size
+    + query;
 
   var search_counter = 0;
   var ids = [];
@@ -112,7 +124,7 @@
   console.log(ids.join("\n"));
   
 })({
-  index: "cfda",     // index name. Valid values: cfda, opp, fh, ei, wd, fpds 
+  index: "ex",     // index name. Valid values: cfda, opp, fh, ei, wd, fpds, ex
   is_active: "true", // active toggle. Valid values: true, false
   max_searches: 100, // max searches (api calls) to make
   max_ids: 20000,    // max ids to fetch before stopping (not exact, page size can cause overrun)
