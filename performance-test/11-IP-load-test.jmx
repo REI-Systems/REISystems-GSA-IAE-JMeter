@@ -2577,7 +2577,7 @@ This If Controller mimics that behavior.</stringProp>
         </DebugSampler>
         <hashTree/>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="FAL Display Object View Fragment" enabled="false">
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="FAL Display Object View Fragment" enabled="true">
         <stringProp name="TestPlan.comments">Requires this configuration supplied by caller
 HTTP Configuration
   - Protocol
@@ -2681,6 +2681,13 @@ $(FAL_ID) - A FAL ID (UUID)
               <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
             </JSONPostProcessor>
             <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="FAL Org Logo Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">FAL_ORG_LOGO</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$._embedded[0]._link.logo</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
           </hashTree>
         </hashTree>
         <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If fal org id is greater than 30" enabled="true">
@@ -2715,6 +2722,13 @@ $(FAL_ID) - A FAL ID (UUID)
               <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
             </JSONPostProcessor>
             <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="FAL Org Logo Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">FAL_ORG_LOGO</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$._embedded[0]._link.logo</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
           </hashTree>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FAL Dictionaries" enabled="true">
@@ -2722,7 +2736,7 @@ $(FAL_ID) - A FAL ID (UUID)
             <collectionProp name="Arguments.arguments">
               <elementProp name="ids" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">program_subject_terms,date_range,match_percent,assistance_type,applicant_types,assistance_usage_types,beneficiary_types,functional_codes,cfr200_requirements</stringProp>
+                <stringProp name="Argument.value">match_percent,assistance_type,applicant_types,assistance_usage_types,beneficiary_types,cfr200_requirements</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">ids</stringProp>
@@ -2766,12 +2780,12 @@ $(FAL_ID) - A FAL ID (UUID)
         </HTTPSamplerProxy>
         <hashTree/>
         <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If FAL parent org exists" enabled="true">
-          <stringProp name="IfController.condition">${__jexl3(&quot;${FAL_PARENT_ORG_ID}&quot; != &quot;-1&quot;)}</stringProp>
+          <stringProp name="IfController.condition">${__jexl3(&quot;${FAL_PARENT_ORG_ID}&quot; != &quot;-1&quot; &amp;&amp; &quot;${FAL_ORG_LOGO}&quot; == &quot;-1&quot;)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
         </IfController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FAL Parent Organization Lookup " enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FAL Parent Organization Lookup (Logo)" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="sort" elementType="HTTPArgument">
