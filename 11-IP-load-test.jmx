@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 10.2 Load Test" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 11.IP Load Test" enabled="true">
       <stringProp name="TestPlan.comments">
 
 JMeter tips &amp; techniques used in this test plan.
@@ -117,17 +117,17 @@ JMeter tips &amp; techniques used in this test plan.
         <boolProp name="useExpires">true</boolProp>
       </CacheManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">60</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">20</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <longProp name="ThreadGroup.start_time">1501388840000</longProp>
         <longProp name="ThreadGroup.end_time">1501388840000</longProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">120</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <stringProp name="TestPlan.comments">Workload	Search actions	Display Actions	Total Actions / second	Divide by 3 for actions/second	Constant throughput timer (samples/minute)
@@ -147,7 +147,7 @@ JMeter tips &amp; techniques used in this test plan.
 5	75	150	225	75	4500</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>2700.0</value>
+            <value>900.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -175,7 +175,8 @@ JMeter tips &amp; techniques used in this test plan.
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
-        <stringProp name="TestPlan.comments">Front End load has 19 samplers, so constant throughput is a simple calculation				
+        <stringProp name="TestPlan.comments">1x is the normal traffic (should be the goal for now)
+Front End load has 19 samplers, so constant throughput is a simple calculation				
 Downloads/minute	30			
 Samples:	19			
 Workload	Access/minute	Samples/minute	Constant Throughput samples/minute	
@@ -203,7 +204,7 @@ Workload	Access/minute	Samples/minute	Constant Throughput samples/minute
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <doubleProp>
             <name>throughput</name>
-            <value>250.0</value>
+            <value>570.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -212,7 +213,7 @@ Workload	Access/minute	Samples/minute	Constant Throughput samples/minute
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Front End Download" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+            <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
             <stringProp name="1638373356">Front End Download Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -266,7 +267,7 @@ Workload	Searches/sec	Suggestions/sec	Constant Throughput samples/minute
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Search Suggestion" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+            <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
             <stringProp name="-261385580">Search Suggestion Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -357,7 +358,7 @@ Workload      Searchs/second      Target Throughput
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="All Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="191329531">All Index Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -377,7 +378,7 @@ Workload      Searchs/second      Target Throughput
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FAL Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="1375870617">FAL Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -397,7 +398,7 @@ Workload      Searchs/second      Target Throughput
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Opportunities Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="1055477305">Opportunities Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -417,7 +418,7 @@ Workload      Searchs/second      Target Throughput
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Awards Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="-1669438594">Awards Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -437,7 +438,7 @@ Workload      Searchs/second      Target Throughput
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Entity Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="1750301611">Entity Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -457,7 +458,7 @@ Workload      Searchs/second      Target Throughput
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FH Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="-1449306518">FH Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -477,7 +478,7 @@ Workload      Searchs/second      Target Throughput
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Wage Determination Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="-555616621">Wage Determination Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -553,7 +554,7 @@ Samples/Minute&quot;
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FAL Display Object View Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="-45473289">FAL Display Object View Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -1149,7 +1150,7 @@ And Header manager, cookie manager, and http cache manager per your use case
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Initial API Calls" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+            <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
             <stringProp name="-323973285">SPA Init API calls</stringProp>
           </collectionProp>
         </ModuleController>
@@ -1268,7 +1269,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Featured Search" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+            <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
             <stringProp name="-1733558794">Featured Search Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -1731,7 +1732,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Featured Search" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+            <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
             <stringProp name="-1733558794">Featured Search Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -1897,7 +1898,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Featured Search" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+            <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
             <stringProp name="-1733558794">Featured Search Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -2168,7 +2169,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Featured Search" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+            <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
             <stringProp name="-1733558794">Featured Search Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -3690,7 +3691,7 @@ $(WAGE_DETERMINATION_ID) - ID used to find the object</stringProp>
         </DebugSampler>
         <hashTree/>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Alerts Fragment" enabled="true">
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Alerts Fragment" enabled="false">
         <stringProp name="TestPlan.comments">Requires this configuration supplied by caller
 HTTP Configuration
   - Protocol
@@ -3708,7 +3709,7 @@ ${API_PATH} - form of https://api.sam.gov/prodlike </stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="limit" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">288888888</stringProp>
+                <stringProp name="Argument.value">2</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">limit</stringProp>
@@ -3782,7 +3783,7 @@ ${API_PATH} - form of https://api.sam.gov/prodlike
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Alerts" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+            <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
             <stringProp name="-4311623">Alerts Fragment</stringProp>
           </collectionProp>
         </ModuleController>
