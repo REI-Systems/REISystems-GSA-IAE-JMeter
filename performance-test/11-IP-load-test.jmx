@@ -156,7 +156,7 @@ JMeter tips &amp; techniques used in this test plan.
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Alerts" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+            <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
             <stringProp name="-4311623">Alerts Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -710,7 +710,7 @@ Samples/Minute&quot;
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FH Display Object View" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="636609990">FH Display Object View Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -742,7 +742,7 @@ Samples/Minute&quot;
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Wage Determination Display Object View" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="-1646855495">Beta SAM Release 10.2 Load Test</stringProp>
+              <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
               <stringProp name="1773572157">Wage Determination Display Object View Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -3486,7 +3486,7 @@ $(EXCLUSION_ID) - ID used to find the object</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="FH Display Object View Fragment" enabled="false">
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="FH Display Object View Fragment" enabled="true">
         <stringProp name="TestPlan.comments">Requires this configuration supplied by caller
 HTTP Configuration
   - Protocol
@@ -3517,6 +3517,27 @@ $(FH_ORG_ID) - ID used to find the object</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mode</stringProp>
+              </elementProp>
+              <elementProp name="limit" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">10</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">limit</stringProp>
+              </elementProp>
+              <elementProp name="offset" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">offset</stringProp>
+              </elementProp>
+              <elementProp name="order" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">asc</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">order</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -3598,7 +3619,7 @@ $(FH_ORG_ID) - ID used to find the object</stringProp>
         </DebugSampler>
         <hashTree/>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Wage Determination Display Object View Fragment" enabled="false">
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Wage Determination Display Object View Fragment" enabled="true">
         <stringProp name="TestPlan.comments">Requires this configuration supplied by caller
 HTTP Configuration
   - Protocol
@@ -3618,7 +3639,7 @@ $(WAGE_DETERMINATION_ID) - ID used to find the object</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="ids" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">wdStates, wdCounties, scaServices</stringProp>
+                <stringProp name="Argument.value">wdStates,wdCounties,scaServices</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">ids</stringProp>
@@ -3698,12 +3719,83 @@ $(WAGE_DETERMINATION_ID) - ID used to find the object</stringProp>
           <stringProp name="TestPlan.comments">Used to test the simplest thing the service can do.</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Wage Determination / Enable Subscription" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/wl/feature/v1//read/enablesubscription</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
         <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="DEBUG: Sampler" enabled="false">
           <boolProp name="displayJMeterProperties">false</boolProp>
           <boolProp name="displayJMeterVariables">true</boolProp>
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
         <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If DBA" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(&quot;${WAGE_DETERMINATION_ID}&quot;.length() &lt; 30)}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Wage Determination / Watch List / Record Detail" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_PATH}/watchlistservice/v1/api/recorddetail/Wage Determination/DBA/${WAGE_DETERMINATION_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If SCA" enabled="true">
+          <stringProp name="IfController.condition"></stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Wage Determination / Watch List / Record Detail" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_PATH}/watchlistservice/v1/api/recorddetail/Wage Determination/SCA/${WAGE_DETERMINATION_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Alerts Fragment" enabled="false">
         <stringProp name="TestPlan.comments">Requires this configuration supplied by caller
