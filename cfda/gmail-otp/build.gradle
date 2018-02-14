@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'GmailQuickstart'
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+version = '1.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+}
+
+task listJars << {
+    configurations.compile.each { File file -> println file.name }
+}
