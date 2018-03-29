@@ -1466,6 +1466,41 @@ Per Minute 	306	765	1530	2295	3060	3825	4590	5355	6120
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               </HTTPSamplerProxy>
               <hashTree/>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="FH Filter lookup" enabled="true"/>
+              <hashTree>
+                <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller - 50%" enabled="true">
+                  <intProp name="ThroughputController.style">1</intProp>
+                  <boolProp name="ThroughputController.perThread">false</boolProp>
+                  <intProp name="ThroughputController.maxThroughput">1</intProp>
+                  <FloatProperty>
+                    <name>ThroughputController.percentThroughput</name>
+                    <value>50.0</value>
+                    <savedValue>0.0</savedValue>
+                  </FloatProperty>
+                </ThroughputController>
+                <hashTree>
+                  <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+                    <stringProp name="filename">data/single_term_search_and_suggestion_data.csv</stringProp>
+                    <stringProp name="fileEncoding"></stringProp>
+                    <stringProp name="variableNames">SEARCH_TERM,SUGGESTION_PART1,SUGGESTION_PART2,SUGGESTION_PART3,Length</stringProp>
+                    <boolProp name="ignoreFirstLine">true</boolProp>
+                    <stringProp name="delimiter">,</stringProp>
+                    <boolProp name="quotedData">false</boolProp>
+                    <boolProp name="recycle">true</boolProp>
+                    <boolProp name="stopThread">false</boolProp>
+                    <stringProp name="shareMode">shareMode.group</stringProp>
+                  </CSVDataSet>
+                  <hashTree/>
+                  <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker API Calls" enabled="true">
+                    <collectionProp name="ModuleController.node_path">
+                      <stringProp name="-1227702913">WorkBench</stringProp>
+                      <stringProp name="-645562569">Beta SAM Release 11.IP Load Test</stringProp>
+                      <stringProp name="-355135239">Org Picker API Calls</stringProp>
+                    </collectionProp>
+                  </ModuleController>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
             </hashTree>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Create FAL" enabled="true"/>
             <hashTree>
