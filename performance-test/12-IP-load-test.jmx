@@ -861,7 +861,7 @@ Per Minute 	486	1215	2430	3645	4860	6075	7290	8505	9720
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">50</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">900</stringProp>
         <longProp name="ThreadGroup.start_time">1523500920000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
@@ -909,7 +909,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
 1/15th	0.3	0.9	1.7	2.6	3.4	4.3	5.2	6.0	6.9</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>258.0</value>
+            <value>60.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -1206,7 +1206,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                       <collectionProp name="Arguments.arguments">
                         <elementProp name="orgKey" elementType="HTTPArgument">
                           <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">100008531</stringProp>
+                          <stringProp name="Argument.value">${fal_org_id}</stringProp>
                           <stringProp name="Argument.metadata">=</stringProp>
                           <boolProp name="HTTPArgument.use_equals">true</boolProp>
                           <stringProp name="Argument.name">orgKey</stringProp>
@@ -1301,7 +1301,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                       <stringProp name="HTTPSampler.response_timeout"></stringProp>
                       <stringProp name="HTTPSampler.protocol"></stringProp>
                       <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                      <stringProp name="HTTPSampler.path">federalorganizations/v1/organizations/hierarchy/100008531</stringProp>
+                      <stringProp name="HTTPSampler.path">federalorganizations/v1/organizations/hierarchy/${fal_org_id}</stringProp>
                       <stringProp name="HTTPSampler.method">GET</stringProp>
                       <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                       <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1323,7 +1323,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                       <collectionProp name="Arguments.arguments">
                         <elementProp name="orgKey" elementType="HTTPArgument">
                           <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">100005153,100004911,8,100008531</stringProp>
+                          <stringProp name="Argument.value">100005153,100004911,8,${fal_org_id}</stringProp>
                           <stringProp name="Argument.metadata">=</stringProp>
                           <boolProp name="HTTPArgument.use_equals">true</boolProp>
                           <stringProp name="Argument.name">orgKey</stringProp>
@@ -2292,7 +2292,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               </HTTPSamplerProxy>
               <hashTree/>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="fh - Load organization - 100008531" enabled="true">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="fh - Load organization" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="sort" elementType="HTTPArgument">
@@ -2317,7 +2317,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">federalorganizations/v1/organizations/100008531</stringProp>
+                <stringProp name="HTTPSampler.path">federalorganizations/v1/organizations/${fal_org_id}</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2519,7 +2519,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="organizationId" elementType="HTTPArgument">
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">100008531</stringProp>
+                      <stringProp name="Argument.value">${fal_org_id}</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
                       <boolProp name="HTTPArgument.use_equals">true</boolProp>
                       <stringProp name="Argument.name">organizationId</stringProp>
@@ -2557,7 +2557,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                   <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">fac/v1/programs/federalHierarchyConfigurations/100008531</stringProp>
+                  <stringProp name="HTTPSampler.path">fac/v1/programs/federalHierarchyConfigurations/${fal_org_id}</stringProp>
                   <stringProp name="HTTPSampler.method">GET</stringProp>
                   <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2831,7 +2831,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
       ],&#xd;
       &quot;description&quot;: &quot;&quot;&#xd;
     },&#xd;
-    &quot;organizationId&quot;: 100008531,&#xd;
+    &quot;organizationId&quot;: ${fal_org_id},&#xd;
     &quot;functionalCodes&quot;: [&#xd;
       &quot;0001001&quot;&#xd;
     ],&#xd;
@@ -2968,7 +2968,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                     <collectionProp name="Arguments.arguments">
                       <elementProp name="orgKey" elementType="HTTPArgument">
                         <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">100008531</stringProp>
+                        <stringProp name="Argument.value">${fal_org_id}</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                         <boolProp name="HTTPArgument.use_equals">true</boolProp>
                         <stringProp name="Argument.name">orgKey</stringProp>
@@ -2992,7 +2992,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                 </HTTPSamplerProxy>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="fh - FH Load organization - 100008531" enabled="true">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="fh - Load organization" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="sort" elementType="HTTPArgument">
@@ -3017,7 +3017,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">federalorganizations/v1/organizations/100008531</stringProp>
+                <stringProp name="HTTPSampler.path">federalorganizations/v1/organizations/${fal_org_id}</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9516,19 +9516,19 @@ ${SEARCH_TERM} - used in FH org picker search query
         <collectionProp name="Arguments.arguments">
           <elementProp name="agency_coord_login_token" elementType="Argument">
             <stringProp name="Argument.name">agency_coord_login_token</stringProp>
-            <stringProp name="Argument.value">AQIC5wM2LY4SfcxfcU8_RJFGpQ6x-4GedSFujKu_3m2aglk.*AAJTSQACMDUAAlNLABQtNzQzNjA0OTE0MTM0NzYzNDAwMwACUzEAAjAx*</stringProp>
+            <stringProp name="Argument.value">AQIC5wM2LY4SfcwiYCcnAJckc5b0ArkTZKeRYFzPWxJF1w8.*AAJTSQACMDUAAlNLABM4NjM3OTQ3NDg3NTQ5MTI3MTYxAAJTMQACMDE.*</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Replace with a session token after authenticating manually.</stringProp>
           </elementProp>
           <elementProp name="agency_submitter_login_token" elementType="Argument">
             <stringProp name="Argument.name">agency_submitter_login_token</stringProp>
-            <stringProp name="Argument.value">AQIC5wM2LY4Sfcx-5HKm32JgjjMEiYUGD5EoDPfATMWHmiE.*AAJTSQACMDUAAlNLABQtMjkxMDU3NDU4MzA3MjE0ODEyMwACUzEAAjAx*</stringProp>
+            <stringProp name="Argument.value"></stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Replace with a session token after authenticating manually.</stringProp>
           </elementProp>
           <elementProp name="superuser_login_token" elementType="Argument">
             <stringProp name="Argument.name">superuser_login_token</stringProp>
-            <stringProp name="Argument.value">AQIC5wM2LY4SfczhQUBJ4i4zK1kJPxHB4eIQE391CmaK9Bw.*AAJTSQACMDUAAlNLABM3ODAxODczODI4MjEzODE0OTY3AAJTMQACMDE.*</stringProp>
+            <stringProp name="Argument.value"></stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Replace with a session token after authenticating manually.</stringProp>
           </elementProp>
