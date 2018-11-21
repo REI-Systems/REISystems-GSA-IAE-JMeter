@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 16.03 Load Test" enabled="true">
       <stringProp name="TestPlan.comments">JMeter tips &amp; techniques used in this test plan.
@@ -25,25 +25,25 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="API_URL" elementType="Argument">
             <stringProp name="Argument.name">API_URL</stringProp>
-            <stringProp name="Argument.value">api-nonprod.prod-iae.bsp.gsa.gov</stringProp>
+            <stringProp name="Argument.value">api-alpha.sam.gov</stringProp>
             <stringProp name="Argument.desc">API Umbrella URL including environment path</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="API_KEY" elementType="Argument">
             <stringProp name="Argument.name">API_KEY</stringProp>
-            <stringProp name="Argument.value">6CxpsnZf1Jfh3iBwKr3kyAW7Oe71QzZp1popCQsT</stringProp>
+            <stringProp name="Argument.value">5QYnc07txGAFnZR66ltU4F0uJhOiyW9uY6yZi5Ui</stringProp>
             <stringProp name="Argument.desc">API Key used to access API Umbrella</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="FRONTEND_URL" elementType="Argument">
             <stringProp name="Argument.name">FRONTEND_URL</stringProp>
-            <stringProp name="Argument.value">55samfrontendcomp.apps.prod-iae.bsp.gsa.gov</stringProp>
+            <stringProp name="Argument.value">alpha.sam.gov</stringProp>
             <stringProp name="Argument.desc">SAM Front End URL</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="API_PATH" elementType="Argument">
             <stringProp name="Argument.name">API_PATH</stringProp>
-            <stringProp name="Argument.value">/comp</stringProp>
+            <stringProp name="Argument.value">/prodlike</stringProp>
             <stringProp name="Argument.desc">API Path for environment</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -108,7 +108,6 @@
       <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
-        <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
       </CookieManager>
       <hashTree/>
       <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
@@ -116,7 +115,7 @@
         <boolProp name="useExpires">true</boolProp>
       </CacheManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -149,13 +148,13 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Alerts" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="-1151121194">Beta SAM Release 12.IP Load Test</stringProp>
+            <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
             <stringProp name="-4311623">Alerts Fragment</stringProp>
           </collectionProp>
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Front End Load" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Front End Load" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -208,7 +207,7 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Suggestions" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Suggestions" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -252,14 +251,14 @@ Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Search Suggestion" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
+            <stringProp name="764597751">Test Plan</stringProp>
             <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
             <stringProp name="-261385580">Search Suggestion Fragment</stringProp>
           </collectionProp>
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Search Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Search Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -421,7 +420,7 @@ Per minute 	675	1688	3375	5063	6750	8438	10125	11813	13500
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="All Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="191329531">All Index Search Fragment</stringProp>
             </collectionProp>
@@ -441,7 +440,7 @@ Per minute 	675	1688	3375	5063	6750	8438	10125	11813	13500
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FAL Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="1375870617">FAL Search Fragment</stringProp>
             </collectionProp>
@@ -461,7 +460,7 @@ Per minute 	675	1688	3375	5063	6750	8438	10125	11813	13500
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Opportunities Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="1055477305">Opportunities Search Fragment</stringProp>
             </collectionProp>
@@ -481,7 +480,7 @@ Per minute 	675	1688	3375	5063	6750	8438	10125	11813	13500
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Awards Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="-1669438594">Awards Search Fragment</stringProp>
             </collectionProp>
@@ -501,7 +500,7 @@ Per minute 	675	1688	3375	5063	6750	8438	10125	11813	13500
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Entity Information Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="1569390615">Entity Information Search Fragment</stringProp>
             </collectionProp>
@@ -521,7 +520,7 @@ Per minute 	675	1688	3375	5063	6750	8438	10125	11813	13500
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FH Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="-1449306518">FH Search Fragment</stringProp>
             </collectionProp>
@@ -541,7 +540,7 @@ Per minute 	675	1688	3375	5063	6750	8438	10125	11813	13500
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Wage Determination Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="-555616621">Wage Determination Search Fragment</stringProp>
             </collectionProp>
@@ -618,7 +617,7 @@ Per minute	579	1446	2893	4339	5785	7232	8678	10124	11571
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FAL Display Object View Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="-45473289">FAL Display Object View Fragment</stringProp>
             </collectionProp>
@@ -650,7 +649,7 @@ Per minute	579	1446	2893	4339	5785	7232	8678	10124	11571
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Opportunity Display Object View Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="834998645">Opportunity Display Object View Fragment</stringProp>
             </collectionProp>
@@ -682,7 +681,7 @@ Per minute	579	1446	2893	4339	5785	7232	8678	10124	11571
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Awards Display Object View Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="-1857963726">Awards Display Object View Fragment</stringProp>
             </collectionProp>
@@ -714,7 +713,7 @@ Per minute	579	1446	2893	4339	5785	7232	8678	10124	11571
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Entity Display Object View Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="-428862939">Entity Display Object View Fragment</stringProp>
             </collectionProp>
@@ -746,7 +745,7 @@ Per minute	579	1446	2893	4339	5785	7232	8678	10124	11571
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Exclusion Display Object View Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="-1243166630">Exclusion Display Object View Fragment</stringProp>
             </collectionProp>
@@ -778,7 +777,7 @@ Per minute	579	1446	2893	4339	5785	7232	8678	10124	11571
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FH Display Object View" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="636609990">FH Display Object View Fragment</stringProp>
             </collectionProp>
@@ -810,7 +809,7 @@ Per minute	579	1446	2893	4339	5785	7232	8678	10124	11571
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Wage Determination Display Object View" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
               <stringProp name="1773572157">Wage Determination Display Object View Fragment</stringProp>
             </collectionProp>
@@ -864,7 +863,7 @@ Per Minute 	486	1215	2430	3645	4860	6075	7290	8505	9720
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Test Progam API" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Test Progam API" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -3452,7 +3451,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
         </DebugPostProcessor>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authenticated User Calls" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authenticated User Calls" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -3636,7 +3635,7 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Content &amp; CM" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Content &amp; CM" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -3669,13 +3668,13 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Content &amp; CM" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="-1151121194">Beta SAM Release 12.IP Load Test</stringProp>
+            <stringProp name="-1533474514">Beta SAM Release 16.03 Load Test</stringProp>
             <stringProp name="-654276379">Content &amp; CM Fragment</stringProp>
           </collectionProp>
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity Modern API" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity Modern API" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -14652,9 +14651,5 @@ ${SEARCH_TERM} - used in FH org picker search query
       </ProxyControl>
       <hashTree/>
     </hashTree>
-    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
-      <boolProp name="WorkBench.save">true</boolProp>
-    </WorkBench>
-    <hashTree/>
   </hashTree>
 </jmeterTestPlan>
