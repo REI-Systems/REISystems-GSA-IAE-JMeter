@@ -6014,7 +6014,9 @@ Per Minute	1500 (500)	3750 (1250)	7500 (2500)	11250 (3750)	15000 (5000)	18750 (6
               </HTTPSamplerProxy>
               <hashTree/>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Public View (Modernized)" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Public View (Modernized - Should run with OPP being published)" enabled="true">
+              <stringProp name="TestPlan.comments">This controller runs only with published mocked opportunities</stringProp>
+            </GenericController>
             <hashTree>
               <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop 2" enabled="true">
                 <boolProp name="LoopController.continue_forever">true</boolProp>
@@ -6290,7 +6292,7 @@ Per Minute	1500 (500)	3750 (1250)	7500 (2500)	11250 (3750)	15000 (5000)	18750 (6
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
               </HTTPSamplerProxy>
               <hashTree/>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp Related Notices" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp Related Notices (There is no related opportunity call in modernized)" enabled="false">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="type" elementType="HTTPArgument">
