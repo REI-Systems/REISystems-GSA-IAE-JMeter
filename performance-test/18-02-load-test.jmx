@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 16.03 Load Test" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 18.02 Load Test" enabled="true">
       <stringProp name="TestPlan.comments">JMeter tips &amp; techniques used in this test plan.
+
+**************** (Run against Alpha with 15.IP Code) ****************
 
 * All samplers are in test fragments to be re-usable. Test fragments describe what variables should be set (passed in) from their caller. 
 * CSV data files are used in thread groups to get data that should be passed to the fragments (search terms, object IDs)
@@ -3730,29 +3732,25 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
-        <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Data Entry Pages - For each (User)" enabled="true">
-          <stringProp name="ForeachController.inputVal">user</stringProp>
-          <stringProp name="ForeachController.returnVal">currentUser</stringProp>
-          <boolProp name="ForeachController.useSeparator">true</boolProp>
-        </ForeachController>
-        <hashTree>
-          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Define Users" enabled="true">
-            <stringProp name="BeanShellSampler.query">String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;, &quot;fbo_superuser&quot;};
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Define Users" enabled="true">
+          <stringProp name="BeanShellSampler.query">//String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;, &quot;fbo_superuser&quot;}; // FIS SU
 
-props.put(&quot;users&quot;, users);
+String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;};
+
+//props.put(&quot;users&quot;, users);
 
 int counter = 1;
 //for (String user : props.get(&quot;users&quot;)) {
 for (String user : users) {
 	vars.put(&quot;user_&quot; + counter++, user);
 }</stringProp>
-            <stringProp name="BeanShellSampler.filename"></stringProp>
-            <stringProp name="BeanShellSampler.parameters"></stringProp>
-            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
-          </BeanShellSampler>
-          <hashTree/>
-          <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-            <stringProp name="TestPlan.comments">Samplers: 
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="TestPlan.comments">Samplers: 
 Loops: 3 (3 users)
 Value in parentheses represent the actual throughput since we have a loop for 3 (users) for the same script
 
@@ -3762,14 +3760,20 @@ Per second	25 (8.3)	62.5 (20.83)	125 (41.66)	187.5 (62.5)	250 (83.33)	312.5 (104
 Per Minute	1500 (500)	3750 (1250)	7500 (2500)	11250 (3750)	15000 (5000)	18750 (6250)	22500 (7500)	26250 (8750)	30000 (10000)
 1/15th	100 (33.33)	250 (83.33)	500 (166.66)	750 (250)	1000 (333.33)	1250 (416.66)	1500 (500)	1750 (583.33)	2000 (666.66)
 </stringProp>
-            <doubleProp>
-              <name>throughput</name>
-              <value>333.33</value>
-              <savedValue>0.0</savedValue>
-            </doubleProp>
-            <intProp name="calcMode">2</intProp>
-          </ConstantThroughputTimer>
-          <hashTree/>
+          <doubleProp>
+            <name>throughput</name>
+            <value>333.33</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <intProp name="calcMode">2</intProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Data Entry Pages - For each (User)" enabled="true">
+          <stringProp name="ForeachController.inputVal">user</stringProp>
+          <stringProp name="ForeachController.returnVal">currentUser</stringProp>
+          <boolProp name="ForeachController.useSeparator">true</boolProp>
+        </ForeachController>
+        <hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If (User is logged in)" enabled="true">
             <stringProp name="IfController.condition">&quot;${__P(${currentUser}_login_token)}&quot; != null</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
@@ -4641,7 +4645,7 @@ Per Minute	1500 (500)	3750 (1250)	7500 (2500)	11250 (3750)	15000 (5000)	18750 (6
             </hashTree>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Create OPP" enabled="true"/>
             <hashTree>
-              <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop 2" enabled="true">
+              <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Simulate user data entry by calling APIs twice (loop 2)" enabled="true">
                 <boolProp name="LoopController.continue_forever">true</boolProp>
                 <stringProp name="LoopController.loops">2</stringProp>
               </LoopController>
@@ -8746,7 +8750,7 @@ vars.put(&quot;SET_ASIDE&quot;, generateRandomSetAside());</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="sgs - Entity Dictionary" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="sgs - Entity Dictionary" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="ids" elementType="HTTPArgument">
@@ -8773,7 +8777,7 @@ vars.put(&quot;SET_ASIDE&quot;, generateRandomSetAside());</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="opps - Load Naics Dictionary" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="opps - Load Naics Dictionary" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="q" elementType="HTTPArgument">
@@ -8807,7 +8811,7 @@ vars.put(&quot;SET_ASIDE&quot;, generateRandomSetAside());</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="opps - Load Psc Dictionary" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="opps - Load Psc Dictionary" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="q" elementType="HTTPArgument">
