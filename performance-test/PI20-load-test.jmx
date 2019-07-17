@@ -4946,7 +4946,7 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">opps/v2/opportunities/organization/${__evalVar(${currentUser}_org_id)}/ivl</stringProp>
+                <stringProp name="HTTPSampler.path">opps/v2/opportunities/organizations/${__evalVar(${currentUser}_org_id)}/ivl</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5081,14 +5081,22 @@ Per Minute			30		60		90		120
                   </collectionProp>
                 </HeaderManager>
                 <hashTree/>
-                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
-                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract OppID from Location Response Header" enabled="true">
+                  <stringProp name="RegexExtractor.useHeaders">true</stringProp>
                   <stringProp name="RegexExtractor.refname">opportunityId</stringProp>
-                  <stringProp name="RegexExtractor.regex">.*</stringProp>
-                  <stringProp name="RegexExtractor.template">$0$</stringProp>
+                  <stringProp name="RegexExtractor.regex">Location:\s+(.+)\/opportunities\/(.+)(\?api_key)</stringProp>
+                  <stringProp name="RegexExtractor.template">$2$</stringProp>
                   <stringProp name="RegexExtractor.default"></stringProp>
-                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  <stringProp name="RegexExtractor.match_number"></stringProp>
                 </RegexExtractor>
+                <hashTree/>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Log OppID" enabled="true">
+                  <stringProp name="cacheKey"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">log.info(&quot;**********************************************&quot; + vars.get(&quot;opportunityId&quot;))</stringProp>
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
             </hashTree>
@@ -5284,13 +5292,6 @@ Per Minute			30		60		90		120
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp Attachments" enabled="true">
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                     <collectionProp name="Arguments.arguments">
-                      <elementProp name="noticeIds" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">${opportunityId}</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                        <stringProp name="Argument.name">noticeIds</stringProp>
-                      </elementProp>
                       <elementProp name="excludeDeleted" elementType="HTTPArgument">
                         <boolProp name="HTTPArgument.always_encode">false</boolProp>
                         <stringProp name="Argument.value">false</stringProp>
@@ -5298,13 +5299,20 @@ Per Minute			30		60		90		120
                         <boolProp name="HTTPArgument.use_equals">true</boolProp>
                         <stringProp name="Argument.name">excludeDeleted</stringProp>
                       </elementProp>
+                      <elementProp name="withScanResult" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">true</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">withScanResult</stringProp>
+                      </elementProp>
                     </collectionProp>
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">opps/v3/opportunities/attachments</stringProp>
+                  <stringProp name="HTTPSampler.path">opps/v3/opportunities/${opportunityId}/resources</stringProp>
                   <stringProp name="HTTPSampler.method">GET</stringProp>
                   <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5770,7 +5778,7 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">opps/v2/opportunities/organization/${__evalVar(${currentUser}_org_id)}/ivl</stringProp>
+                <stringProp name="HTTPSampler.path">opps/v2/opportunities/organizations/${__evalVar(${currentUser}_org_id)}/ivl</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5866,19 +5874,19 @@ Per Minute			30		60		90		120
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Created Opp Attachments" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
-                    <elementProp name="noticeIds" elementType="HTTPArgument">
+                    <elementProp name="excludeDeleted" elementType="HTTPArgument">
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">${opportunityId}</stringProp>
+                      <stringProp name="Argument.value">false</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
                       <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                      <stringProp name="Argument.name">noticeIds</stringProp>
+                      <stringProp name="Argument.name">excludeDeleted</stringProp>
                     </elementProp>
-                    <elementProp name="excludeDeleted" elementType="HTTPArgument">
+                    <elementProp name="withScanResult" elementType="HTTPArgument">
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
                       <stringProp name="Argument.value">true</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
                       <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                      <stringProp name="Argument.name">excludeDeleted</stringProp>
+                      <stringProp name="Argument.name">withScanResult</stringProp>
                     </elementProp>
                   </collectionProp>
                 </elementProp>
@@ -5886,7 +5894,7 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">opps/v3/opportunities/attachments</stringProp>
+                <stringProp name="HTTPSampler.path">opps/v3/opportunities/${opportunityId}/resources</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5989,12 +5997,12 @@ Per Minute			30		60		90		120
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Contacts" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
-                    <elementProp name="ids" elementType="HTTPArgument">
+                    <elementProp name="opportunityId" elementType="HTTPArgument">
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">procurement_type</stringProp>
+                      <stringProp name="Argument.value">${opportunityId}</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
                       <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                      <stringProp name="Argument.name">ids</stringProp>
+                      <stringProp name="Argument.name">opportunityId</stringProp>
                     </elementProp>
                   </collectionProp>
                 </elementProp>
@@ -6002,7 +6010,7 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">opps/v2/opportunities/${opportunityId}/contacts</stringProp>
+                <stringProp name="HTTPSampler.path">opps/v2/opportunities/contacts</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
