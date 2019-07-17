@@ -3743,7 +3743,9 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Define Users" enabled="true">
           <stringProp name="BeanShellSampler.query">//String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;, &quot;fbo_superuser&quot;}; // FIS SU
 
-String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;};
+//String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;};
+
+String[] users = {&quot;fbo_agency_admin&quot;};
 
 //props.put(&quot;users&quot;, users);
 
@@ -4651,7 +4653,7 @@ Per Minute			30		60		90		120
                 </hashTree>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Create OPP" enabled="false"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Create OPP" enabled="true"/>
             <hashTree>
               <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Simulate user data entry by calling APIs twice (loop 2)" enabled="true">
                 <boolProp name="LoopController.continue_forever">true</boolProp>
@@ -5081,16 +5083,16 @@ Per Minute			30		60		90		120
                   </collectionProp>
                 </HeaderManager>
                 <hashTree/>
-                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract OppID from Location Response Header" enabled="true">
                   <stringProp name="RegexExtractor.useHeaders">true</stringProp>
                   <stringProp name="RegexExtractor.refname">opportunityId</stringProp>
-                  <stringProp name="RegexExtractor.regex">Location:(.*?);</stringProp>
-                  <stringProp name="RegexExtractor.template">$1$</stringProp>
-                  <stringProp name="RegexExtractor.default">-1</stringProp>
-                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  <stringProp name="RegexExtractor.regex">Location:\s+(.+)\/opportunities\/(.+)(\?api_key)</stringProp>
+                  <stringProp name="RegexExtractor.template">$2$</stringProp>
+                  <stringProp name="RegexExtractor.default"></stringProp>
+                  <stringProp name="RegexExtractor.match_number"></stringProp>
                 </RegexExtractor>
                 <hashTree/>
-                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Log OppID" enabled="true">
                   <stringProp name="cacheKey"></stringProp>
                   <stringProp name="filename"></stringProp>
                   <stringProp name="parameters"></stringProp>
@@ -5100,7 +5102,7 @@ Per Minute			30		60		90		120
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Review OPP" enabled="false"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Review OPP" enabled="true"/>
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp (Review)" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -5289,41 +5291,6 @@ Per Minute			30		60		90		120
                   <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree/>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp Attachments" enabled="false">
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                    <collectionProp name="Arguments.arguments">
-                      <elementProp name="noticeIds" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">${opportunityId}</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                        <stringProp name="Argument.name">noticeIds</stringProp>
-                      </elementProp>
-                      <elementProp name="excludeDeleted" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">false</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                        <stringProp name="Argument.name">excludeDeleted</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <stringProp name="HTTPSampler.domain"></stringProp>
-                  <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.protocol"></stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">opps/v3/opportunities/attachments</stringProp>
-                  <stringProp name="HTTPSampler.method">GET</stringProp>
-                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                  <stringProp name="TestPlan.comments">One call upon the data provided and the other one upon submit for saving</stringProp>
-                </HTTPSamplerProxy>
-                <hashTree/>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp Attachments" enabled="true">
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                     <collectionProp name="Arguments.arguments">
@@ -5393,7 +5360,7 @@ Per Minute			30		60		90		120
                   <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree/>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp History" enabled="false">
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp History" enabled="true">
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                     <collectionProp name="Arguments.arguments"/>
                   </elementProp>
@@ -5519,7 +5486,7 @@ Per Minute			30		60		90		120
                 </hashTree>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Update OPP" enabled="false"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Update OPP" enabled="true"/>
             <hashTree>
               <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop 2" enabled="true">
                 <boolProp name="LoopController.continue_forever">true</boolProp>
@@ -5813,7 +5780,7 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">opps/v2/opportunities/organization/${__evalVar(${currentUser}_org_id)}/ivl</stringProp>
+                <stringProp name="HTTPSampler.path">opps/v2/opportunities/organizations/${__evalVar(${currentUser}_org_id)}/ivl</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5904,41 +5871,6 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 <stringProp name="HTTPSampler.connect_timeout"></stringProp>
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              </HTTPSamplerProxy>
-              <hashTree/>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Created Opp Attachments" enabled="false">
-                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                  <collectionProp name="Arguments.arguments">
-                    <elementProp name="noticeIds" elementType="HTTPArgument">
-                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">${opportunityId}</stringProp>
-                      <stringProp name="Argument.metadata">=</stringProp>
-                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                      <stringProp name="Argument.name">noticeIds</stringProp>
-                    </elementProp>
-                    <elementProp name="excludeDeleted" elementType="HTTPArgument">
-                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">true</stringProp>
-                      <stringProp name="Argument.metadata">=</stringProp>
-                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                      <stringProp name="Argument.name">excludeDeleted</stringProp>
-                    </elementProp>
-                  </collectionProp>
-                </elementProp>
-                <stringProp name="HTTPSampler.domain"></stringProp>
-                <stringProp name="HTTPSampler.port"></stringProp>
-                <stringProp name="HTTPSampler.protocol"></stringProp>
-                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">opps/v3/opportunities/attachments</stringProp>
-                <stringProp name="HTTPSampler.method">GET</stringProp>
-                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                <stringProp name="TestPlan.comments">One call upon the data provided and the other one upon submit for saving</stringProp>
               </HTTPSamplerProxy>
               <hashTree/>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Created Opp Attachments" enabled="true">
@@ -6067,12 +5999,12 @@ Per Minute			30		60		90		120
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Contacts" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
-                    <elementProp name="ids" elementType="HTTPArgument">
+                    <elementProp name="opportunityId" elementType="HTTPArgument">
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">procurement_type</stringProp>
+                      <stringProp name="Argument.value">${opportunityId}</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
                       <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                      <stringProp name="Argument.name">ids</stringProp>
+                      <stringProp name="Argument.name">opportunityId</stringProp>
                     </elementProp>
                   </collectionProp>
                 </elementProp>
@@ -6080,7 +6012,7 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">opps/v2/opportunities/${opportunityId}/contacts</stringProp>
+                <stringProp name="HTTPSampler.path">opps/v2/opportunities/contacts</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6217,7 +6149,7 @@ Per Minute			30		60		90		120
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Delete OPP" enabled="false"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Delete OPP" enabled="true"/>
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Delete Notice" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -22380,13 +22312,13 @@ $(SEARCH_TERM) - any text. Will be sent as query
           </elementProp>
           <elementProp name="fbo_agency_admin_login_token" elementType="Argument">
             <stringProp name="Argument.name">fbo_agency_admin_login_token</stringProp>
-            <stringProp name="Argument.value">a0972614-c8ea-4496-a036-b573ebe248f3</stringProp>
+            <stringProp name="Argument.value">d4ab10d2-d9e0-4736-8f8d-c98ac9759dda</stringProp>
             <stringProp name="Argument.desc">Replace with a session token after authenticating manually.</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="fbo_contracting_officer_login_token" elementType="Argument">
             <stringProp name="Argument.name">fbo_contracting_officer_login_token</stringProp>
-            <stringProp name="Argument.value">28ac46ba-b2ba-4b37-9938-30fcf66497ae</stringProp>
+            <stringProp name="Argument.value">d23fe0f9-e8d0-425e-a9c2-9a27d1a0d8c7</stringProp>
             <stringProp name="Argument.desc">Replace with a session token after authenticating manually.</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
