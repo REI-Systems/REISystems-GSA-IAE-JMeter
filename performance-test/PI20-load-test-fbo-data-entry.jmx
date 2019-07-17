@@ -3720,7 +3720,7 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
         <stringProp name="ThreadGroup.num_threads">6</stringProp>
         <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">5</stringProp>
         <longProp name="ThreadGroup.start_time">1542397792000</longProp>
         <longProp name="ThreadGroup.end_time">1542397792000</longProp>
@@ -3770,7 +3770,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>8.0</value>
+            <value>160.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -4938,7 +4938,7 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
               </HTTPSamplerProxy>
               <hashTree/>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - IVL Organization settings" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - IVL Organization settings" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments"/>
                 </elementProp>
@@ -4946,7 +4946,7 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">opps/v2/opportunities/organization/${__evalVar(${currentUser}_org_id)}/ivl</stringProp>
+                <stringProp name="HTTPSampler.path">opps/v2/opportunities/organizations/${__evalVar(${currentUser}_org_id)}/ivl</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5082,13 +5082,21 @@ Per Minute			30		60		90		120
                 </HeaderManager>
                 <hashTree/>
                 <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
-                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">true</stringProp>
                   <stringProp name="RegexExtractor.refname">opportunityId</stringProp>
-                  <stringProp name="RegexExtractor.regex">.*</stringProp>
-                  <stringProp name="RegexExtractor.template">$0$</stringProp>
-                  <stringProp name="RegexExtractor.default"></stringProp>
+                  <stringProp name="RegexExtractor.regex">Location:(.*?);</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">-1</stringProp>
                   <stringProp name="RegexExtractor.match_number">1</stringProp>
                 </RegexExtractor>
+                <hashTree/>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                  <stringProp name="cacheKey"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">log.info(&quot;**********************************************&quot; + vars.get(&quot;opportunityId&quot;))</stringProp>
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
             </hashTree>
@@ -5898,7 +5906,7 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
               </HTTPSamplerProxy>
               <hashTree/>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Created Opp Attachments" enabled="true">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Created Opp Attachments" enabled="false">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="noticeIds" elementType="HTTPArgument">
@@ -5922,6 +5930,41 @@ Per Minute			30		60		90		120
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                 <stringProp name="HTTPSampler.path">opps/v3/opportunities/attachments</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="TestPlan.comments">One call upon the data provided and the other one upon submit for saving</stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Created Opp Attachments" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="excludeDeleted" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">false</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">excludeDeleted</stringProp>
+                    </elementProp>
+                    <elementProp name="withScanResult" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">true</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">withScanResult</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">opps/v3/opportunities/${opportunityId}/resources</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -22337,13 +22380,13 @@ $(SEARCH_TERM) - any text. Will be sent as query
           </elementProp>
           <elementProp name="fbo_agency_admin_login_token" elementType="Argument">
             <stringProp name="Argument.name">fbo_agency_admin_login_token</stringProp>
-            <stringProp name="Argument.value">322861e1-124e-461a-a913-5813b39337f3</stringProp>
+            <stringProp name="Argument.value">a0972614-c8ea-4496-a036-b573ebe248f3</stringProp>
             <stringProp name="Argument.desc">Replace with a session token after authenticating manually.</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="fbo_contracting_officer_login_token" elementType="Argument">
             <stringProp name="Argument.name">fbo_contracting_officer_login_token</stringProp>
-            <stringProp name="Argument.value">851062bb-5154-4a4f-a71d-79d407b1f838</stringProp>
+            <stringProp name="Argument.value">28ac46ba-b2ba-4b37-9938-30fcf66497ae</stringProp>
             <stringProp name="Argument.desc">Replace with a session token after authenticating manually.</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
