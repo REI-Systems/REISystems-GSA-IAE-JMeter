@@ -39,13 +39,13 @@
           </elementProp>
           <elementProp name="FRONTEND_URL" elementType="Argument">
             <stringProp name="Argument.name">FRONTEND_URL</stringProp>
-            <stringProp name="Argument.value">100samfrontendaltlogin.apps.prod-iae.bsp.gsa.gov/</stringProp>
+            <stringProp name="Argument.value">alpha.sam.gov</stringProp>
             <stringProp name="Argument.desc">SAM Front End URL</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="API_PATH" elementType="Argument">
             <stringProp name="Argument.name">API_PATH</stringProp>
-            <stringProp name="Argument.value">/login</stringProp>
+            <stringProp name="Argument.value">/prodlike</stringProp>
             <stringProp name="Argument.desc">API Path for environment &quot;/login&quot; refers to Charlie Environment</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -7177,7 +7177,7 @@ Per Minute			15		30		45		60
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Federal Hierarchy Group" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Federal Hierarchy Group" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7684,7 +7684,7 @@ Per Minute	30	60	90	120
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LoginGov Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LoginGov Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7752,7 +7752,7 @@ Per minute 	600	360	720	1080	6000	1800	2160	2520	12000
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">fcded98e-67fc-4733-a637-587bdc2a80d1</stringProp>
+              <stringProp name="Header.value">45c85ae5-cf9d-4e52-b4e7-67a1f9547d76</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Content-Type</stringProp>
@@ -7764,7 +7764,7 @@ Per minute 	600	360	720	1080	6000	1800	2160	2520	12000
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">iPlanetDirectoryPro</stringProp>
-              <stringProp name="Header.value">fcded98e-67fc-4733-a637-587bdc2a80d1</stringProp>
+              <stringProp name="Header.value">45c85ae5-cf9d-4e52-b4e7-67a1f9547d76</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -22258,7 +22258,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">https://100samfrontendaltlogin.apps.prod-iae.bsp.gsa.gov/iam/rms/v3/session?api_key=${API_KEY}</stringProp>
+            <stringProp name="HTTPSampler.path">${FRONTEND_URL}/iam/rms/v3/session?api_key=${API_KEY}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
