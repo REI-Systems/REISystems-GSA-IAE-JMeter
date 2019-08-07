@@ -27,7 +27,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="API_URL" elementType="Argument">
             <stringProp name="Argument.name">API_URL</stringProp>
-            <stringProp name="Argument.value">alpha.sam.gov</stringProp>
+            <stringProp name="Argument.value">api-demand-7777.prod-iae.bsp.gsa.gov</stringProp>
             <stringProp name="Argument.desc">API Umbrella URL including environment path</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -45,7 +45,7 @@
           </elementProp>
           <elementProp name="API_PATH" elementType="Argument">
             <stringProp name="Argument.name">API_PATH</stringProp>
-            <stringProp name="Argument.value">/api/prodlike</stringProp>
+            <stringProp name="Argument.value">/login</stringProp>
             <stringProp name="Argument.desc">API Path for environment &quot;/login&quot; refers to Charlie Environment</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -210,18 +210,18 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Suggestions" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Suggestions" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">2</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
         <longProp name="ThreadGroup.start_time">1525230759000</longProp>
         <longProp name="ThreadGroup.end_time">1525230759000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -261,18 +261,18 @@ Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Search Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Search Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">2</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -591,7 +591,7 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
 1/15th	100	248	500	748	1000	1248	1500	1748	2000</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>2000.0</value>
+            <value>1000.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -603,7 +603,7 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 10%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 10%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -635,13 +635,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities- 100%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities- 85%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>100.0</value>
+            <value>85.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -777,13 +777,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FH - 10%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FH - 3%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>3.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -809,13 +809,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Wage Determination - 10%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Wage Determination - 2%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>2.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -13735,6 +13735,33 @@ ${API_PATH} - form of https://api.sam.gov/prodlike
 $(opportunityId) - ID used to find the object</stringProp>
       </TestFragmentController>
       <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - About Page" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="random" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${opportunityId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">random</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">opps/v2/opportunities/about</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Load Dictionary (All) (Display View Page)" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
@@ -14077,7 +14104,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             </HTTPSamplerProxy>
             <hashTree/>
           </hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Call FH 3 times (Mimic UI API Calls)" enabled="true">
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Call FH 3 times (Mimic UI API Calls)" enabled="false">
             <boolProp name="LoopController.continue_forever">true</boolProp>
             <stringProp name="LoopController.loops">3</stringProp>
           </LoopController>
@@ -14220,7 +14247,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             <stringProp name="TestPlan.comments">One call upon the data provided and the other one upon submit for saving</stringProp>
           </HTTPSamplerProxy>
           <hashTree/>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If State Code exists for Place of Performance" enabled="true">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If State Code exists for Place of Performance" enabled="false">
             <stringProp name="IfController.condition">${__jexl3(&quot;${stateCode}&quot; != &quot;-1&quot;)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
@@ -14299,7 +14326,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If PSC Code exists" enabled="true">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If PSC Code exists" enabled="false">
             <stringProp name="IfController.condition">${__jexl3(&quot;${pscCode}&quot; != &quot;-1&quot;)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
@@ -14444,7 +14471,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             </HTTPSamplerProxy>
             <hashTree/>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If NAICS Code exists" enabled="true">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If NAICS Code exists" enabled="false">
             <stringProp name="IfController.condition">${__jexl3(&quot;${naicsCode}&quot; != &quot;-1&quot;)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
