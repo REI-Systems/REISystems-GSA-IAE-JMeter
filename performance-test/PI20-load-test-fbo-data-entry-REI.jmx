@@ -27,7 +27,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="API_URL" elementType="Argument">
             <stringProp name="Argument.name">API_URL</stringProp>
-            <stringProp name="Argument.value">api-nonprod.prod-iae.bsp.gsa.gov</stringProp>
+            <stringProp name="Argument.value">100samfrontendaltlogin.apps.prod-iae.bsp.gsa.gov</stringProp>
             <stringProp name="Argument.desc">API Umbrella URL including environment path</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -45,7 +45,7 @@
           </elementProp>
           <elementProp name="API_PATH" elementType="Argument">
             <stringProp name="Argument.name">API_PATH</stringProp>
-            <stringProp name="Argument.value">/prodlike</stringProp>
+            <stringProp name="Argument.value">/api/login</stringProp>
             <stringProp name="Argument.desc">API Path for environment &quot;/login&quot; refers to Charlie Environment</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -118,18 +118,18 @@
         <boolProp name="useExpires">true</boolProp>
       </CacheManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">150</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1800</stringProp>
+        <stringProp name="ThreadGroup.num_threads">6</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">600</stringProp>
         <longProp name="ThreadGroup.start_time">1523500380000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
         <stringProp name="ThreadGroup.delay">11100</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -210,14 +210,14 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Suggestions" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Suggestions" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
+        <stringProp name="ThreadGroup.num_threads">6</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">600</stringProp>
         <longProp name="ThreadGroup.start_time">1525230759000</longProp>
         <longProp name="ThreadGroup.end_time">1525230759000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -261,14 +261,14 @@ Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Search Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Search Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
+        <stringProp name="ThreadGroup.num_threads">6</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">600</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -360,14 +360,14 @@ vars.put(&quot;RANDOM_DATE_YEAR&quot;, generateRandomYear());</stringProp>
   Wage Determination 5
 
 // Troughput based on Opportunity (22 requests/sec) and WDOL (2 requests/sec) ONLY!!! Update table below to include other search indices when enabled
-Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
-Per second	3	6	12	18	24	30	36	42	48
-Per minute 	144	360	720	1080	1440	1800	2160	2520	2880
-1/15th	10	24	48	72	96	120	144	168	192</stringProp>
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
+Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
+1/15th	18	45	90	135	180	225	270	315	360</stringProp>
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>96.0</value>
+            <value>180.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -558,13 +558,13 @@ Per minute 	144	360	720	1080	1440	1800	2160	2520	2880
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <stringProp name="ThreadGroup.num_threads">17</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">600</stringProp>
         <longProp name="ThreadGroup.start_time">1549661607000</longProp>
         <longProp name="ThreadGroup.end_time">1549661607000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
-        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.delay">900</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
@@ -586,12 +586,12 @@ Exclusion 1X load expects = ??? requests/second.
 Entity 1X load expects = 20 requests/second. 
 
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
-Per second	25	62	125	187	250	312	375	437	500
-Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
-1/15th	100	248	500	748	1000	1248	1500	1748	2000</stringProp>
+Per second					300				600
+Per minute					18000				36000
+1/15th					1200				2400</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>1000.0</value>
+            <value>1200.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -603,13 +603,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 10%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 7%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>7.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -635,13 +635,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities- 100%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities- 85%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>100.0</value>
+            <value>85.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -681,13 +681,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Awards - 10%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Awards - 2%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>2.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -713,13 +713,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Entity - 10%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Entity - 1%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>1.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -745,13 +745,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Exclusion - 10%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Exclusion - 1%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>1.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -777,13 +777,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FH - 3%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FH - 2%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>3.0</value>
+            <value>2.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -809,7 +809,7 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Wage Determination - 2%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Wage Determination - 2%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
