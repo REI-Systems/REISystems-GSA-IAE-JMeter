@@ -360,14 +360,22 @@ vars.put(&quot;RANDOM_DATE_YEAR&quot;, generateRandomYear());</stringProp>
   Wage Determination 5
 
 // Troughput based on Opportunity (22 requests/sec) and WDOL (2 requests/sec) ONLY!!! Update table below to include other search indices when enabled
+Opportunity 1X load expects = 22 requests/second. Update table below to include other display service when enabled
+WDOL 1X load expects = 2 requests/second.
+FAL 1X load expects = 2 requests/second. 
+FH 1X load expects = 2 requests/second. 
+Awards 1X load expects = ??? requests/second. 
+Exclusion 1X load expects = ??? requests/second. 
+Entity 1X load expects = ??? requests/second. 
+
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
-Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
-1/15th	18	45	90	135	180	225	270	315	360</stringProp>
+Per second					30				90
+Per Minute 					1800				5400
+1/15th	12				120				240</stringProp>
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>180.0</value>
+            <value>120.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -579,19 +587,19 @@ Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
 
 Opportunity 1X load expects = 250 requests/second. Update table below to include other display service when enabled
 WDOL 1X load expects = 2 requests/second.
-FAL 1X load expects = 20 requests/second. 
+FAL 1X load expects = 7 requests/second. 
 FH 1X load expects = 2 requests/second. 
 Awards 1X load expects = ??? requests/second. 
 Exclusion 1X load expects = ??? requests/second. 
-Entity 1X load expects = 20 requests/second. 
+Entity 1X load expects = ??? requests/second. 
 
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
-Per second					300				600
-Per minute					18000				36000
-1/15th					1200				2400</stringProp>
+Per second					270				540
+Per minute					16200				4320
+1/15th					1080				2160</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>1200.0</value>
+            <value>1080.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -603,13 +611,13 @@ Per minute					18000				36000
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 7%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 3%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>7.0</value>
+            <value>3.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -635,13 +643,13 @@ Per minute					18000				36000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities- 85%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities- 93%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>85.0</value>
+            <value>93.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -681,7 +689,7 @@ Per minute					18000				36000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Awards - 2%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Awards - 2%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -713,7 +721,7 @@ Per minute					18000				36000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Entity - 1%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Entity - 1%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -745,7 +753,7 @@ Per minute					18000				36000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Exclusion - 1%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Exclusion - 1%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -14794,7 +14802,7 @@ vars.put(&quot;PSC_LIST&quot;, PSC_LIST);</stringProp>
           </BeanShellPostProcessor>
           <hashTree/>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If naics code exists" enabled="true">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If naics code exists" enabled="false">
           <stringProp name="IfController.condition">${__jexl3(&quot;${NAICS_LIST}&quot; != &quot;&quot;)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
