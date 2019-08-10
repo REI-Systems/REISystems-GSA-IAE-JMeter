@@ -135,6 +135,10 @@
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <stringProp name="TestPlan.comments">Samplers: 3
+1x
+Users: 6
+RAMP-UP: 600
+Duration: 1800
 
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
 Per second	9	22.5	45	67.5	90	112.5	135	157.5	180
@@ -142,7 +146,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
 1/15th	36	90	180	270	360	450	540	630	720</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>360.0</value>
+            <value>720.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -240,11 +244,16 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <doubleProp>
             <name>throughput</name>
-            <value>180.0</value>
+            <value>360.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
           <stringProp name="TestPlan.comments">Samplers: 1
+1x
+Users: 9 (2 * 15 jmeter instances = currently in beta &quot;combine it with search&quot; + expected Opp 250/15 jmeter instances / 2.2 = 7)  = 2 + 7
+RAMP-UP: 300
+Duration: 1800
+
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
 
 Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
@@ -359,6 +368,13 @@ vars.put(&quot;RANDOM_DATE_YEAR&quot;, generateRandomYear());</stringProp>
   FH 10
   Wage Determination 5
 
+1x
+Users: 14 (5 * 15 jmeter instances = currently in beta &quot;combine it with search&quot; + expected Opp 250/15 jmeter instances / 1.7 = 9)  = 5 + 9
+RAMP-UP: 450
+Duration: 1800 
+Delay: 60
+
+
 // Troughput based on Opportunity (22 requests/sec) and WDOL (2 requests/sec) ONLY!!! Update table below to include other search indices when enabled
 Opportunity 1X load expects = 22 requests/second. Update table below to include other display service when enabled
 WDOL 1X load expects = 2 requests/second.
@@ -375,7 +391,7 @@ Per Minute 					1800				5400
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>120.0</value>
+            <value>240.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -585,6 +601,13 @@ Per Minute 					1800				5400
   FH 2
   Wage Determination 5
 
+1x
+Users: 17 (1 * 15 jmeter instances = currently in beta + expected Opp 250/15 jmeter instances = 16)  = 5 + 9
+RAMP-UP: 450
+Duration: 1800 
+Delay: 450
+
+
 Opportunity 1X load expects = 250 requests/second. Update table below to include other display service when enabled
 WDOL 1X load expects = 2 requests/second.
 FAL 1X load expects = 7 requests/second. 
@@ -599,7 +622,7 @@ Per minute					16200				4320
 1/15th					1080				2160</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>1080.0</value>
+            <value>2160.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
