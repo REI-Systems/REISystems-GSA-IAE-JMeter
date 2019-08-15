@@ -118,7 +118,7 @@
         <boolProp name="useExpires">true</boolProp>
       </CacheManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -146,7 +146,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
 1/15th	36	90	180	270	360	450	540	630	720</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>1440.0</value>
+            <value>360.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -167,13 +167,18 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">75</stringProp>
+        <stringProp name="ThreadGroup.num_threads">71</stringProp>
         <stringProp name="ThreadGroup.ramp_time">300</stringProp>
         <longProp name="ThreadGroup.start_time">1523500500000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
+        <stringProp name="TestPlan.comments">1x
+
+Users: 10 (90/15 jmeter instances = 6 currently in beta + expected Opp 974/15 jmeter instances = 65)  = 71
+RAMP-UP: 300
+Duration: 1800</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
@@ -220,13 +225,19 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">9</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <longProp name="ThreadGroup.start_time">1525230759000</longProp>
         <longProp name="ThreadGroup.end_time">1525230759000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
+        <stringProp name="TestPlan.comments">1x
+Expected throughput for Suggestions (Opp): 885 hits/second.
+
+Users: 10 (45/15 jmeter instances = 3 currently in beta + expected Opp 100/15 jmeter instances = 6.66 = 7)  = 3 + 7
+RAMP-UP: 300
+Duration: 1800</stringProp>
       </ThreadGroup>
       <hashTree>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
@@ -244,21 +255,32 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <doubleProp>
             <name>throughput</name>
-            <value>720.0</value>
+            <value>3540.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
           <stringProp name="TestPlan.comments">Samplers: 1
-1x
-Users: 9 (2 * 15 jmeter instances = currently in beta &quot;combine it with search&quot; + expected Opp 250/15 jmeter instances / 2.2 = 7)  = 2 + 7
-RAMP-UP: 300
-Duration: 1800
 
+!!! Update table below to include other search indices when enabled
+Opportunity 1X load expects = 885 requests/second. Update table below to include other display service when enabled
+WDOL 1X load expects = 1 requests/second.
+FAL 1X load expects = 1 requests/second. 
+FH 1X load expects = 1 requests/second. 
+Awards 1X load expects = ??? requests/second. 
+Exclusion 1X load expects = ??? requests/second. 
+Entity 1X load expects = ??? requests/second. 
+
+OLD ---------
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-
 Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
 Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
-1/15th	18	45	90	135	180	225	270	315	360</stringProp>
+1/15th	18	45	90	135	180	225	270	315	360
+
+NEW ---------
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second					885				1770
+Per Minute 					53100				106200
+1/15th	12				3540				7080</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Search Suggestion" enabled="true">
@@ -276,13 +298,21 @@ Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">14</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">450</stringProp>
+        <stringProp name="ThreadGroup.num_threads">7</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
-        <stringProp name="ThreadGroup.delay">60</stringProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <stringProp name="TestPlan.comments">1x
+Expected throughput for Search (Opp): 531 hits/second.
+
+Users: 7 (23/15 jmeter instances = 2 currently in beta &quot;combine it with search&quot; + expected Opp 77/15 jmeter instances = 5)  = 2 + 5
+RAMP-UP: 450
+Duration: 1800 
+Delay: 60
+</stringProp>
       </ThreadGroup>
       <hashTree>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
@@ -359,24 +389,8 @@ vars.put(&quot;RANDOM_DATE_YEAR&quot;, generateRandomYear());</stringProp>
         </JSR223PreProcessor>
         <hashTree/>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="TestPlan.comments">Samplers: 
-  All Indexes 7
-  FAL 7
-  Opportunities 7
-  Awards 9
-  Entity 9
-  FH 10
-  Wage Determination 5
-
-1x
-Users: 14 (5 * 15 jmeter instances = currently in beta &quot;combine it with search&quot; + expected Opp 250/15 jmeter instances / 1.7 = 9)  = 5 + 9
-RAMP-UP: 450
-Duration: 1800 
-Delay: 60
-
-
-// Troughput based on Opportunity (22 requests/sec) and WDOL (2 requests/sec) ONLY!!! Update table below to include other search indices when enabled
-Opportunity 1X load expects = 22 requests/second. Update table below to include other display service when enabled
+          <stringProp name="TestPlan.comments">!!! Update table below to include other search indices when enabled
+Opportunity 1X load expects = 531 requests/second. Update table below to include other display service when enabled
 WDOL 1X load expects = 2 requests/second.
 FAL 1X load expects = 2 requests/second. 
 FH 1X load expects = 2 requests/second. 
@@ -384,14 +398,22 @@ Awards 1X load expects = ??? requests/second.
 Exclusion 1X load expects = ??? requests/second. 
 Entity 1X load expects = ??? requests/second. 
 
+OLD-----------------
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
 Per second					30				90
 Per Minute 					1800				5400
-1/15th	12				120				240</stringProp>
+1/15th	12				120				240
+--------
+NEW ---------
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second					531				1062
+Per Minute 					31860				63720
+1/15th	12				2124				4248
+</stringProp>
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>480.0</value>
+            <value>2124.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -402,13 +424,13 @@ Per Minute 					1800				5400
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller - 1%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>1.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
           <stringProp name="TestPlan.comments">limit the about endpoint call just enough to get a proxy for network</stringProp>
@@ -435,13 +457,13 @@ Per Minute 					1800				5400
           </HTTPSamplerProxy>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="All Indexes - 40%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="All Indexes - 39%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>40.0</value>
+            <value>39.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -450,7 +472,7 @@ Per Minute 					1800				5400
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
               <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
-              <stringProp name="-1733558794">Featured Search Fragment</stringProp>
+              <stringProp name="191329531">All Index Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
           <hashTree/>
@@ -582,47 +604,49 @@ Per Minute 					1800				5400
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">17</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">450</stringProp>
+        <stringProp name="ThreadGroup.num_threads">14</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <longProp name="ThreadGroup.start_time">1549661607000</longProp>
         <longProp name="ThreadGroup.end_time">1549661607000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
-        <stringProp name="ThreadGroup.delay">450</stringProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <stringProp name="TestPlan.comments">1x
+
+Concurrent users for:
+CFDA: 7 / 15 = 1 
+WDOL: 58 / 15 = 4
+OPP: 129 / 15 = 9
+
+Users: 14
+RAMP-UP: 450
+Duration: 1800 
+Delay: 450</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="TestPlan.comments">Samplers
-  FAL 5
-  Opportunities 9
-  Awards 2
-  Entity 4
-  Exclusion 2
-  FH 2
-  Wage Determination 5
-
-1x
-Users: 17 (1 * 15 jmeter instances = currently in beta + expected Opp 250/15 jmeter instances = 16)  = 5 + 9
-RAMP-UP: 450
-Duration: 1800 
-Delay: 450
-
-
-Opportunity 1X load expects = 250 requests/second. Update table below to include other display service when enabled
+          <stringProp name="TestPlan.comments">Opportunity 1X load expects = 129 requests/second. Update table below to include other display service when enabled
 WDOL 1X load expects = 2 requests/second.
-FAL 1X load expects = 7 requests/second. 
+FAL 1X load expects = 5 requests/second. 
 FH 1X load expects = 2 requests/second. 
 Awards 1X load expects = ??? requests/second. 
 Exclusion 1X load expects = ??? requests/second. 
 Entity 1X load expects = ??? requests/second. 
 
+---- OLD
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
 Per second					270				540
 Per minute					16200				4320
-1/15th					1080				2160</stringProp>
+1/15th					1080				2160
+
+---- NEW
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second					138				276
+Per minute					8280				16560
+1/15th					552				1104</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>4320.0</value>
+            <value>552.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -8470,25 +8494,31 @@ $(SEARCH_TERM) - any text. Will be sent as query
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="fh - Departments Dictionary" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${API_PATH}/federalorganizations/v1/organizations/departments/</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop twice 2" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">2</stringProp>
+        </LoopController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="fh - Departments Dictionary" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_PATH}/federalorganizations/v1/organizations/departments/</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Featured Search" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
@@ -8497,14 +8527,26 @@ $(SEARCH_TERM) - any text. Will be sent as query
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
-            <stringProp name="-355135239">Org Picker API Calls</stringProp>
-          </collectionProp>
-        </ModuleController>
-        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller - 50%" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <stringProp name="ThroughputController.maxThroughput">50%</stringProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>50.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
+            <collectionProp name="ModuleController.node_path">
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-355135239">Org Picker API Calls</stringProp>
+            </collectionProp>
+          </ModuleController>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="FAL Search Fragment" enabled="true">
         <stringProp name="TestPlan.comments">Requires this configuration supplied by caller
@@ -9496,6 +9538,14 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree/>
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
+            <collectionProp name="ModuleController.node_path">
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-355135239">Org Picker API Calls</stringProp>
+            </collectionProp>
+          </ModuleController>
+          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="fh - Departments Dictionary" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -9521,14 +9571,6 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
           <boolProp name="displayJMeterVariables">true</boolProp>
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
-        <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
-            <stringProp name="-355135239">Org Picker API Calls</stringProp>
-          </collectionProp>
-        </ModuleController>
         <hashTree/>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Opportunities Search Fragment" enabled="true">
@@ -10963,6 +11005,14 @@ vars.put(&quot;SET_ASIDE&quot;, generateRandomSetAside());</stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree/>
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
+            <collectionProp name="ModuleController.node_path">
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-355135239">Org Picker API Calls</stringProp>
+            </collectionProp>
+          </ModuleController>
+          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="fh - Departments Dictionary" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -10988,14 +11038,6 @@ vars.put(&quot;SET_ASIDE&quot;, generateRandomSetAside());</stringProp>
           <boolProp name="displayJMeterVariables">true</boolProp>
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
-        <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
-            <stringProp name="-355135239">Org Picker API Calls</stringProp>
-          </collectionProp>
-        </ModuleController>
         <hashTree/>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Awards Search Fragment" enabled="true">
@@ -11156,14 +11198,26 @@ $(SEARCH_TERM) - any text. Will be sent as query
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
-            <stringProp name="-355135239">Org Picker API Calls</stringProp>
-          </collectionProp>
-        </ModuleController>
-        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller - 50%" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>50.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
+            <collectionProp name="ModuleController.node_path">
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-355135239">Org Picker API Calls</stringProp>
+            </collectionProp>
+          </ModuleController>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Entity Information Search Fragment" enabled="true">
         <stringProp name="TestPlan.comments">Requires this configuration supplied by caller
@@ -11405,6 +11459,14 @@ $(SEARCH_TERM) - any text. Will be sent as query
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree/>
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
+            <collectionProp name="ModuleController.node_path">
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-355135239">Org Picker API Calls</stringProp>
+            </collectionProp>
+          </ModuleController>
+          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="fh - Departments Dictionary" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -11430,14 +11492,6 @@ $(SEARCH_TERM) - any text. Will be sent as query
           <boolProp name="displayJMeterVariables">true</boolProp>
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
-        <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
-            <stringProp name="-355135239">Org Picker API Calls</stringProp>
-          </collectionProp>
-        </ModuleController>
         <hashTree/>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Wage Determination Search Fragment" enabled="true">
@@ -12789,7 +12843,7 @@ $(FAL_ID) - A FAL ID (UUID)
           <stringProp name="TestPlan.comments">Used to test the simplest thing the service can do.</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Misc. lookups" enabled="true">
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Misc. lookups" enabled="false">
           <stringProp name="TestPlan.comments">Calling post display view pages API Calls for Alerts / Subscription Enable / WatchList / Notification / User / Feedback lookups</stringProp>
         </GenericController>
         <hashTree>
@@ -12955,14 +13009,26 @@ $(SEARCH_TERM) - any text. Will be sent as query
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
-            <stringProp name="-355135239">Org Picker API Calls</stringProp>
-          </collectionProp>
-        </ModuleController>
-        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller - 50%" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>50.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
+            <collectionProp name="ModuleController.node_path">
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-355135239">Org Picker API Calls</stringProp>
+            </collectionProp>
+          </ModuleController>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Featured Search Fragment" enabled="true">
         <stringProp name="TestPlan.comments">Featured Search - A reusable module for handling the featured search API calls that are frequently made on other searches.
