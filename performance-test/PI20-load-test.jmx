@@ -210,21 +210,41 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Suggestions" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Suggestions" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
         <stringProp name="ThreadGroup.ramp_time">300</stringProp>
         <longProp name="ThreadGroup.start_time">1525230759000</longProp>
         <longProp name="ThreadGroup.end_time">1525230759000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.duration">1200</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
+        <stringProp name="TestPlan.comments">1x
+Expected throughput for Suggestions (Opp): 885 hits/second.
+
+Users: 10 (45/15 jmeter instances = 3 currently in beta + expected Opp 100/15 jmeter instances = 6.66 = 7)  = 3 + 7
+RAMP-UP: 300
+Duration: 1800</stringProp>
       </ThreadGroup>
       <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">52samdotgovsearchlogin.apps.prod-iae.bsp.gsa.gov/</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="filename">data/suggestion_fragments.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
@@ -240,16 +260,32 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <doubleProp>
             <name>throughput</name>
-            <value>360.0</value>
+            <value>3540.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
           <stringProp name="TestPlan.comments">Samplers: 1
-	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
 
+!!! Update table below to include other search indices when enabled
+Opportunity 1X load expects = 885 requests/second. Update table below to include other display service when enabled
+WDOL 1X load expects = 1 requests/second.
+FAL 1X load expects = 1 requests/second. 
+FH 1X load expects = 1 requests/second. 
+Awards 1X load expects = ??? requests/second. 
+Exclusion 1X load expects = ??? requests/second. 
+Entity 1X load expects = ??? requests/second. 
+
+OLD ---------
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
 Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
 Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
-1/15th	18	45	90	135	180	225	270	315	360</stringProp>
+1/15th	18	45	90	135	180	225	270	315	360
+
+NEW ---------
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second					885				1770
+Per Minute 					53100				106200
+1/15th	12				3540				7080</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Search Suggestion" enabled="true">
@@ -267,15 +303,37 @@ Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">6</stringProp>
         <stringProp name="ThreadGroup.ramp_time">300</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">30</stringProp>
+        <stringProp name="ThreadGroup.duration">1200</stringProp>
+        <stringProp name="ThreadGroup.delay">60</stringProp>
+        <stringProp name="TestPlan.comments">1x
+Expected throughput for Search (Opp): 531 hits/second.
+
+Users: 7 (23/15 jmeter instances = 2 currently in beta &quot;combine it with search&quot; + expected Opp 77/15 jmeter instances = 5)  = 2 + 5
+RAMP-UP: 450
+Duration: 1800 
+Delay: 60
+</stringProp>
       </ThreadGroup>
       <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">52samdotgovsearchlogin.apps.prod-iae.bsp.gsa.gov/</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="filename">data/single_term_search_and_suggestion_data.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
@@ -350,24 +408,31 @@ vars.put(&quot;RANDOM_DATE_YEAR&quot;, generateRandomYear());</stringProp>
         </JSR223PreProcessor>
         <hashTree/>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="TestPlan.comments">Samplers: 
-  All Indexes 7
-  FAL 7
-  Opportunities 7
-  Awards 9
-  Entity 9
-  FH 10
-  Wage Determination 5
+          <stringProp name="TestPlan.comments">!!! Update table below to include other search indices when enabled
+Opportunity 1X load expects = 531 requests/second. Update table below to include other display service when enabled
+WDOL 1X load expects = 2 requests/second.
+FAL 1X load expects = 2 requests/second. 
+FH 1X load expects = 2 requests/second. 
+Awards 1X load expects = ??? requests/second. 
+Exclusion 1X load expects = ??? requests/second. 
+Entity 1X load expects = ??? requests/second. 
 
-// Troughput based on Opportunity (22 requests/sec) and WDOL (2 requests/sec) ONLY!!! Update table below to include other search indices when enabled
-Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
-Per second	3	6	12	18	24	30	36	42	48
-Per minute 	144	360	720	1080	1440	1800	2160	2520	2880
-1/15th	10	24	48	72	96	120	144	168	192</stringProp>
+OLD-----------------
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second					30				90
+Per Minute 					1800				5400
+1/15th	12				120				240
+--------
+NEW ---------
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second					531				1062
+Per Minute 					31860				63720
+1/15th	12				2124				4248
+</stringProp>
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>96.0</value>
+            <value>2124.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -378,13 +443,13 @@ Per minute 	144	360	720	1080	1440	1800	2160	2520	2880
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller - 1%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>1.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
           <stringProp name="TestPlan.comments">limit the about endpoint call just enough to get a proxy for network</stringProp>
@@ -411,13 +476,13 @@ Per minute 	144	360	720	1080	1440	1800	2160	2520	2880
           </HTTPSamplerProxy>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="All Indexes - 40%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="All Indexes - 39%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>40.0</value>
+            <value>39.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -426,7 +491,7 @@ Per minute 	144	360	720	1080	1440	1800	2160	2520	2880
             <collectionProp name="ModuleController.node_path">
               <stringProp name="-1227702913">WorkBench</stringProp>
               <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
-              <stringProp name="-1733558794">Featured Search Fragment</stringProp>
+              <stringProp name="191329531">All Index Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
           <hashTree/>
@@ -558,40 +623,49 @@ Per minute 	144	360	720	1080	1440	1800	2160	2520	2880
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
+        <stringProp name="ThreadGroup.num_threads">14</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <longProp name="ThreadGroup.start_time">1549661607000</longProp>
         <longProp name="ThreadGroup.end_time">1549661607000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">30</stringProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+        <stringProp name="ThreadGroup.delay">450</stringProp>
+        <stringProp name="TestPlan.comments">1x
+
+Concurrent users for:
+CFDA: 7 / 15 = 1 
+WDOL: 58 / 15 = 4
+OPP: 129 / 15 = 9
+
+Users: 14
+RAMP-UP: 450
+Duration: 1800 
+Delay: 450</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="TestPlan.comments">Samplers
-  FAL 5
-  Opportunities 9
-  Awards 2
-  Entity 4
-  Exclusion 2
-  FH 2
-  Wage Determination 5
-
-Opportunity 1X load expects = 250 requests/second. Update table below to include other display service when enabled
+          <stringProp name="TestPlan.comments">Opportunity 1X load expects = 129 requests/second. Update table below to include other display service when enabled
 WDOL 1X load expects = 2 requests/second.
-FAL 1X load expects = 20 requests/second.  (Concurrent users = 1)
+FAL 1X load expects = 5 requests/second. 
 FH 1X load expects = 2 requests/second. 
 Awards 1X load expects = ??? requests/second. 
 Exclusion 1X load expects = ??? requests/second. 
-Entity 1X load expects = 20 requests/second. 
+Entity 1X load expects = ??? requests/second. 
 
+---- OLD
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
-Per second	25	62	125	187	250	312	375	437	500
-Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
-1/15th	100	248	500	748	1000	1248	1500	1748	2000</stringProp>
+Per second					270				540
+Per minute					16200				4320
+1/15th					1080				2160
+
+---- NEW
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second					138				276
+Per minute					8280				16560
+1/15th					552				1104</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>1000.0</value>
+            <value>552.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -603,17 +677,31 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 2%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 3%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>2.0</value>
+            <value>3.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
+          <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">53cfdamodernizationlogin.apps.prod-iae.bsp.gsa.gov/</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </ConfigTestElement>
+          <hashTree/>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="FAL CSV Data Set Config" enabled="true">
             <stringProp name="filename">data/fal_ids.csv</stringProp>
             <stringProp name="fileEncoding"></stringProp>
@@ -635,13 +723,13 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities- 50%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities- 93%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>50.0</value>
+            <value>93.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -662,7 +750,7 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${API_URL}${API_PATH}/</stringProp>
+            <stringProp name="HTTPSampler.domain">86samdotgovopportunitiesmodernlogin.apps.prod-iae.bsp.gsa.gov/</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -681,7 +769,7 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Awards - 10%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Awards - 10%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -713,7 +801,7 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Entity - 10%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Entity - 10%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -745,7 +833,7 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Exclusion - 10%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Exclusion - 10%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -777,17 +865,31 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FH - 10%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FH - 2%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>2.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
+          <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">57federalhierarchyapilogin.apps.prod-iae.bsp.gsa.gov/</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </ConfigTestElement>
+          <hashTree/>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Federal Hierarchy CSV Data Set Config" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
@@ -809,17 +911,31 @@ Per minute	1500	3720	7500	11220	15000	18720	22500	26220	30000
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Wage Determination - 3%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Wage Determination - 2%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>3.0</value>
+            <value>2.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
+          <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">26wdolapplicationlogin.apps.prod-iae.bsp.gsa.gov/</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </ConfigTestElement>
+          <hashTree/>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Wage Determination CSV Data Set Config" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
