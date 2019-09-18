@@ -516,7 +516,7 @@ Per Minute 					31860				63720
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities - 25%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities - 25%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -536,13 +536,13 @@ Per Minute 					31860				63720
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Awards - 10%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Awards - 10%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
+            <value>100.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -11259,14 +11259,6 @@ $(SEARCH_TERM) - any text. Will be sent as query
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="false">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
-            <stringProp name="-355135239">Org Picker API Calls</stringProp>
-          </collectionProp>
-        </ModuleController>
-        <hashTree/>
         <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller - 50%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
@@ -11277,7 +11269,16 @@ $(SEARCH_TERM) - any text. Will be sent as query
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
-        <hashTree/>
+        <hashTree>
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="false">
+            <collectionProp name="ModuleController.node_path">
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-355135239">Org Picker API Calls</stringProp>
+            </collectionProp>
+          </ModuleController>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Entity Information Search Fragment" enabled="true">
         <stringProp name="TestPlan.comments">Requires this configuration supplied by caller
