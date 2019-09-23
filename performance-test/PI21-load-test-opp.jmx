@@ -623,7 +623,7 @@ Per Minute 					31860				63720
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">14</stringProp>
+        <stringProp name="ThreadGroup.num_threads">21</stringProp>
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <longProp name="ThreadGroup.start_time">1549661607000</longProp>
         <longProp name="ThreadGroup.end_time">1549661607000</longProp>
@@ -14926,16 +14926,16 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If organization id exists" enabled="false">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If organization id exists" enabled="true">
             <stringProp name="IfController.condition">${__jexl3(&quot;${orgId}&quot; != &quot;-1&quot;)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
             <stringProp name="TestPlan.comments">lookup organizations (twice)</stringProp>
           </IfController>
           <hashTree>
-            <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop 4" enabled="true">
+            <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop 4 (Will be fixed to make only one call)" enabled="true">
               <boolProp name="LoopController.continue_forever">true</boolProp>
-              <stringProp name="LoopController.loops">4</stringProp>
+              <stringProp name="LoopController.loops">1</stringProp>
             </LoopController>
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp Organizations" enabled="true">
