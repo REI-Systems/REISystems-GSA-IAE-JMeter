@@ -303,7 +303,7 @@ Per Minute 					53100				106200
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">3</stringProp>
+        <stringProp name="ThreadGroup.num_threads">7</stringProp>
         <stringProp name="ThreadGroup.ramp_time">15</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
@@ -322,7 +322,15 @@ Delay: 60
       <hashTree>
         <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="size" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">size</stringProp>
+              </elementProp>
+            </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain">52samdotgovsearchlogin.apps.prod-iae.bsp.gsa.gov/</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
@@ -496,13 +504,13 @@ Per Minute 					31860				63720
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 2%" enabled="false">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FAL - 2%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>2.0</value>
+            <value>100.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -516,13 +524,13 @@ Per Minute 					31860				63720
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities - 25%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Opportunities - 25%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>100.0</value>
+            <value>40.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -8716,7 +8724,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
               </elementProp>
               <elementProp name="q" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">q</stringProp>
@@ -8776,7 +8784,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -8838,7 +8846,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -8908,7 +8916,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -8970,7 +8978,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -9039,7 +9047,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -9101,7 +9109,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -9163,7 +9171,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -9211,7 +9219,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -9266,7 +9274,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -9329,7 +9337,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -9384,7 +9392,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -9446,7 +9454,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
@@ -9501,7 +9509,7 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
                 </elementProp>
                 <elementProp name="q" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">q</stringProp>
