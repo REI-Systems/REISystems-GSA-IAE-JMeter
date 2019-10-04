@@ -3895,7 +3895,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>300.0</value>
+            <value>600.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -6532,7 +6532,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">449a071b-af00-423c-bfac-c214dc39a64f</stringProp>
+              <stringProp name="Header.value">8a280dd7-500c-4d44-bacb-d42498ac88ad</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -6857,13 +6857,13 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
       }&#xd;
     },&#xd;
     &quot;organizationId&quot;: &quot;100178520&quot;,&#xd;
-    &quot;pointOfContact&quot;: null,&#xd;
+    &quot;pointOfContact&quot;: [{&quot;fax&quot;:&quot;&quot;,&quot;type&quot;:&quot;primary&quot;,&quot;email&quot;:&quot;test@gmail.com&quot;,&quot;phone&quot;:&quot;&quot;,&quot;title&quot;:null,&quot;fullName&quot;:&quot;TEST TEST&quot;}],&#xd;
     &quot;solicitationNumber&quot;: &quot;award-notice-jmeter-${COUNT}&quot;,&#xd;
     &quot;solicitation&quot;: {&#xd;
       &quot;setAside&quot;: null,&#xd;
       &quot;deadlines&quot;: {&#xd;
-        &quot;response&quot;: null,&#xd;
-        &quot;responseTz&quot;: null&#xd;
+        &quot;response&quot;: &quot;2019-11-11T23:59:00-05:00&quot;,&#xd;
+        &quot;responseTz&quot;: &quot;America/New_York&quot;&#xd;
       }&#xd;
     },&#xd;
     &quot;archive&quot;: {&#xd;
@@ -6906,7 +6906,11 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
       }&#xd;
     ]&#xd;
   },&#xd;
-  &quot;description&quot;: [],&#xd;
+  &quot;description&quot;: [&#xd;
+        {&#xd;
+            &quot;body&quot;: &quot;Description for load testing&quot;&#xd;
+        }&#xd;
+    ],&#xd;
   &quot;related&quot;: {}&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -7781,7 +7785,15 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="TestPlan.comments">One call upon the data provided and the other one upon submit for saving</stringProp>
           </HTTPSamplerProxy>
-          <hashTree/>
+          <hashTree>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract descriptionId" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">descriptionId</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.description[0].descriptionId</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Load Dictionary (Set A Side)" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments">
@@ -8157,12 +8169,19 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
       }&#xd;
     },&#xd;
     &quot;organizationId&quot;: &quot;100178520&quot;,&#xd;
-    &quot;pointOfContact&quot;: null,&#xd;
+    &quot;pointOfContact&quot;: [{&#xd;
+    	&quot;fax&quot;: null, &#xd;
+    	&quot;type&quot;: &quot;primary&quot;, &#xd;
+    	&quot;email&quot;: &quot;test@test.com&quot;, &#xd;
+    	&quot;phone&quot;: null, &#xd;
+    	&quot;title&quot;: null, &#xd;
+    	&quot;fullName&quot;: &quot;test&quot;&#xd;
+    	}],&#xd;
     &quot;solicitation&quot;: {&#xd;
       &quot;setAside&quot;: null,&#xd;
       &quot;deadlines&quot;: {&#xd;
-        &quot;response&quot;: null,&#xd;
-        &quot;responseTz&quot;: null&#xd;
+        &quot;response&quot;: &quot;2019-11-11T23:59:00-05:00&quot;,&#xd;
+        &quot;responseTz&quot;: &quot;America/New_York&quot;&#xd;
       }&#xd;
     },&#xd;
     &quot;archive&quot;: {&#xd;
@@ -8205,7 +8224,13 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
       }&#xd;
     ]&#xd;
   },&#xd;
-  &quot;description&quot;: [],&#xd;
+  &quot;description&quot;: [&#xd;
+        {&#xd;
+            &quot;body&quot;: &quot;Description for load testing&quot;,&#xd;
+            &quot;descriptionId&quot;: &quot;${descriptionId}&quot;,&#xd;
+            &quot;opportunityId&quot;: &quot;${opportunityId}&quot;&#xd;
+        }&#xd;
+    ],&#xd;
   &quot;related&quot;: {}&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -8238,18 +8263,29 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Delete OPP" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Publish OPP" enabled="true"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Delete Notice" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Publish Notice" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;requestType&quot;: &quot;publish_request&quot;,&#xd;
+	&quot;reason&quot;: &quot;Jmeter Publish Opportunity&quot; &#xd;
+}&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">opps/v2/opportunities/${opportunityId}</stringProp>
-            <stringProp name="HTTPSampler.method">DELETE</stringProp>
+            <stringProp name="HTTPSampler.path">opps/v2/${opportunityId}/requests</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
