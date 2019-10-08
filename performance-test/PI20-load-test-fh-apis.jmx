@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+<jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 20.02 Load Test" enabled="true">
       <stringProp name="TestPlan.comments">JMeter tips &amp; techniques used in this test plan.
@@ -45,7 +45,7 @@
           </elementProp>
           <elementProp name="API_PATH" elementType="Argument">
             <stringProp name="Argument.name">API_PATH</stringProp>
-            <stringProp name="Argument.value">login</stringProp>
+            <stringProp name="Argument.value">login/federalorganizations</stringProp>
             <stringProp name="Argument.desc">API Path for environment &quot;/login&quot; refers to Charlie Environment</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -7240,16 +7240,16 @@ Per Minute			15		30		45		60
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Federal Hierarchy Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Federal Hierarchy Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">125</stringProp>
+        <stringProp name="ThreadGroup.num_threads">120</stringProp>
         <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
         <longProp name="ThreadGroup.start_time">1551891948000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
@@ -7276,7 +7276,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
 1/15th	18	45	90	135	180	225	270	315	360</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>900.0</value>
+            <value>1800.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -7602,7 +7602,7 @@ Per Minute			30		60		90		120
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS Group" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS Group" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -17377,7 +17377,7 @@ ${SEARCH_TERM} - used in FH org picker search query
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Federal Hierarchy Fragment" enabled="true"/>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SIngle Org Look-UP" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SIngle Org Look-UP" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="mode" elementType="HTTPArgument">
@@ -17442,7 +17442,7 @@ ${SEARCH_TERM} - used in FH org picker search query
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Department Org Look-UP" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Department Org Look-UP" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
