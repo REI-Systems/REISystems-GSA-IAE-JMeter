@@ -104,6 +104,10 @@
             <stringProp name="Header.name">X-Api-Key</stringProp>
             <stringProp name="Header.value">${API_KEY}</stringProp>
           </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Content-Type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
         </collectionProp>
       </HeaderManager>
       <hashTree/>
@@ -3842,15 +3846,29 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">150</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
         <longProp name="ThreadGroup.start_time">1542397792000</longProp>
         <longProp name="ThreadGroup.end_time">1542397792000</longProp>
       </ThreadGroup>
       <hashTree>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 set random notice type, naics, psc, set aside" enabled="true">
+          <stringProp name="TestPlan.comments">For samplers to use in parameters</stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters">vars</stringProp>
+          <stringProp name="script">function generateSolNumber() {
+    var solNumber = &quot;Jmeter-&quot;+new Date().getTime();
+
+return solNumber;
+}
+vars.put(&quot;SOL_NUMBER&quot;, generateSolNumber());</stringProp>
+          <stringProp name="scriptLanguage">javascript</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
         <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
@@ -3895,7 +3913,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>600.0</value>
+            <value>3600.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -6532,7 +6550,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">8a280dd7-500c-4d44-bacb-d42498ac88ad</stringProp>
+              <stringProp name="Header.value">5974a177-1241-4b66-9c6d-817a7e8c2f6d</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -6822,29 +6840,6 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;p&quot;,&#xd;
-    &quot;award&quot;: {&#xd;
-      &quot;lineItemNumber&quot;: null,&#xd;
-      &quot;awardee&quot;: {&#xd;
-        &quot;duns&quot;: &quot;608999520&quot;,&#xd;
-        &quot;name&quot;: &quot;REI SYSTEMS, INC.&quot;,&#xd;
-        &quot;location&quot;: {&#xd;
-          &quot;city&quot;: {&#xd;
-            &quot;code&quot;: &quot;14744&quot;&#xd;
-          },&#xd;
-          &quot;state&quot;: {&#xd;
-            &quot;code&quot;: &quot;VA&quot;&#xd;
-          },&#xd;
-          &quot;country&quot;: {&#xd;
-            &quot;code&quot;: &quot;USA&quot;&#xd;
-          },&#xd;
-          &quot;zip&quot;: null&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;date&quot;: &quot;2019-11-11&quot;,&#xd;
-      &quot;number&quot;: &quot;1&quot;,&#xd;
-      &quot;deliveryOrderNumber&quot;: &quot;2&quot;,&#xd;
-      &quot;amount&quot;: &quot;1&quot;&#xd;
-    },&#xd;
     &quot;classificationCode&quot;: &quot;96&quot;,&#xd;
     &quot;title&quot;: &quot;Presol Load testing (JMETER)&quot;,&#xd;
     &quot;orgLevel&quot;: &quot;OFFICE&quot;,&#xd;
@@ -6858,7 +6853,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
     },&#xd;
     &quot;organizationId&quot;: &quot;100178520&quot;,&#xd;
     &quot;pointOfContact&quot;: [{&quot;fax&quot;:&quot;&quot;,&quot;type&quot;:&quot;primary&quot;,&quot;email&quot;:&quot;test@gmail.com&quot;,&quot;phone&quot;:&quot;&quot;,&quot;title&quot;:null,&quot;fullName&quot;:&quot;TEST TEST&quot;}],&#xd;
-    &quot;solicitationNumber&quot;: &quot;award-notice-jmeter-${COUNT}&quot;,&#xd;
+    &quot;solicitationNumber&quot;: &quot;award-notice-jmeter-${SOL_NUMBER}-${COUNT}&quot;,&#xd;
     &quot;solicitation&quot;: {&#xd;
       &quot;setAside&quot;: null,&#xd;
       &quot;deadlines&quot;: {&#xd;
@@ -7024,6 +7019,13 @@ var pscDate = date.substring(0, 10);
 
 vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             </JSR223PostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract descriptionId" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">descriptionId</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.description[0].descriptionId</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
+            </JSONPostProcessor>
             <hashTree/>
           </hashTree>
           <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop 2" enabled="true">
@@ -8134,29 +8136,6 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;p&quot;,&#xd;
-    &quot;award&quot;: {&#xd;
-      &quot;lineItemNumber&quot;: null,&#xd;
-      &quot;awardee&quot;: {&#xd;
-        &quot;duns&quot;: &quot;608999520&quot;,&#xd;
-        &quot;name&quot;: &quot;REI SYSTEMS, INC.&quot;,&#xd;
-        &quot;location&quot;: {&#xd;
-          &quot;city&quot;: {&#xd;
-            &quot;code&quot;: &quot;14744&quot;&#xd;
-          },&#xd;
-          &quot;state&quot;: {&#xd;
-            &quot;code&quot;: &quot;VA&quot;&#xd;
-          },&#xd;
-          &quot;country&quot;: {&#xd;
-            &quot;code&quot;: &quot;USA&quot;&#xd;
-          },&#xd;
-          &quot;zip&quot;: null&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;date&quot;: &quot;2019-11-11&quot;,&#xd;
-      &quot;number&quot;: &quot;1&quot;,&#xd;
-      &quot;deliveryOrderNumber&quot;: &quot;2&quot;,&#xd;
-      &quot;amount&quot;: &quot;1&quot;&#xd;
-    },&#xd;
     &quot;classificationCode&quot;: &quot;96&quot;,&#xd;
     &quot;title&quot;: &quot;Presol Load testing (JMETER) - updated&quot;,&#xd;
     &quot;orgLevel&quot;: &quot;OFFICE&quot;,&#xd;
@@ -8272,10 +8251,9 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-	&quot;requestType&quot;: &quot;publish_request&quot;,&#xd;
-	&quot;reason&quot;: &quot;Jmeter Publish Opportunity&quot; &#xd;
-}&#xd;
-</stringProp>
+  &quot;requestType&quot;: &quot;publish_request&quot;,&#xd;
+  &quot;reason&quot;: &quot;JMeter Publish Request&quot;&#xd;
+}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -8284,7 +8262,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">opps/v2/${opportunityId}/requests</stringProp>
+            <stringProp name="HTTPSampler.path">opps/v2/opportunities/${opportunityId}/requests</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
