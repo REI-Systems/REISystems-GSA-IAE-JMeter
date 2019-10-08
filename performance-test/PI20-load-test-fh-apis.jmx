@@ -3733,7 +3733,7 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Content &amp; CM" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Content &amp; CM" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7608,12 +7608,12 @@ Per Minute			30		60		90		120
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
+        <stringProp name="ThreadGroup.num_threads">100</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -7621,7 +7621,7 @@ Per Minute			30		60		90		120
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>240.0</value>
+            <value>400.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -7672,7 +7672,7 @@ Per minute 	240	600	1200	1800	2400	3000	3600	4200	4800
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">AQIC5wM2LY4SfczvplYlTKBJFg-qDJOm56fEWBP-yQZpGsk.*AAJTSQACMDUAAlNLABQtODM1NzQ5MDczNDI1MDU3NzYxNAACUzEAAjAx*</stringProp>
+              <stringProp name="Header.value">0afeedec-d0dd-4ae9-aeb2-bf065f048504</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Content-Type</stringProp>
@@ -23310,7 +23310,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${API_PATH}/rms/v1/userprofile/nagarjuna.nalla+sm@gsa.gov/ </stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/rms/v1/userprofile/nagarjuna.nalla+sm@gsa.gov/</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
