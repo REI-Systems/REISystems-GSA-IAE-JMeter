@@ -119,12 +119,12 @@
       </CacheManager>
       <hashTree/>
       <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
-        <stringProp name="maximumValue">50</stringProp>
+        <stringProp name="maximumValue">10000000</stringProp>
         <stringProp name="minimumValue">1</stringProp>
         <stringProp name="outputFormat"></stringProp>
         <boolProp name="perThread">false</boolProp>
         <stringProp name="randomSeed"></stringProp>
-        <stringProp name="variableName">COUNT</stringProp>
+        <stringProp name="variableName">RANDOM</stringProp>
       </RandomVariableConfig>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="false">
@@ -674,7 +674,7 @@ Per minute					8280				16560
 1/15th					552				1104</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>700.0</value>
+            <value>400.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -25603,7 +25603,15 @@ $(SEARCH_TERM) - any text. Will be sent as query
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Resource By Id" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="RANDOM" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${RANDOM}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">RANDOM</stringProp>
+              </elementProp>
+            </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
