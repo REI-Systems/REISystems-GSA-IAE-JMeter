@@ -14094,26 +14094,6 @@ ${API_PATH} - form of https://api.sam.gov/prodlike
 $(opportunityId) - ID used to find the object</stringProp>
       </TestFragmentController>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp History" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">opps/v2/opportunities/${opportunityId}/history</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="TestPlan.comments">One call upon the data provided and the other one upon submit for saving</stringProp>
-        </HTTPSamplerProxy>
-        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Load Dictionary (All) (Display View Page)" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
@@ -14148,7 +14128,7 @@ $(opportunityId) - ID used to find the object</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Opp" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -14254,7 +14234,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Check Opportunity Response Status" enabled="false">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Check Opportunity Response Status" enabled="true">
           <stringProp name="TestPlan.comments">Check the opp Response Status if successfully before executing</stringProp>
           <stringProp name="IfController.condition">${__jexl3(&quot;${oppResponseCode}&quot; == &quot;200&quot;)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
