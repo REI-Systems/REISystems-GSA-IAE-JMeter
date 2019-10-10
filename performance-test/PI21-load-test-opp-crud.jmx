@@ -3831,7 +3831,7 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
         <stringProp name="ThreadGroup.num_threads">10</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
         <longProp name="ThreadGroup.start_time">1542397792000</longProp>
         <longProp name="ThreadGroup.end_time">1542397792000</longProp>
@@ -6551,6 +6551,18 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
+              <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Attachment CSV Data Set Config" enabled="true">
+                <stringProp name="filename">data/file_content.csv</stringProp>
+                <stringProp name="fileEncoding"></stringProp>
+                <stringProp name="variableNames">content</stringProp>
+                <boolProp name="ignoreFirstLine">true</boolProp>
+                <stringProp name="delimiter">,</stringProp>
+                <boolProp name="quotedData">false</boolProp>
+                <boolProp name="recycle">true</boolProp>
+                <boolProp name="stopThread">false</boolProp>
+                <stringProp name="shareMode">shareMode.all</stringProp>
+              </CSVDataSet>
+              <hashTree/>
               <InterleaveControl guiclass="InterleaveControlGui" testclass="InterleaveControl" testname="Interleave Controller" enabled="true">
                 <intProp name="InterleaveControl.style">1</intProp>
                 <boolProp name="InterleaveControl.accrossThreads">false</boolProp>
@@ -8125,8 +8137,8 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
         },&#xd;
         {&#xd;
             &quot;attType&quot;: &quot;file&quot;,&#xd;
-            &quot;content&quot;: &quot;VGhpcyBpcyBhIHRlc3Q=&quot;,&#xd;
-            &quot;resourceName&quot;: &quot;test12.txt&quot;,&#xd;
+            &quot;content&quot;: &quot;${content}&quot;,&#xd;
+            &quot;resourceName&quot;: &quot;testlargeFile.txt&quot;,&#xd;
             &quot;description&quot;: null,&#xd;
             &quot;packageAccessLevel&quot;: null,&#xd;
             &quot;explicitAccess&quot;: &quot;1&quot;,&#xd;
@@ -8291,8 +8303,8 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
         },&#xd;
         {&#xd;
             &quot;attType&quot;: &quot;file&quot;,&#xd;
-            &quot;content&quot;: &quot;VGhpcyBpcyBhIHRlc3Q=&quot;,&#xd;
-            &quot;resourceName&quot;: &quot;test12.txt&quot;,&#xd;
+            &quot;content&quot;: &quot;${content}&quot;,&#xd;
+            &quot;resourceName&quot;: &quot;testlargeFile.txt&quot;,&#xd;
             &quot;description&quot;: null,&#xd;
             &quot;packageAccessLevel&quot;: null,&#xd;
             &quot;explicitAccess&quot;: &quot;1&quot;,&#xd;
@@ -25477,7 +25489,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
           </elementProp>
           <elementProp name="fbo_agency_admin_login_token" elementType="Argument">
             <stringProp name="Argument.name">fbo_agency_admin_login_token</stringProp>
-            <stringProp name="Argument.value">486b9855-87b6-4e7c-9e71-974d9dea694d</stringProp>
+            <stringProp name="Argument.value">e1f71c57-7308-48a3-8d41-4654eda739bf</stringProp>
             <stringProp name="Argument.desc">Replace with a session token after authenticating manually.</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
