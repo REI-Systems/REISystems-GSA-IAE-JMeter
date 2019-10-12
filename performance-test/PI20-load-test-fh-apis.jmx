@@ -3537,7 +3537,7 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">087fb636-997d-45b5-9958-e2042f35a74b</stringProp>
+              <stringProp name="Header.value">b19b6a2e-32ec-4a1e-9ece-0ae79e875e1b</stringProp>
             </elementProp>
             <elementProp name="api_key" elementType="Header">
               <stringProp name="Header.name">X-Api-Key</stringProp>
@@ -3545,12 +3545,12 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">iPlanetDirectoryPro</stringProp>
-              <stringProp name="Header.value">087fb636-997d-45b5-9958-e2042f35a74b</stringProp>
+              <stringProp name="Header.value">b19b6a2e-32ec-4a1e-9ece-0ae79e875e1b</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Feed requests" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Feed requests" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="feedTypeId" elementType="HTTPArgument">
@@ -3684,7 +3684,7 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Feeds Notification Lookup" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Feeds Notification Lookup" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="feedTypeId" elementType="HTTPArgument">
@@ -3729,13 +3729,20 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">alertStatus</stringProp>
               </elementProp>
+              <elementProp name="orgs" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${FH_ORG_ID}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">orgs</stringProp>
+              </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${API_PATH}/feeds/v1/notifications</stringProp>
+          <stringProp name="HTTPSampler.path">/feeds/v1/notifications</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
