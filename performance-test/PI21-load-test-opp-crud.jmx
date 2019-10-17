@@ -119,12 +119,12 @@
       </CacheManager>
       <hashTree/>
       <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
-        <stringProp name="maximumValue">50</stringProp>
+        <stringProp name="maximumValue">100000</stringProp>
         <stringProp name="minimumValue">1</stringProp>
         <stringProp name="outputFormat"></stringProp>
         <boolProp name="perThread">false</boolProp>
         <stringProp name="randomSeed"></stringProp>
-        <stringProp name="variableName">COUNT</stringProp>
+        <stringProp name="variableName">RANDOM</stringProp>
       </RandomVariableConfig>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="false">
@@ -3821,6 +3821,15 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
           </collectionProp>
         </ModuleController>
         <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="X-Auth-Token Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Auth-Token</stringProp>
+              <stringProp name="Header.value">${__evalVar(${currentUser}_login_token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity Modern API - Data Entry" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -3828,10 +3837,10 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
         <longProp name="ThreadGroup.start_time">1542397792000</longProp>
         <longProp name="ThreadGroup.end_time">1542397792000</longProp>
@@ -3872,6 +3881,37 @@ vars.put(&quot;SOL_NUMBER&quot;, generateSolNumber());
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223PostProcessor>
         <hashTree/>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="TestPlan.comments">Samplers: 
+Loops: 2 (2 users)
+Value in parentheses represent the actual throughput since we have a loop for 2 (users) for the same script
+
+// TODO: To be REVIEWED, The true THROUGHPUT for 1x workload is 0.35 request / second. Now we set the throughput for 1x is 3x !!!
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second			0.5		1		1.5		2
+Per Minute			30		60		90		120
+1/15th			2		4		6		8</stringProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>400.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <intProp name="calcMode">2</intProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Opportunity CSV Data Set Config" enabled="true">
+          <stringProp name="filename">data/opportunity_cancel_ids.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">opportunityId</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
         <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
@@ -3886,7 +3926,16 @@ vars.put(&quot;SOL_NUMBER&quot;, generateSolNumber());
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Define Users" enabled="true">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="X-Auth-Token Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Auth-Token</stringProp>
+              <stringProp name="Header.value">0b3212cf-2828-4c71-b1da-e0f767eccd23</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Define Users" enabled="false">
           <stringProp name="BeanShellSampler.query">//String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;, &quot;fbo_superuser&quot;}; // FIS SU
 
 String[] users = {&quot;fbo_agency_admin&quot;};
@@ -3903,26 +3952,44 @@ for (String user : users) {
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="TestPlan.comments">Samplers: 
-Loops: 2 (2 users)
-Value in parentheses represent the actual throughput since we have a loop for 2 (users) for the same script
-
-// TODO: To be REVIEWED, The true THROUGHPUT for 1x workload is 0.35 request / second. Now we set the throughput for 1x is 3x !!!
-
-Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-Per second			0.5		1		1.5		2
-Per Minute			30		60		90		120
-1/15th			2		4		6		8</stringProp>
-          <doubleProp>
-            <name>throughput</name>
-            <value>40.0</value>
-            <savedValue>0.0</savedValue>
-          </doubleProp>
-          <intProp name="calcMode">2</intProp>
-        </ConstantThroughputTimer>
-        <hashTree/>
-        <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Data Entry Pages - For each (User)" enabled="true">
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Get Request" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Request" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="RANDOM" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${RANDOM}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">RANDOM</stringProp>
+                </elementProp>
+                <elementProp name="types" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">cancel_request</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">types</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">opps/v2/opportunities/${opportunityId}/requests</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Data Entry Pages - For each (User)" enabled="false">
           <stringProp name="ForeachController.inputVal">user</stringProp>
           <stringProp name="ForeachController.returnVal">currentUser</stringProp>
           <boolProp name="ForeachController.useSeparator">true</boolProp>
@@ -6540,7 +6607,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
               </HTTPSamplerProxy>
               <hashTree/>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Create &amp; Publish OPP" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Create &amp; Publish OPP" enabled="false"/>
             <hashTree>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="X-Auth-Token Header" enabled="false">
                 <collectionProp name="HeaderManager.headers">
@@ -8974,6 +9041,43 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <hashTree/>
                 </hashTree>
               </hashTree>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Get Request" enabled="false"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Request" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="RANDOM" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${RANDOM}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">RANDOM</stringProp>
+                    </elementProp>
+                    <elementProp name="types" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">cancel_request</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">types</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">opps/v2/opportunities/${opportunityId}/requests</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
             </hashTree>
           </hashTree>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="false">
@@ -25489,7 +25593,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
           </elementProp>
           <elementProp name="fbo_agency_admin_login_token" elementType="Argument">
             <stringProp name="Argument.name">fbo_agency_admin_login_token</stringProp>
-            <stringProp name="Argument.value">e1f71c57-7308-48a3-8d41-4654eda739bf</stringProp>
+            <stringProp name="Argument.value">8ba3ca56-67da-43c3-b50a-577d749fefe8</stringProp>
             <stringProp name="Argument.desc">Replace with a session token after authenticating manually.</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
