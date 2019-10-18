@@ -988,17 +988,17 @@ Per minute					8280				16560
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity - Attachment operations" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity - Attachment operations" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">15</stringProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">300</stringProp>
-        <stringProp name="ThreadGroup.delay">15</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
         <longProp name="ThreadGroup.start_time">1542397792000</longProp>
         <longProp name="ThreadGroup.end_time">1542397792000</longProp>
       </ThreadGroup>
@@ -1058,7 +1058,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>600.0</value>
+            <value>100.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -1094,7 +1094,7 @@ Per Minute			30		60		90		120
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">67696f42-d53c-479a-9a0a-73ee2aebc4c9</stringProp>
+              <stringProp name="Header.value">3c1ac005-0785-4eb8-9de0-e2c18fbe8f24</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Content-Type</stringProp>
@@ -1120,7 +1120,7 @@ for (String user : users) {
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Create OPP" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Create OPP" enabled="false"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Create Notice (POST)" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -1197,7 +1197,7 @@ for (String user : users) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Post Attachments - Draft Notice" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Post Attachments - Draft Notice" enabled="false"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Post Attachments" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -1246,7 +1246,7 @@ for (String user : users) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Update Attachments" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Update Attachments" enabled="false"/>
         <hashTree>
           <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="Random Controller" enabled="true">
             <intProp name="InterleaveControl.style">1</intProp>
@@ -1312,7 +1312,7 @@ for (String user : users) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Delete Attachments" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Delete Attachments" enabled="false"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Delete Draft Attachment " enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -1341,6 +1341,52 @@ for (String user : users) {
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Opp - Get Request Details" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Request Details-0" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="RANDOM" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${RANDOM}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">RANDOM</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/opps/v2/opportunities/access/420d288dc98b475d81be68f17d7adc87</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="parameters">vars</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.put(&quot;resourceId&quot;, prev.getResponseDataAsString());</stringProp>
+            </BeanShellPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Log resource id" enabled="true">
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">log.info(&quot;**********************************************&quot; + vars.get(&quot;resourceId&quot;))</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity - Attachment request access operations" enabled="true">
@@ -1435,7 +1481,7 @@ Per Minute			30		60		90		120
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">86samdotgovopportunitiesmodern.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+          <stringProp name="HTTPSampler.domain">86samdotgovopportunitiesmodernlogin.apps.prod-iae.bsp.gsa.gov</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -1477,7 +1523,7 @@ for (String user : users) {
         <hashTree/>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Opp - Get Request Details" enabled="true"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Request Details" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Request Details-0" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="RANDOM" elementType="HTTPArgument">
