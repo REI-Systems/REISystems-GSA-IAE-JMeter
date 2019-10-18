@@ -3837,7 +3837,7 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">600</stringProp>
@@ -3894,7 +3894,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>400.0</value>
+            <value>100.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -3930,7 +3930,7 @@ Per Minute			30		60		90		120
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">0b3212cf-2828-4c71-b1da-e0f767eccd23</stringProp>
+              <stringProp name="Header.value">e1dcf819-a417-4ac6-9fd3-9f17a7604c36</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -3952,9 +3952,9 @@ for (String user : users) {
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Get Request" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Get Related Opp Type" enabled="true"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Request" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Related opp type" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="RANDOM" elementType="HTTPArgument">
@@ -3964,12 +3964,19 @@ for (String user : users) {
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">RANDOM</stringProp>
                 </elementProp>
-                <elementProp name="types" elementType="HTTPArgument">
+                <elementProp name="keyword" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">cancel_request</stringProp>
+                  <stringProp name="Argument.value">tes</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">types</stringProp>
+                  <stringProp name="Argument.name">keyword</stringProp>
+                </elementProp>
+                <elementProp name="size" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">100</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">size</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -3977,7 +3984,7 @@ for (String user : users) {
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">opps/v2/opportunities/${opportunityId}/requests</stringProp>
+            <stringProp name="HTTPSampler.path">opps/v2/opportunities/relatedopportunities/r</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9086,6 +9093,43 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             <boolProp name="displaySamplerProperties">true</boolProp>
             <boolProp name="displaySystemProperties">false</boolProp>
           </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Get Request" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Opp - Get Request" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="RANDOM" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${RANDOM}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">RANDOM</stringProp>
+                </elementProp>
+                <elementProp name="types" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">cancel_request</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">types</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">opps/v2/opportunities/${opportunityId}/requests</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
           <hashTree/>
         </hashTree>
       </hashTree>
