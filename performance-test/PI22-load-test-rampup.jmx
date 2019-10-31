@@ -10864,7 +10864,7 @@ Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	468
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity Modern API - Data Entry" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity Modern API - Data Entry" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -10937,7 +10937,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>600.0</value>
+            <value>300.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -12682,7 +12682,121 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <stringProp name="ThreadGroup.delay">450</stringProp>
+        <longProp name="ThreadGroup.start_time">1542397792000</longProp>
+        <longProp name="ThreadGroup.end_time">1542397792000</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">86samdotgovopportunitiesmodernlogin.apps.prod-iae.bsp.gsa.gov</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="X-Auth-Token Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Auth-Token</stringProp>
+              <stringProp name="Header.value">7f177a8b-7653-467b-aa18-a481e3e71fcf</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 set random notice type, naics, psc, set aside" enabled="true">
+          <stringProp name="TestPlan.comments">For samplers to use in parameters</stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters">vars</stringProp>
+          <stringProp name="script">// These IDs are pulled from the front end drop down filters on the FAL search page
+function generateRandomNoticeType() {
+    var fragments = [&apos;s&apos;,&apos;r&apos;,&apos;p&apos;,&apos;o&apos;,&apos;k&apos;,&apos;a&apos;,&apos;u&apos;,&apos;g&apos;,&apos;i&apos;];
+
+return fragments[Math.floor(Math.random() * fragments.length)];
+}
+
+function generateRandomStatus() {
+    var fragments = [&quot;active&quot;, &quot;inactive&quot;, &quot;cancelled&quot;, &quot;draft&quot;, &quot;active,cancelled&quot;, &quot;active,inactive&quot;];
+
+return fragments[Math.floor(Math.random() * fragments.length)];
+}
+
+function generateRandomOrgStatus() {
+    var fragments = [&quot;active&quot;, &quot;inactive&quot;];
+
+return fragments[Math.floor(Math.random() * fragments.length)];
+}
+
+
+vars.put(&quot;NOTICE_TYPE&quot;, generateRandomNoticeType());
+vars.put(&quot;STATUS&quot;, generateRandomStatus());
+vars.put(&quot;ORG_STATUS&quot;, generateRandomOrgStatus());</stringProp>
+          <stringProp name="scriptLanguage">javascript</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Define Users" enabled="false">
+          <stringProp name="BeanShellSampler.query">//String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;, &quot;fbo_superuser&quot;}; // FIS SU
+
+String[] users = {&quot;fbo_agency_admin&quot;};
+
+//props.put(&quot;users&quot;, users);
+
+int counter = 1;
+//for (String user : props.get(&quot;users&quot;)) {
+for (String user : users) {
+	vars.put(&quot;user_&quot; + counter++, user);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="TestPlan.comments">Samplers: 
+Loops: 2 (2 users)
+Value in parentheses represent the actual throughput since we have a loop for 2 (users) for the same script
+
+// TODO: To be REVIEWED, The true THROUGHPUT for 1x workload is 0.35 request / second. Now we set the throughput for 1x is 3x !!!
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second			0.5		1		1.5		2
+Per Minute			30		60		90		120
+1/15th			2		4		6		8</stringProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>50.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <intProp name="calcMode">2</intProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Tier 2 controller" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="-1227702913">WorkBench</stringProp>
+            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-233123020">Opp Tier2 Workspace</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity Modern API - Tier2 Workspace" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.delay">510</stringProp>
         <longProp name="ThreadGroup.start_time">1542397792000</longProp>
         <longProp name="ThreadGroup.end_time">1542397792000</longProp>
       </ThreadGroup>
@@ -12796,7 +12910,7 @@ Per Minute			30		60		90		120
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">60</stringProp>
+        <stringProp name="ThreadGroup.delay">570</stringProp>
         <longProp name="ThreadGroup.start_time">1542397792000</longProp>
         <longProp name="ThreadGroup.end_time">1542397792000</longProp>
       </ThreadGroup>
@@ -12910,7 +13024,121 @@ Per Minute			30		60		90		120
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">120</stringProp>
+        <stringProp name="ThreadGroup.delay">630</stringProp>
+        <longProp name="ThreadGroup.start_time">1542397792000</longProp>
+        <longProp name="ThreadGroup.end_time">1542397792000</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">86samdotgovopportunitiesmodernlogin.apps.prod-iae.bsp.gsa.gov</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="X-Auth-Token Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Auth-Token</stringProp>
+              <stringProp name="Header.value">7f177a8b-7653-467b-aa18-a481e3e71fcf</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 set random notice type, naics, psc, set aside" enabled="true">
+          <stringProp name="TestPlan.comments">For samplers to use in parameters</stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters">vars</stringProp>
+          <stringProp name="script">// These IDs are pulled from the front end drop down filters on the FAL search page
+function generateRandomNoticeType() {
+    var fragments = [&apos;s&apos;,&apos;r&apos;,&apos;p&apos;,&apos;o&apos;,&apos;k&apos;,&apos;a&apos;,&apos;u&apos;,&apos;g&apos;,&apos;i&apos;];
+
+return fragments[Math.floor(Math.random() * fragments.length)];
+}
+
+function generateRandomStatus() {
+    var fragments = [&quot;active&quot;, &quot;inactive&quot;, &quot;cancelled&quot;, &quot;draft&quot;, &quot;active,cancelled&quot;, &quot;active,inactive&quot;];
+
+return fragments[Math.floor(Math.random() * fragments.length)];
+}
+
+function generateRandomOrgStatus() {
+    var fragments = [&quot;active&quot;, &quot;inactive&quot;];
+
+return fragments[Math.floor(Math.random() * fragments.length)];
+}
+
+
+vars.put(&quot;NOTICE_TYPE&quot;, generateRandomNoticeType());
+vars.put(&quot;STATUS&quot;, generateRandomStatus());
+vars.put(&quot;ORG_STATUS&quot;, generateRandomOrgStatus());</stringProp>
+          <stringProp name="scriptLanguage">javascript</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Define Users" enabled="false">
+          <stringProp name="BeanShellSampler.query">//String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;, &quot;fbo_superuser&quot;}; // FIS SU
+
+String[] users = {&quot;fbo_agency_admin&quot;};
+
+//props.put(&quot;users&quot;, users);
+
+int counter = 1;
+//for (String user : props.get(&quot;users&quot;)) {
+for (String user : users) {
+	vars.put(&quot;user_&quot; + counter++, user);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="TestPlan.comments">Samplers: 
+Loops: 2 (2 users)
+Value in parentheses represent the actual throughput since we have a loop for 2 (users) for the same script
+
+// TODO: To be REVIEWED, The true THROUGHPUT for 1x workload is 0.35 request / second. Now we set the throughput for 1x is 3x !!!
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second			0.5		1		1.5		2
+Per Minute			30		60		90		120
+1/15th			2		4		6		8</stringProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>100.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <intProp name="calcMode">2</intProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Tier 2 controller" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="-1227702913">WorkBench</stringProp>
+            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-233123020">Opp Tier2 Workspace</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Opportunity Modern API - Tier2 Workspace Ramp up Two" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">4</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.delay">690</stringProp>
         <longProp name="ThreadGroup.start_time">1542397792000</longProp>
         <longProp name="ThreadGroup.end_time">1542397792000</longProp>
       </ThreadGroup>
@@ -14022,7 +14250,7 @@ Per Minute			15		30		45		60
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">570</stringProp>
+        <stringProp name="ThreadGroup.delay">750</stringProp>
         <longProp name="ThreadGroup.start_time">1551891946000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
       </ThreadGroup>
@@ -14121,7 +14349,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">600</stringProp>
+        <stringProp name="ThreadGroup.delay">810</stringProp>
         <longProp name="ThreadGroup.start_time">1551891946000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
       </ThreadGroup>
@@ -14220,7 +14448,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">630</stringProp>
+        <stringProp name="ThreadGroup.delay">870</stringProp>
         <longProp name="ThreadGroup.start_time">1551891946000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
       </ThreadGroup>
@@ -14319,7 +14547,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">660</stringProp>
+        <stringProp name="ThreadGroup.delay">930</stringProp>
         <longProp name="ThreadGroup.start_time">1551891946000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
       </ThreadGroup>
@@ -14512,7 +14740,7 @@ Per minute 	60		400		600		1000		1200
         <longProp name="ThreadGroup.end_time">1522867177000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">690</stringProp>
+        <stringProp name="ThreadGroup.delay">990</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
@@ -14553,7 +14781,7 @@ Per Minute			60		120		180		240
         <longProp name="ThreadGroup.end_time">1522867177000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">720</stringProp>
+        <stringProp name="ThreadGroup.delay">1050</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
@@ -14604,7 +14832,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <longProp name="ThreadGroup.end_time">1522867177000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">3600</stringProp>
-        <stringProp name="ThreadGroup.delay">750</stringProp>
+        <stringProp name="ThreadGroup.delay">1110</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
