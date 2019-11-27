@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 20.02 Load Test" enabled="true">
       <stringProp name="TestPlan.comments">JMeter tips &amp; techniques used in this test plan.
@@ -27,25 +27,25 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="API_URL" elementType="Argument">
             <stringProp name="Argument.name">API_URL</stringProp>
-            <stringProp name="Argument.value">100samfrontendaltlogin.apps.prod-iae.bsp.gsa.gov</stringProp>
+            <stringProp name="Argument.value">alpha.sam.gov</stringProp>
             <stringProp name="Argument.desc">API Umbrella URL including environment path</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="API_KEY" elementType="Argument">
             <stringProp name="Argument.name">API_KEY</stringProp>
-            <stringProp name="Argument.value">2LdFb3T8UBJXsIyvhaZV4rihrvH46nbWZbcfUUJu</stringProp>
+            <stringProp name="Argument.value">xBvScdWcnYZv79w02IvGqlMrhUJ1yVgQct3EXYEm</stringProp>
             <stringProp name="Argument.desc">API Key used to access API Umbrella</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="FRONTEND_URL" elementType="Argument">
             <stringProp name="Argument.name">FRONTEND_URL</stringProp>
-            <stringProp name="Argument.value">100samfrontendaltlogin.apps.prod-iae.bsp.gsa.gov</stringProp>
+            <stringProp name="Argument.value">alpha.sam.gov</stringProp>
             <stringProp name="Argument.desc">SAM Front End URL</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="API_PATH" elementType="Argument">
             <stringProp name="Argument.name">API_PATH</stringProp>
-            <stringProp name="Argument.value">/api/login/</stringProp>
+            <stringProp name="Argument.value">/api/prodlike/</stringProp>
             <stringProp name="Argument.desc">API Path for environment &quot;/login&quot; refers to Charlie Environment</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -63,12 +63,12 @@
           </elementProp>
           <elementProp name="Internal_Umbrella" elementType="Argument">
             <stringProp name="Argument.name">Internal_Umbrella</stringProp>
-            <stringProp name="Argument.value">api-umbrella-lb-demand-7777.login-iae.bsp.gsa.gov</stringProp>
+            <stringProp name="Argument.value">api-umbrella-lb-demand-7777.prodlike-iae.bsp.gsa.gov</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="External_Umbrella" elementType="Argument">
             <stringProp name="Argument.name">External_Umbrella</stringProp>
-            <stringProp name="Argument.value">api-demand-7777.login-iae.bsp.gsa.gov</stringProp>
+            <stringProp name="Argument.value">api-demand-7777.prodlike-iae.bsp.gsa.gov</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -120,6 +120,7 @@
       <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="false">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
       </CookieManager>
       <hashTree/>
       <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
@@ -186,7 +187,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <longProp name="ThreadGroup.start_time">1523500380000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">30</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -225,7 +226,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <longProp name="ThreadGroup.start_time">1523500380000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">60</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -264,7 +265,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <longProp name="ThreadGroup.start_time">1523500380000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">90</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -303,7 +304,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <longProp name="ThreadGroup.start_time">1523500380000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">120</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -342,7 +343,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <longProp name="ThreadGroup.start_time">1523500500000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">30</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -395,7 +396,7 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         <longProp name="ThreadGroup.start_time">1523500500000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">60</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -448,7 +449,7 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         <longProp name="ThreadGroup.start_time">1523500500000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">90</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -501,7 +502,7 @@ Per Minute 	414	1035	2070	3105	4140	5175	6210	7245	8280
         <longProp name="ThreadGroup.start_time">1523500500000</longProp>
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">120</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -989,7 +990,7 @@ Per Minute 					53100				106200
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">150</stringProp>
         <stringProp name="TestPlan.comments">1x
 Expected throughput for Search (Opp): 531 hits/second.
@@ -1363,7 +1364,7 @@ Per Minute 					31860				63720
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">180</stringProp>
         <stringProp name="TestPlan.comments">1x
 Expected throughput for Search (Opp): 531 hits/second.
@@ -1737,7 +1738,7 @@ Per Minute 					31860				63720
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">210</stringProp>
         <stringProp name="TestPlan.comments">1x
 Expected throughput for Search (Opp): 531 hits/second.
@@ -2111,7 +2112,7 @@ Per Minute 					31860				63720
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">240</stringProp>
         <stringProp name="TestPlan.comments">1x
 Expected throughput for Search (Opp): 531 hits/second.
@@ -2485,7 +2486,7 @@ Per Minute 					31860				63720
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">270</stringProp>
         <stringProp name="TestPlan.comments">1x
 Expected throughput for Search (Opp): 531 hits/second.
@@ -2859,7 +2860,7 @@ Per Minute 					31860				63720
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">300</stringProp>
         <stringProp name="TestPlan.comments">1x
 Expected throughput for Search (Opp): 531 hits/second.
@@ -6764,7 +6765,7 @@ Per Minute 					31860				63720
         <longProp name="ThreadGroup.start_time">1549661607000</longProp>
         <longProp name="ThreadGroup.end_time">1549661607000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">330</stringProp>
         <stringProp name="TestPlan.comments">1x
 
@@ -7117,7 +7118,7 @@ Per minute					8280				16560
         <longProp name="ThreadGroup.start_time">1549661607000</longProp>
         <longProp name="ThreadGroup.end_time">1549661607000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">360</stringProp>
         <stringProp name="TestPlan.comments">1x
 
@@ -7470,7 +7471,7 @@ Per minute					8280				16560
         <longProp name="ThreadGroup.start_time">1549661607000</longProp>
         <longProp name="ThreadGroup.end_time">1549661607000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">390</stringProp>
         <stringProp name="TestPlan.comments">1x
 
@@ -7823,7 +7824,7 @@ Per minute					8280				16560
         <longProp name="ThreadGroup.start_time">1549661607000</longProp>
         <longProp name="ThreadGroup.end_time">1549661607000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">420</stringProp>
         <stringProp name="TestPlan.comments">1x
 
@@ -14521,7 +14522,7 @@ Per Minute			15		30		45		60
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">450</stringProp>
         <longProp name="ThreadGroup.start_time">1551891946000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
@@ -14620,7 +14621,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">480</stringProp>
         <longProp name="ThreadGroup.start_time">1551891946000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
@@ -14719,7 +14720,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">510</stringProp>
         <longProp name="ThreadGroup.start_time">1551891946000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
@@ -14818,7 +14819,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">540</stringProp>
         <longProp name="ThreadGroup.start_time">1551891946000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
@@ -15052,7 +15053,7 @@ Per Minute			60		120		180		240
         <longProp name="ThreadGroup.start_time">1522867177000</longProp>
         <longProp name="ThreadGroup.end_time">1522867177000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">570</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -15103,7 +15104,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <longProp name="ThreadGroup.start_time">1522867177000</longProp>
         <longProp name="ThreadGroup.end_time">1522867177000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">600</stringProp>
       </ThreadGroup>
       <hashTree>
@@ -31923,7 +31924,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="764597751">Test Plan</stringProp>
+              <stringProp name="-1227702913">WorkBench</stringProp>
               <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
               <stringProp name="2106393515">LoginGov Fragment</stringProp>
               <stringProp name="-701832083">Authenticated Controller</stringProp>
@@ -32208,5 +32209,9 @@ $(SEARCH_TERM) - any text. Will be sent as query
       </ProxyControl>
       <hashTree/>
     </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
   </hashTree>
 </jmeterTestPlan>
