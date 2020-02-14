@@ -85,7 +85,7 @@
           </elementProp>
           <elementProp name="MSTR_SERVER" elementType="Argument">
             <stringProp name="Argument.name">MSTR_SERVER</stringProp>
-            <stringProp name="Argument.value">MICROSTRATEGY-4_BI.PROD-LDE.BSP.GSA.GOV</stringProp>
+            <stringProp name="Argument.value">MICROSTRATEGY-2_BI.PROD-LDE.BSP.GSA.GOV</stringProp>
             <stringProp name="Argument.desc">MicroStrategy Server</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -15517,8 +15517,8 @@ Per minute 	600	360	720	1080	6000	1800	2160	2520	12000
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <longProp name="ThreadGroup.start_time">1579797531000</longProp>
         <longProp name="ThreadGroup.end_time">1579797531000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -15526,23 +15526,6 @@ Per minute 	600	360	720	1080	6000	1800	2160	2520	12000
         <stringProp name="ThreadGroup.delay">0</stringProp>
       </ThreadGroup>
       <hashTree>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Define Users" enabled="false">
-          <stringProp name="BeanShellSampler.query">//String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;, &quot;fbo_superuser&quot;}; // FIS SU
-
-String[] users = {&quot;fbo_agency_admin&quot;, &quot;fbo_contracting_officer&quot;};
-
-//props.put(&quot;users&quot;, users);
-
-int counter = 1;
-//for (String user : props.get(&quot;users&quot;)) {
-for (String user : users) {
-	vars.put(&quot;user_&quot; + counter++, user);
-}</stringProp>
-          <stringProp name="BeanShellSampler.filename"></stringProp>
-          <stringProp name="BeanShellSampler.parameters"></stringProp>
-          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
-        </BeanShellSampler>
-        <hashTree/>
         <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User variables" enabled="true">
           <collectionProp name="Arguments.arguments">
             <elementProp name="fpds_user_org" elementType="Argument">
@@ -15553,7 +15536,7 @@ for (String user : users) {
             </elementProp>
             <elementProp name="fpds_user_token" elementType="Argument">
               <stringProp name="Argument.name">fpds_user_token</stringProp>
-              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.value">47765b0d-53b7-4114-881f-3f99c7c9a831</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -32288,11 +32271,36 @@ $(SEARCH_TERM) - any text. Will be sent as query
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Reports - QBE" enabled="true"/>
       <hashTree>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 - Defining dynamic filter values" enabled="true">
+          <stringProp name="TestPlan.comments">For samplers to use in parameters</stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters">vars</stringProp>
+          <stringProp name="script">function generateRandomYearFrom() {
+	var fragments = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017];
+	return fragments[Math.floor(Math.random() * fragments.length)];
+}
+
+function generateRandomNumberOfYearsToBeAddedToFromYear() {
+	var fragments = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+	return fragments[Math.floor(Math.random() * fragments.length)];
+}
+
+var year = generateRandomYearFrom();
+
+
+vars.put(&quot;FPDS_DATE_FROM&quot;, &quot;1-1-&quot; + year);
+vars.put(&quot;FPDS_DATE_TO&quot;, &quot;12-31-&quot; + (year + generateRandomNumberOfYearsToBeAddedToFromYear()));
+vars.put(&quot;FPDS_DATETIME_TO&quot;, &quot;12/31/&quot; + (year + generateRandomNumberOfYearsToBeAddedToFromYear()) + &quot; 11:59:59 PM&quot;); //12/31/2019 11:59:59 PM - 12-31-2019
+</stringProp>
+          <stringProp name="scriptLanguage">javascript</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
         <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${API_URL}/${API_PATH}/</stringProp>
+          <stringProp name="HTTPSampler.domain">${API_URL}</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -32310,7 +32318,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">databank/v1/reports/config/reportConfig</stringProp>
+          <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/config/reportConfig</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32442,6 +32450,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Static" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
@@ -32450,7 +32464,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">databank/v1/reports/static</stringProp>
+          <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/static</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32478,7 +32492,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">federalorganizations/v1/organizations</stringProp>
+          <stringProp name="HTTPSampler.path">/${API_PATH}/federalorganizations/v1/organizations</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32514,7 +32528,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <boolProp name="IfController.useExpression">true</boolProp>
                 </IfController>
                 <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time - (AL-SR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -32522,7 +32536,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/config/reportLoadTime</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/config/reportLoadTime</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32533,7 +32547,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata - (AL-SR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -32541,7 +32555,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FALStandardProjectID}:${FALStandardReportID}/metadata</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FALStandardProjectID}:${FALStandardReportID}/metadata</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32552,12 +32566,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE - (AL-SR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments">
                         <elementProp name="q(organization)" elementType="HTTPArgument">
                           <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">[&quot;${fpds_user_org}&quot;]</stringProp>
+                          <stringProp name="Argument.value">%5B%22${fpds_user_org}%22%5D</stringProp>
                           <stringProp name="Argument.metadata">=</stringProp>
                           <boolProp name="HTTPArgument.use_equals">true</boolProp>
                           <stringProp name="Argument.name">q(organization)</stringProp>
@@ -32568,7 +32582,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FALStandardProjectID}:${FALStandardReportID}/qbe</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FALStandardProjectID}:${FALStandardReportID}/qbe</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32580,7 +32594,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   </HTTPSamplerProxy>
                   <hashTree>
                     <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="QBE - Extract Instance ID" enabled="true">
-                      <stringProp name="JSONPostProcessor.referenceNames">MstrInstanceId</stringProp>
+                      <stringProp name="JSONPostProcessor.referenceNames">FALSRMstrInstanceId</stringProp>
                       <stringProp name="JSONPostProcessor.jsonPathExprs">$.instanceId</stringProp>
                       <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
                       <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
@@ -32588,12 +32602,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <hashTree/>
                   </hashTree>
                   <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Download Report" enabled="true">
-                    <stringProp name="IfController.condition">${__jexl3(&quot;${MstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
+                    <stringProp name="IfController.condition">${__jexl3(&quot;${FALSRMstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
                     <boolProp name="IfController.evaluateAll">false</boolProp>
                     <boolProp name="IfController.useExpression">true</boolProp>
                   </IfController>
                   <hashTree>
-                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download" enabled="true">
+                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download - (AL-SR)" enabled="true">
                       <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                         <collectionProp name="Arguments.arguments">
                           <elementProp name="columns" elementType="HTTPArgument">
@@ -32651,7 +32665,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                       <stringProp name="HTTPSampler.port"></stringProp>
                       <stringProp name="HTTPSampler.protocol"></stringProp>
                       <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                      <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FALStandardProjectID}:${FALStandardReportID}/qbe/${MstrInstanceId}</stringProp>
+                      <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FALStandardProjectID}:${FALStandardReportID}/qbe/${FALSRMstrInstanceId}</stringProp>
                       <stringProp name="HTTPSampler.method">GET</stringProp>
                       <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                       <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32670,7 +32684,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <boolProp name="IfController.useExpression">true</boolProp>
                 </IfController>
                 <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time - (AL-AR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -32678,7 +32692,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/config/reportLoadTime</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/config/reportLoadTime</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32689,7 +32703,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata - (AL-AR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -32697,7 +32711,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FALAdminProjectID}:${FALAdminReportID}/metadata</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FALAdminProjectID}:${FALAdminReportID}/metadata</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32708,12 +32722,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE - (AL-AR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments">
                         <elementProp name="q(organization)" elementType="HTTPArgument">
                           <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">[&quot;${fpds_user_org}&quot;]</stringProp>
+                          <stringProp name="Argument.value">%5B%22${fpds_user_org}%22%5D</stringProp>
                           <stringProp name="Argument.metadata">=</stringProp>
                           <boolProp name="HTTPArgument.use_equals">true</boolProp>
                           <stringProp name="Argument.name">q(organization)</stringProp>
@@ -32724,7 +32738,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FALAdminProjectID}:${FALAdminReportID}/qbe</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FALAdminProjectID}:${FALAdminReportID}/qbe</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32736,7 +32750,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   </HTTPSamplerProxy>
                   <hashTree>
                     <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="QBE - Extract Instance ID" enabled="true">
-                      <stringProp name="JSONPostProcessor.referenceNames">MstrInstanceId</stringProp>
+                      <stringProp name="JSONPostProcessor.referenceNames">FALARMstrInstanceId</stringProp>
                       <stringProp name="JSONPostProcessor.jsonPathExprs">$.instanceId</stringProp>
                       <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
                       <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
@@ -32744,12 +32758,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <hashTree/>
                   </hashTree>
                   <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Download Report" enabled="true">
-                    <stringProp name="IfController.condition">${__jexl3(&quot;${MstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
+                    <stringProp name="IfController.condition">${__jexl3(&quot;${FALARMstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
                     <boolProp name="IfController.evaluateAll">false</boolProp>
                     <boolProp name="IfController.useExpression">true</boolProp>
                   </IfController>
                   <hashTree>
-                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download" enabled="true">
+                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download - (AL-AR)" enabled="true">
                       <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                         <collectionProp name="Arguments.arguments">
                           <elementProp name="columns" elementType="HTTPArgument">
@@ -32800,7 +32814,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                       <stringProp name="HTTPSampler.port"></stringProp>
                       <stringProp name="HTTPSampler.protocol"></stringProp>
                       <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                      <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FALAdminProjectID}:${FALAdminReportID}/qbe/${MstrInstanceId}</stringProp>
+                      <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FALAdminProjectID}:${FALAdminReportID}/qbe/${FALARMstrInstanceId}</stringProp>
                       <stringProp name="HTTPSampler.method">GET</stringProp>
                       <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                       <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32819,7 +32833,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <boolProp name="IfController.useExpression">true</boolProp>
                 </IfController>
                 <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time - (AL-AHR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -32827,7 +32841,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/config/reportLoadTime</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/config/reportLoadTime</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32838,7 +32852,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata - (AL-AHR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -32846,7 +32860,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FALAdhocProjectId}:${FALAdhocReportId}/metadata</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FALAdhocProjectId}:${FALAdhocReportId}/metadata</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32857,12 +32871,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE - (AL-AHR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments">
                         <elementProp name="q(organization)" elementType="HTTPArgument">
                           <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">[&quot;${fpds_user_org}&quot;]</stringProp>
+                          <stringProp name="Argument.value">%5B%22${fpds_user_org}%22%5D</stringProp>
                           <stringProp name="Argument.metadata">=</stringProp>
                           <boolProp name="HTTPArgument.use_equals">true</boolProp>
                           <stringProp name="Argument.name">q(organization)</stringProp>
@@ -32873,7 +32887,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FALAdhocProjectId}:${FALAdhocReportId}/qbe</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FALAdhocProjectId}:${FALAdhocReportId}/qbe</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -32885,7 +32899,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   </HTTPSamplerProxy>
                   <hashTree>
                     <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="QBE - Extract Instance ID" enabled="true">
-                      <stringProp name="JSONPostProcessor.referenceNames">MstrInstanceId</stringProp>
+                      <stringProp name="JSONPostProcessor.referenceNames">FALARMstrInstanceId</stringProp>
                       <stringProp name="JSONPostProcessor.jsonPathExprs">$.instanceId</stringProp>
                       <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
                       <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
@@ -32893,12 +32907,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <hashTree/>
                   </hashTree>
                   <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Download Report" enabled="true">
-                    <stringProp name="IfController.condition">${__jexl3(&quot;${MstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
+                    <stringProp name="IfController.condition">${__jexl3(&quot;${FALARMstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
                     <boolProp name="IfController.evaluateAll">false</boolProp>
                     <boolProp name="IfController.useExpression">true</boolProp>
                   </IfController>
                   <hashTree>
-                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download" enabled="true">
+                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download - (AL-AHR)" enabled="true">
                       <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                         <collectionProp name="Arguments.arguments">
                           <elementProp name="columns" elementType="HTTPArgument">
@@ -32956,7 +32970,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                       <stringProp name="HTTPSampler.port"></stringProp>
                       <stringProp name="HTTPSampler.protocol"></stringProp>
                       <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                      <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FALAdhocProjectId}:${FALAdhocReportId}/qbe/${MstrInstanceId}</stringProp>
+                      <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FALAdhocProjectId}:${FALAdhocReportId}/qbe/${FALARMstrInstanceId}</stringProp>
                       <stringProp name="HTTPSampler.method">GET</stringProp>
                       <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                       <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33021,7 +33035,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">preferences/v1/report:${CDStandardReportID}/</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/preferences/v1/report:${CDStandardReportID}/</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33034,22 +33048,22 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <hashTree/>
                   <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="true"/>
                   <hashTree>
-                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST)" enabled="true">
+                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST) - (CD-SR)" enabled="true">
                       <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                       <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                         <collectionProp name="Arguments.arguments">
                           <elementProp name="" elementType="HTTPArgument">
                             <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                            <stringProp name="Argument.value">promptsAnswerXML=&lt;rsl&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;08C4877C401950B7A2D182B0B36801EC&quot; tp=&quot;10&quot;&gt;2019-12-31&lt;/pa&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;343002F84DD3741D37B81198047298B1&quot; tp=&quot;10&quot;&gt;2019-01-01&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;C1D7F68B4D09F29E00BE9EB436506CE6&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es&gt;&lt;at did=&quot;092E3409421A8C76CCE01CB6E423BE3B&quot; tp=&quot;12&quot;/&gt;&lt;e emt=&quot;1&quot; ei=&quot;092E3409421A8C76CCE01CB6E423BE3B:4700&quot; art=&quot;1&quot; disp_n=&quot;4700&quot;/&gt;&lt;/es&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;A009A1AF453DEBD6C1A3C7A6DD3CEE00&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;ABDC15834889BDBA10C9BF972FCDCBC3&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;B8DF808D4A11D15F27765788EE65EA98&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;FC7FCCCF41DB7F2D4BF7ABA0FFF6EDEC&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;1770E4F8464567E1757ACCB473C1DCE6&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3FCC554F4FE90D3221692D93AE98EBAE&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;E8B36A044628ECFA1B0677899EA10FD7&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;/rsl&gt;</stringProp>
+                            <stringProp name="Argument.value">promptsAnswerXML=&lt;rsl&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;08C4877C401950B7A2D182B0B36801EC&quot; tp=&quot;10&quot;&gt;${FPDS_DATE_TO}&lt;/pa&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;343002F84DD3741D37B81198047298B1&quot; tp=&quot;10&quot;&gt;${FPDS_DATE_FROM}&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;C1D7F68B4D09F29E00BE9EB436506CE6&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es&gt;&lt;at did=&quot;092E3409421A8C76CCE01CB6E423BE3B&quot; tp=&quot;12&quot;/&gt;&lt;e emt=&quot;1&quot; ei=&quot;092E3409421A8C76CCE01CB6E423BE3B:4700&quot; art=&quot;1&quot; disp_n=&quot;4700&quot;/&gt;&lt;/es&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;A009A1AF453DEBD6C1A3C7A6DD3CEE00&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;ABDC15834889BDBA10C9BF972FCDCBC3&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;B8DF808D4A11D15F27765788EE65EA98&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;FC7FCCCF41DB7F2D4BF7ABA0FFF6EDEC&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;1770E4F8464567E1757ACCB473C1DCE6&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3FCC554F4FE90D3221692D93AE98EBAE&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;E8B36A044628ECFA1B0677899EA10FD7&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;/rsl&gt;</stringProp>
                             <stringProp name="Argument.metadata">=</stringProp>
                           </elementProp>
                         </collectionProp>
                       </elementProp>
-                      <stringProp name="HTTPSampler.domain">${MSTR_URL}/${MSTR_PATH}</stringProp>
+                      <stringProp name="HTTPSampler.domain">${MSTR_URL}</stringProp>
                       <stringProp name="HTTPSampler.port"></stringProp>
                       <stringProp name="HTTPSampler.protocol"></stringProp>
                       <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                      <stringProp name="HTTPSampler.path">/servlet/mstrWeb?Server=${MSTR_SERVER}&amp;Project=SAM_IAE&amp;Port=8443&amp;evt=4001&amp;src=mstrWeb.4001&amp;currentViewMedia=1&amp;visMode=0&amp;reportId=${CDStandardReportID}&amp;iPlanetDirectoryPro=${fpds_user_token}&amp;v=1581355688618</stringProp>
+                      <stringProp name="HTTPSampler.path">/${MSTR_PATH}/servlet/mstrWeb?Server=${MSTR_SERVER}&amp;Project=SAM_IAE&amp;Port=8443&amp;evt=4001&amp;src=mstrWeb.4001&amp;currentViewMedia=1&amp;visMode=0&amp;reportId=${CDStandardReportID}&amp;iPlanetDirectoryPro=${fpds_user_token}&amp;v=1581355688618&amp;iae_env=charlie</stringProp>
                       <stringProp name="HTTPSampler.method">POST</stringProp>
                       <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                       <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33113,7 +33127,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">preferences/v1/report:${CDAdminReportID}/</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/preferences/v1/report:${CDAdminReportID}/</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33126,22 +33140,22 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <hashTree/>
                   <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="true"/>
                   <hashTree>
-                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST)" enabled="true">
+                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST) - (CD-AR)" enabled="true">
                       <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                       <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                         <collectionProp name="Arguments.arguments">
                           <elementProp name="" elementType="HTTPArgument">
                             <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                            <stringProp name="Argument.value">&lt;rsl&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;1D73FE064F1CF1D6EBA9C1BD76B837D1&quot; tp=&quot;10&quot;&gt;12/31/2019 11:59:59 PM&lt;/pa&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;EC8BFFA544E1116CAA2EC39893176016&quot; tp=&quot;10&quot;&gt;2019-01-01&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3A20F60F4B1DD5C54F6ACD970C92CC9A&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es&gt;&lt;at did=&quot;A3A0AAB74544C4A2B9141194E968F652&quot; tp=&quot;12&quot;/&gt;&lt;e emt=&quot;1&quot; ei=&quot;A3A0AAB74544C4A2B9141194E968F652:4700&quot; art=&quot;1&quot; disp_n=&quot;4700&quot;/&gt;&lt;/es&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;9A6E51C94C714DD7434436B124F72132&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;4&quot; pin=&quot;0&quot; did=&quot;8130F41D454786F64B4A82BC10BF315F&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;4&quot; pin=&quot;0&quot; did=&quot;42779FCE49D3C83FE321C48B0EBAC8C5&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;4&quot; pin=&quot;0&quot; did=&quot;C8DCB0BA4AD904E194CA7CA6082386E8&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;/rsl&gt;</stringProp>
+                            <stringProp name="Argument.value">&lt;rsl&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;1D73FE064F1CF1D6EBA9C1BD76B837D1&quot; tp=&quot;10&quot;&gt;${FPDS_DATETIME_TO}&lt;/pa&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;EC8BFFA544E1116CAA2EC39893176016&quot; tp=&quot;10&quot;&gt;${FPDS_DATE_FROM}&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3A20F60F4B1DD5C54F6ACD970C92CC9A&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es&gt;&lt;at did=&quot;A3A0AAB74544C4A2B9141194E968F652&quot; tp=&quot;12&quot;/&gt;&lt;e emt=&quot;1&quot; ei=&quot;A3A0AAB74544C4A2B9141194E968F652:4700&quot; art=&quot;1&quot; disp_n=&quot;4700&quot;/&gt;&lt;/es&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;9A6E51C94C714DD7434436B124F72132&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;4&quot; pin=&quot;0&quot; did=&quot;8130F41D454786F64B4A82BC10BF315F&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;4&quot; pin=&quot;0&quot; did=&quot;42779FCE49D3C83FE321C48B0EBAC8C5&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;4&quot; pin=&quot;0&quot; did=&quot;C8DCB0BA4AD904E194CA7CA6082386E8&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;/rsl&gt;</stringProp>
                             <stringProp name="Argument.metadata">=</stringProp>
                           </elementProp>
                         </collectionProp>
                       </elementProp>
-                      <stringProp name="HTTPSampler.domain">${MSTR_URL}/${MSTR_PATH}</stringProp>
+                      <stringProp name="HTTPSampler.domain">${MSTR_URL}</stringProp>
                       <stringProp name="HTTPSampler.port"></stringProp>
                       <stringProp name="HTTPSampler.protocol"></stringProp>
                       <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                      <stringProp name="HTTPSampler.path">/servlet/mstrWeb?Server=${MSTR_SERVER}&amp;Project=SAM_IAE&amp;Port=8443&amp;evt=4001&amp;src=mstrWeb.4001&amp;currentViewMedia=1&amp;visMode=0&amp;reportId=${CDAdminReportID}&amp;iPlanetDirectoryPro=${fpds_user_token}&amp;v=1581357538262</stringProp>
+                      <stringProp name="HTTPSampler.path">/${MSTR_PATH}/servlet/mstrWeb?Server=${MSTR_SERVER}&amp;Project=SAM_IAE&amp;Port=8443&amp;evt=4001&amp;src=mstrWeb.4001&amp;currentViewMedia=1&amp;visMode=0&amp;reportId=${CDAdminReportID}&amp;iPlanetDirectoryPro=${fpds_user_token}&amp;v=1581357538262&amp;iae_env=charlie</stringProp>
                       <stringProp name="HTTPSampler.method">POST</stringProp>
                       <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                       <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33177,7 +33191,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <boolProp name="IfController.useExpression">true</boolProp>
                 </IfController>
                 <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time - (CO-SR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -33185,7 +33199,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/config/reportLoadTime</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/config/reportLoadTime</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33196,7 +33210,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata - (CO-SR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -33204,7 +33218,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FBOStandardProjectID}:${FBOStandardReportID}/metadata</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FBOStandardProjectID}:${FBOStandardReportID}/metadata</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33215,12 +33229,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE - (CO-SR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments">
                         <elementProp name="q(organization)" elementType="HTTPArgument">
                           <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">[&quot;${fpds_user_org}&quot;]</stringProp>
+                          <stringProp name="Argument.value">%5B%22${fpds_user_org}%22%5D</stringProp>
                           <stringProp name="Argument.metadata">=</stringProp>
                           <boolProp name="HTTPArgument.use_equals">true</boolProp>
                           <stringProp name="Argument.name">q(organization)</stringProp>
@@ -33231,7 +33245,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FBOStandardProjectID}:${FBOStandardReportID}/qbe</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FBOStandardProjectID}:${FBOStandardReportID}/qbe</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33243,7 +33257,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   </HTTPSamplerProxy>
                   <hashTree>
                     <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="QBE - Extract Instance ID" enabled="true">
-                      <stringProp name="JSONPostProcessor.referenceNames">MstrInstanceId</stringProp>
+                      <stringProp name="JSONPostProcessor.referenceNames">COSRMstrInstanceId</stringProp>
                       <stringProp name="JSONPostProcessor.jsonPathExprs">$.instanceId</stringProp>
                       <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
                       <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
@@ -33251,12 +33265,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <hashTree/>
                   </hashTree>
                   <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Download Report" enabled="true">
-                    <stringProp name="IfController.condition">${__jexl3(&quot;${MstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
+                    <stringProp name="IfController.condition">${__jexl3(&quot;${COSRMstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
                     <boolProp name="IfController.evaluateAll">false</boolProp>
                     <boolProp name="IfController.useExpression">true</boolProp>
                   </IfController>
                   <hashTree>
-                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download" enabled="true">
+                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download - (CO-SR)" enabled="true">
                       <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                         <collectionProp name="Arguments.arguments">
                           <elementProp name="columns" elementType="HTTPArgument">
@@ -33314,7 +33328,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                       <stringProp name="HTTPSampler.port"></stringProp>
                       <stringProp name="HTTPSampler.protocol"></stringProp>
                       <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                      <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FBOStandardProjectID}:${FBOStandardReportID}/qbe/${MstrInstanceId}</stringProp>
+                      <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FBOStandardProjectID}:${FBOStandardReportID}/qbe/${COSRMstrInstanceId}</stringProp>
                       <stringProp name="HTTPSampler.method">GET</stringProp>
                       <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                       <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33333,7 +33347,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <boolProp name="IfController.useExpression">true</boolProp>
                 </IfController>
                 <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Load time - (CO-AR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -33341,7 +33355,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/config/reportLoadTime</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/config/reportLoadTime</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33352,7 +33366,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - Metadata - (CO-AR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments"/>
                     </elementProp>
@@ -33360,7 +33374,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FBOAdminProjectID}:${FBOAdminReportID}/metadata</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FBOAdminProjectID}:${FBOAdminReportID}/metadata</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33371,12 +33385,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report - QBE - (CO-AR)" enabled="true">
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                       <collectionProp name="Arguments.arguments">
                         <elementProp name="q(organization)" elementType="HTTPArgument">
                           <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">[&quot;${fpds_user_org}&quot;]</stringProp>
+                          <stringProp name="Argument.value">%5B%22${fpds_user_org}%22%5D</stringProp>
                           <stringProp name="Argument.metadata">=</stringProp>
                           <boolProp name="HTTPArgument.use_equals">true</boolProp>
                           <stringProp name="Argument.name">q(organization)</stringProp>
@@ -33387,7 +33401,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FBOAdminProjectID}:${FBOAdminReportID}/qbe</stringProp>
+                    <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FBOAdminProjectID}:${FBOAdminReportID}/qbe</stringProp>
                     <stringProp name="HTTPSampler.method">GET</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33399,7 +33413,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   </HTTPSamplerProxy>
                   <hashTree>
                     <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="QBE - Extract Instance ID" enabled="true">
-                      <stringProp name="JSONPostProcessor.referenceNames">MstrInstanceId</stringProp>
+                      <stringProp name="JSONPostProcessor.referenceNames">COARMstrInstanceId</stringProp>
                       <stringProp name="JSONPostProcessor.jsonPathExprs">$.instanceId</stringProp>
                       <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
                       <stringProp name="JSONPostProcessor.defaultValues">-1</stringProp>
@@ -33407,12 +33421,12 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <hashTree/>
                   </hashTree>
                   <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Download Report" enabled="true">
-                    <stringProp name="IfController.condition">${__jexl3(&quot;${MstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
+                    <stringProp name="IfController.condition">${__jexl3(&quot;${COARMstrInstanceId}&quot; != &quot;-1&quot;)}</stringProp>
                     <boolProp name="IfController.evaluateAll">false</boolProp>
                     <boolProp name="IfController.useExpression">true</boolProp>
                   </IfController>
                   <hashTree>
-                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download" enabled="true">
+                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download - (CO-AR)" enabled="true">
                       <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                         <collectionProp name="Arguments.arguments">
                           <elementProp name="columns" elementType="HTTPArgument">
@@ -33470,7 +33484,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                       <stringProp name="HTTPSampler.port"></stringProp>
                       <stringProp name="HTTPSampler.protocol"></stringProp>
                       <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                      <stringProp name="HTTPSampler.path">databank/v1/reports/mstr:${FBOAdminProjectID}:${FBOAdminReportID}/qbe/${MstrInstanceId}</stringProp>
+                      <stringProp name="HTTPSampler.path">/${API_PATH}/databank/v1/reports/mstr:${FBOAdminProjectID}:${FBOAdminReportID}/qbe/${COARMstrInstanceId}</stringProp>
                       <stringProp name="HTTPSampler.method">GET</stringProp>
                       <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                       <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33530,7 +33544,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">preferences/v1/report:${FHAdminReportID}/</stringProp>
+                  <stringProp name="HTTPSampler.path">/${API_PATH}/preferences/v1/report:${FHAdminReportID}/</stringProp>
                   <stringProp name="HTTPSampler.method">GET</stringProp>
                   <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33543,22 +33557,22 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                 <hashTree/>
                 <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="true"/>
                 <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST)" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST) - (FH-AR)" enabled="true">
                     <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                       <collectionProp name="Arguments.arguments">
                         <elementProp name="" elementType="HTTPArgument">
                           <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;rsl&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;A72F3D7441A297E5F486BDBBC5F24CFE&quot; tp=&quot;10&quot;&gt;2019-12-31&lt;/pa&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;7FADEDEC4E3CCA2593A9DF9FB186B7CB&quot; tp=&quot;10&quot;&gt;2018-01-01&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;DED18C1B47F1F6D62D7C47BB5E3059F6&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;576A55C044728DB0E871F3836A39480D&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3EABA489462D39928944079D12CB3A40&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;C1E10A61499505BF25F1D58B251A8157&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3CD3B1CB46551ADA36EC08BD28E37D3E&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;34B75F4B41CA1E6AEE51209D68BBB693&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3621A1B54B4FBDB3BE34DB8A4A9E2407&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;ED431C4C4FBA92460E12A4A5C4259D2A&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;1493449C4C818E82F5643D91EB27FD48&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;74A40B3644D85F3C6CF2ED86AD95435F&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;096CEFB841AEFC1DEB77DB9F2CDC1DA5&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;A8AA77F54E5D2C28BCFA92BEA2975293&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;/rsl&gt;</stringProp>
+                          <stringProp name="Argument.value">&lt;rsl&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;A72F3D7441A297E5F486BDBBC5F24CFE&quot; tp=&quot;10&quot;&gt;${FPDS_DATE_TO}&lt;/pa&gt;&lt;pa pt=&quot;5&quot; pin=&quot;0&quot; did=&quot;7FADEDEC4E3CCA2593A9DF9FB186B7CB&quot; tp=&quot;10&quot;&gt;${FPDS_DATE_FROM}&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;DED18C1B47F1F6D62D7C47BB5E3059F6&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;576A55C044728DB0E871F3836A39480D&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3EABA489462D39928944079D12CB3A40&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;C1E10A61499505BF25F1D58B251A8157&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3CD3B1CB46551ADA36EC08BD28E37D3E&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;34B75F4B41CA1E6AEE51209D68BBB693&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;3621A1B54B4FBDB3BE34DB8A4A9E2407&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;7&quot; pin=&quot;0&quot; did=&quot;ED431C4C4FBA92460E12A4A5C4259D2A&quot; tp=&quot;10&quot;&gt;&lt;mi&gt;&lt;es/&gt;&lt;/mi&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;1493449C4C818E82F5643D91EB27FD48&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;74A40B3644D85F3C6CF2ED86AD95435F&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;096CEFB841AEFC1DEB77DB9F2CDC1DA5&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;pa pt=&quot;3&quot; pin=&quot;0&quot; did=&quot;A8AA77F54E5D2C28BCFA92BEA2975293&quot; tp=&quot;10&quot;&gt;&lt;/pa&gt;&lt;/rsl&gt;</stringProp>
                           <stringProp name="Argument.metadata">=</stringProp>
                         </elementProp>
                       </collectionProp>
                     </elementProp>
-                    <stringProp name="HTTPSampler.domain">${MSTR_URL}/${MSTR_PATH}</stringProp>
+                    <stringProp name="HTTPSampler.domain">${MSTR_URL}</stringProp>
                     <stringProp name="HTTPSampler.port"></stringProp>
                     <stringProp name="HTTPSampler.protocol"></stringProp>
                     <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">/servlet/mstrWeb?Server=${MSTR_SERVER}&amp;Project=SAM_FHY&amp;Port=8443&amp;evt=4001&amp;src=mstrWeb.4001&amp;currentViewMedia=1&amp;visMode=0&amp;reportId=${FHAdminReportID}&amp;iPlanetDirectoryPro=${fpds_user_token}&amp;v=1581358836874</stringProp>
+                    <stringProp name="HTTPSampler.path">/${MSTR_PATH}/servlet/mstrWeb?Server=${MSTR_SERVER}&amp;Project=SAM_FHY&amp;Port=8443&amp;evt=4001&amp;src=mstrWeb.4001&amp;currentViewMedia=1&amp;visMode=0&amp;reportId=${FHAdminReportID}&amp;iPlanetDirectoryPro=${fpds_user_token}&amp;v=1581358836874&amp;iae_env=charlie</stringProp>
                     <stringProp name="HTTPSampler.method">POST</stringProp>
                     <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                     <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33597,7 +33611,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${MSTR_URL}/${MSTR_PATH}</stringProp>
+          <stringProp name="HTTPSampler.domain">${MSTR_URL}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -33615,7 +33629,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/fsm.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/fsm.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33634,7 +33648,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/mstr.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/mstr.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33653,7 +33667,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/mstrColorThemeRed.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/mstrColorThemeRed.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33672,7 +33686,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/pageWait.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/pageWait.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33691,7 +33705,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/mojo/css/core.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/mojo/css/core.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33710,7 +33724,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/mojo/css/report.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/mojo/css/report.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33729,7 +33743,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/mojo/css/cge.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/mojo/css/cge.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33748,7 +33762,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/mojo/css/dde.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/mojo/css/dde.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33767,7 +33781,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/widgets.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/widgets.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33786,7 +33800,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/pageReport.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/pageReport.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33805,7 +33819,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/bundles/bone-global.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/bundles/bone-global.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33824,7 +33838,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/bundles/mojo-bootstrap.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/bundles/mojo-bootstrap.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33843,7 +33857,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/bundles/bone-report.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/bundles/bone-report.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33862,7 +33876,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/chrome.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/chrome.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33881,7 +33895,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/plugins/FPDS/style/global.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/plugins/FPDS/style/global.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33900,7 +33914,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/plugins/FPDS/style/reportPage.css</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/plugins/FPDS/style/reportPage.css</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33919,7 +33933,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/dropdown.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/dropdown.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33938,7 +33952,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/mstrLocalStorage.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/mstrLocalStorage.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33957,7 +33971,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/images/1ptrans.gif</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/images/1ptrans.gif</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33976,7 +33990,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/colResizeImpl.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/colResizeImpl.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -33995,7 +34009,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/mstrLockSet.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/mstrLockSet.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34014,7 +34028,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/mstrSessionStorage.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/mstrSessionStorage.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34033,7 +34047,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/updateManagerEventsReport.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/updateManagerEventsReport.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34052,7 +34066,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/libraries/html2canvas.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/libraries/html2canvas.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34071,7 +34085,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/plugins/FPDS/javascript/global.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/plugins/FPDS/javascript/global.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34090,7 +34104,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/loader_round.gif</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/loader_round.gif</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34109,7 +34123,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/waiticon_close.png</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/waiticon_close.png</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34128,7 +34142,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/theme/red/shortcutBarGradient.gif</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/theme/red/shortcutBarGradient.gif</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34147,7 +34161,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/circle-loader.gif</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/circle-loader.gif</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34166,7 +34180,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/menu_icons.png</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/menu_icons.png</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34185,7 +34199,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/mstrPostLoad.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/mstrPostLoad.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34212,7 +34226,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/servlet/mstrWeb</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/servlet/mstrWeb</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34231,7 +34245,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/progress-bar.gif</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/progress-bar.gif</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34250,7 +34264,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/toolbar_i.png</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/toolbar_i.png</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34269,7 +34283,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/toolbar.png</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/toolbar.png</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34288,7 +34302,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/toolbar_a.png</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/toolbar_a.png</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34307,7 +34321,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/style/mstr/images/accordion.png</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/style/mstr/images/accordion.png</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34326,7 +34340,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/images/sort_row.gif</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/images/sort_row.gif</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -34345,7 +34359,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/javascript/incrementalFetch.js</stringProp>
+          <stringProp name="HTTPSampler.path">/${MSTR_PATH}/javascript/incrementalFetch.js</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
