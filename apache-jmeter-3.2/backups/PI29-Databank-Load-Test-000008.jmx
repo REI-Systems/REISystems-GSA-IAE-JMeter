@@ -73,7 +73,7 @@
           </elementProp>
           <elementProp name="MSTR_URL" elementType="Argument">
             <stringProp name="Argument.name">MSTR_URL</stringProp>
-            <stringProp name="Argument.value">microstrategyload.helix.gsa.gov</stringProp>
+            <stringProp name="Argument.value">https://microstrategy2020test.helix.gsa.gov</stringProp>
             <stringProp name="Argument.desc">MicroStrategy URL for load testing environment</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -85,7 +85,7 @@
           </elementProp>
           <elementProp name="MSTR_SERVER" elementType="Argument">
             <stringProp name="Argument.name">MSTR_SERVER</stringProp>
-            <stringProp name="Argument.value">MICROSTRATEGY-2_BI.PROD-LDE.BSP.GSA.GOV</stringProp>
+            <stringProp name="Argument.value">microstrategy-test-bi-az1.prod-lde.bsp.gsa.gov</stringProp>
             <stringProp name="Argument.desc">MicroStrategy Server</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -222,13 +222,15 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <stringProp name="TestPlan.comments">Samplers: 3
 
-	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-Per second	9	22.5	45	67.5	90	112.5	135	157.5	180
-Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
-1/15th	36	90	180	270	360	450	540	630	720</stringProp>
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2    	3
+Per second	9	22.5	45	67.5	90	112.5	135	157.5	180	270
+Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800	16200
+1/15th	36	90	180	270	360	450	540	630	720	1080
+
+Note: The max request for one of the end point(v2/alerts)  is 278 reqs/sec. </stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>450.0</value>
+            <value>1080.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -236,7 +238,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Alerts" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
             <stringProp name="-4311623">Alerts Fragment</stringProp>
           </collectionProp>
@@ -630,7 +632,7 @@ Duration: 1800</stringProp>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <doubleProp>
             <name>throughput</name>
-            <value>2124.0</value>
+            <value>180.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -644,6 +646,8 @@ FH 1X load expects = 1 requests/second.
 Awards 1X load expects = ??? requests/second. 
 Exclusion 1X load expects = ??? requests/second. 
 Entity 1X load expects = ??? requests/second. 
+
+Note: The current 1x is 15 reqs/sec. 
 
 OLD ---------
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
@@ -6610,6 +6614,8 @@ Awards 1X load expects = ??? requests/second.
 Exclusion 1X load expects = ??? requests/second. 
 Entity 1X load expects = ??? requests/second. 
 
+Note : The current load 1x is 150reqs/sec (v1/search)
+
 OLD-----------------
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
 Per second					30				90
@@ -6625,7 +6631,7 @@ Per Minute 					31860				63720
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>1593.0</value>
+            <value>4248.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -6847,6 +6853,8 @@ Awards 1X load expects = ??? requests/second.
 Exclusion 1X load expects = ??? requests/second. 
 Entity 1X load expects = ??? requests/second. 
 
+Note : The current 1x is 440 reqs/sec (v2/opps)
+
 ---- OLD
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
 Per second					270				540
@@ -6860,7 +6868,7 @@ Per minute					8280				16560
 1/15th					552				1104</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>414.0</value>
+            <value>2160.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -10863,7 +10871,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
         </DebugPostProcessor>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authenticated User Calls - off" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authenticated User Calls - off" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -11076,7 +11084,9 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
 
 Per second	3.9	9.75	19.5	29.25	39	48.75	58.5	68.25	78
 Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	4680
-1/15th	15.6	39	78	117	156	195	234	273	312</stringProp>
+1/15th	15.6	39	78	117	156	195	234	273	312
+
+Note: The current load is 1req/sec.(content/v1)</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Content &amp; CM" enabled="true">
@@ -11162,7 +11172,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>900.0</value>
+            <value>4.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
