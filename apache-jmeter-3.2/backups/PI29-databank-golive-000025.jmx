@@ -73,7 +73,7 @@
           </elementProp>
           <elementProp name="MSTR_URL" elementType="Argument">
             <stringProp name="Argument.name">MSTR_URL</stringProp>
-            <stringProp name="Argument.value">microstrategyload.helix.gsa.gov</stringProp>
+            <stringProp name="Argument.value">https://microstrategy2020test.helix.gsa.gov</stringProp>
             <stringProp name="Argument.desc">MicroStrategy URL for load testing environment</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -85,7 +85,7 @@
           </elementProp>
           <elementProp name="MSTR_SERVER" elementType="Argument">
             <stringProp name="Argument.name">MSTR_SERVER</stringProp>
-            <stringProp name="Argument.value">MICROSTRATEGY-2_BI.PROD-LDE.BSP.GSA.GOV</stringProp>
+            <stringProp name="Argument.value">microstrategy-test-bi-az1.prod-lde.bsp.gsa.gov</stringProp>
             <stringProp name="Argument.desc">MicroStrategy Server</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -10871,7 +10871,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
         </DebugPostProcessor>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authenticated User Calls - off" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authenticated User Calls - off" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -13007,7 +13007,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>900.0</value>
+            <value>4.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -13015,7 +13015,7 @@ Per Minute			30		60		90		120
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Tier 2 controller" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-233123020">Opp Tier2 Workspace</stringProp>
           </collectionProp>
@@ -14630,10 +14630,12 @@ Per Minute			15		30		45		60
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
 Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
 Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
-1/15th	18	45	90	135	180	225	270	315	360</stringProp>
+1/15th	18	45	90	135	180	225	270	315	360
+
+Note : Current load on the endpoint is 300 reqs/sec(federalorganizations/v1/org).</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>270.0</value>
+            <value>1080.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -14641,7 +14643,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Federal Hierarchy Fragment" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-1116592482">Federal Hierarchy Fragment</stringProp>
           </collectionProp>
@@ -15150,14 +15152,17 @@ Per Minute			60		120		180		240
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module is not a true UI functionality that a user can browse
 
-Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
-Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
-Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
-1/15th	18	45	90	135	180	225	270	315	360</stringProp>
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2 	3
+Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90	135
+Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400	8100
+1/15th	18	45	90	135	180	225	270	315	360	540
+
+Note : The current load is 150req/sec(location/v1/naics).
+</stringProp>
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>900.0</value>
+            <value>540.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -15176,7 +15181,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="LocationModule" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="983627428">Location API Service</stringProp>
           </collectionProp>
@@ -15262,7 +15267,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>8.0</value>
+            <value>4.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -15270,7 +15275,7 @@ Per Minute			30		60		90		120
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="OpportunitiesPublicServiceModule" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-960394937">Opportunities Public API Service</stringProp>
           </collectionProp>
@@ -15637,7 +15642,7 @@ Per minute 	600	360	720	1080	6000	1800	2160	2520	12000
             </elementProp>
             <elementProp name="fpds_user_token" elementType="Argument">
               <stringProp name="Argument.name">fpds_user_token</stringProp>
-              <stringProp name="Argument.value">9f548d52-5d50-4a42-a1a9-16e3fff6e877</stringProp>
+              <stringProp name="Argument.value">db107ed1-11ed-4c12-babc-90850b3ec994</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -15660,10 +15665,12 @@ The true THROUGHPUT for 1x workload is 10 requests / second. Now we set the thro
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
 Per second			5		10		15		20
 Per Minute			300		600		900		1200
-1/15th			20		40		60		80</stringProp>
+1/15th			20		40		60		80
+
+Note: The current load is 1req/sec(qbe/config). We want to change the throughput to 5 when testing the CO and FAL report execution.</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>20.0</value>
+            <value>10.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -15674,73 +15681,6 @@ Per Minute			300		600		900		1200
             <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-1811419104">Reports - QBE</stringProp>
-          </collectionProp>
-        </ModuleController>
-        <hashTree/>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MicroStrategy-Assests" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <intProp name="LoopController.loops">-1</intProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">3</stringProp>
-        <stringProp name="ThreadGroup.ramp_time"></stringProp>
-        <longProp name="ThreadGroup.start_time">1579797531000</longProp>
-        <longProp name="ThreadGroup.end_time">1579797531000</longProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
-        <stringProp name="ThreadGroup.delay">110</stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-      </ThreadGroup>
-      <hashTree>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User variables" enabled="true">
-          <collectionProp name="Arguments.arguments">
-            <elementProp name="fpds_user_org" elementType="Argument">
-              <stringProp name="Argument.name">fpds_user_org</stringProp>
-              <stringProp name="Argument.value">100006688</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-              <stringProp name="Argument.desc">GSA: 100006688 / DOD 100000000</stringProp>
-            </elementProp>
-            <elementProp name="fpds_user_token" elementType="Argument">
-              <stringProp name="Argument.name">fpds_user_token</stringProp>
-              <stringProp name="Argument.value">9f548d52-5d50-4a42-a1a9-16e3fff6e877</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-          </collectionProp>
-        </Arguments>
-        <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="X-Auth-Token Header" enabled="true">
-          <collectionProp name="HeaderManager.headers">
-            <elementProp name="" elementType="Header">
-              <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">${fpds_user_token}</stringProp>
-            </elementProp>
-          </collectionProp>
-        </HeaderManager>
-        <hashTree/>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="TestPlan.comments">Samplers: 
-
-The true THROUGHPUT for 1x workload is 10 requests / second. Now we set the throughput for 1x is 5.5x !!!
-
-Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-Per second			5		10		15		20
-Per Minute			300		600		900		1200
-1/15th			20		40		60		80</stringProp>
-          <doubleProp>
-            <name>throughput</name>
-            <value>900.0</value>
-            <savedValue>0.0</savedValue>
-          </doubleProp>
-          <intProp name="calcMode">2</intProp>
-        </ConstantThroughputTimer>
-        <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Microstrategy Assests" enabled="true">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
-            <stringProp name="-1342286077">Microstrategy Assets Files</stringProp>
           </collectionProp>
         </ModuleController>
         <hashTree/>
@@ -32847,7 +32787,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             <boolProp name="InterleaveControl.accrossThreads">false</boolProp>
           </InterleaveControl>
           <hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Report - Assistance Listings" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Report - Assistance Listings" enabled="false"/>
             <hashTree>
               <InterleaveControl guiclass="InterleaveControlGui" testclass="InterleaveControl" testname="Interleave Controller - Run One scenario on each iteration" enabled="true">
                 <intProp name="InterleaveControl.style">1</intProp>
@@ -33378,7 +33318,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="true"/>
+                  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="false"/>
                   <hashTree>
                     <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST) - (CD-SR)" enabled="true">
                       <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -33470,7 +33410,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="true"/>
+                  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="false"/>
                   <hashTree>
                     <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST) - (CD-AR)" enabled="true">
                       <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -33510,7 +33450,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                 </hashTree>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Report - Contract Opportunities" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Report - Contract Opportunities" enabled="false"/>
             <hashTree>
               <InterleaveControl guiclass="InterleaveControlGui" testclass="InterleaveControl" testname="Interleave Controller - Run One scenario on each iteration" enabled="true">
                 <intProp name="InterleaveControl.style">1</intProp>
@@ -33887,7 +33827,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree/>
-                <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="true"/>
+                <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="false"/>
                 <hashTree>
                   <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST) - (FH-AR)" enabled="true">
                     <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
