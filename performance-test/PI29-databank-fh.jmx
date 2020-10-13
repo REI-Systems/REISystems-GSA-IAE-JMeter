@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 20.02 Load Test" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 28.01 Load Test" enabled="true">
       <stringProp name="TestPlan.comments">JMeter tips &amp; techniques used in this test plan.
 
 **************** (Run against Login with 20.2 Code) ****************
@@ -51,7 +51,7 @@
           </elementProp>
           <elementProp name="SPRINT" elementType="Argument">
             <stringProp name="Argument.name">SPRINT</stringProp>
-            <stringProp name="Argument.value">PI20-02</stringProp>
+            <stringProp name="Argument.value">PI28-01</stringProp>
             <stringProp name="Argument.desc">Sprint release code that we&apos;re running load test against</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -73,7 +73,7 @@
           </elementProp>
           <elementProp name="MSTR_URL" elementType="Argument">
             <stringProp name="Argument.name">MSTR_URL</stringProp>
-            <stringProp name="Argument.value">microstrategyload.helix.gsa.gov</stringProp>
+            <stringProp name="Argument.value">https://microstrategy2020test.helix.gsa.gov</stringProp>
             <stringProp name="Argument.desc">MicroStrategy URL for load testing environment</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -85,7 +85,7 @@
           </elementProp>
           <elementProp name="MSTR_SERVER" elementType="Argument">
             <stringProp name="Argument.name">MSTR_SERVER</stringProp>
-            <stringProp name="Argument.value">MICROSTRATEGY-2_BI.PROD-LDE.BSP.GSA.GOV</stringProp>
+            <stringProp name="Argument.value">microstrategy-test-bi-az1.prod-lde.bsp.gsa.gov</stringProp>
             <stringProp name="Argument.desc">MicroStrategy Server</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -138,6 +138,7 @@
       <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="false">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
       <hashTree/>
       <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
@@ -195,7 +196,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Alerts" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
             <stringProp name="-4311623">Alerts Fragment</stringProp>
           </collectionProp>
@@ -221,13 +222,15 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <stringProp name="TestPlan.comments">Samplers: 3
 
-	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-Per second	9	22.5	45	67.5	90	112.5	135	157.5	180
-Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
-1/15th	36	90	180	270	360	450	540	630	720</stringProp>
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2    	3
+Per second	9	22.5	45	67.5	90	112.5	135	157.5	180	270
+Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800	16200
+1/15th	36	90	180	270	360	450	540	630	720	1080
+
+Note: The max request for one of the end point(v2/alerts)  is 278 reqs/sec. </stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>450.0</value>
+            <value>1080.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -235,8 +238,8 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Alerts" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-4311623">Alerts Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -275,7 +278,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Alerts" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
             <stringProp name="-4311623">Alerts Fragment</stringProp>
           </collectionProp>
@@ -315,7 +318,7 @@ Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Alerts" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
             <stringProp name="-4311623">Alerts Fragment</stringProp>
           </collectionProp>
@@ -629,7 +632,7 @@ Duration: 1800</stringProp>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <doubleProp>
             <name>throughput</name>
-            <value>2124.0</value>
+            <value>180.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -643,6 +646,8 @@ FH 1X load expects = 1 requests/second.
 Awards 1X load expects = ??? requests/second. 
 Exclusion 1X load expects = ??? requests/second. 
 Entity 1X load expects = ??? requests/second. 
+
+Note: The current 1x is 15 reqs/sec. 
 
 OLD ---------
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
@@ -659,8 +664,8 @@ Per Minute 					53100				106200
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Search Suggestion" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-261385580">Search Suggestion Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -6609,6 +6614,8 @@ Awards 1X load expects = ??? requests/second.
 Exclusion 1X load expects = ??? requests/second. 
 Entity 1X load expects = ??? requests/second. 
 
+Note : The current load 1x is 150reqs/sec (v1/search)
+
 OLD-----------------
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
 Per second					30				90
@@ -6624,7 +6631,7 @@ Per Minute 					31860				63720
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>1593.0</value>
+            <value>4248.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -6682,7 +6689,7 @@ Per Minute 					31860				63720
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="All Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="191329531">All Index Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -6722,8 +6729,8 @@ Per Minute 					31860				63720
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Opportunities Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="1055477305">Opportunities Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -6742,8 +6749,8 @@ Per Minute 					31860				63720
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Awards Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="-1669438594">Awards Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -6762,8 +6769,8 @@ Per Minute 					31860				63720
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Entity Information Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="1569390615">Entity Information Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -6782,8 +6789,8 @@ Per Minute 					31860				63720
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FH Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="-1449306518">FH Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -6803,7 +6810,7 @@ Per Minute 					31860				63720
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Wage Determination Search" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="-555616621">Wage Determination Search Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -6846,6 +6853,8 @@ Awards 1X load expects = ??? requests/second.
 Exclusion 1X load expects = ??? requests/second. 
 Entity 1X load expects = ??? requests/second. 
 
+Note : The current 1x is 440 reqs/sec (v2/opps)
+
 ---- OLD
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
 Per second					270				540
@@ -6859,7 +6868,7 @@ Per minute					8280				16560
 1/15th					552				1104</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>414.0</value>
+            <value>2160.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -6956,8 +6965,8 @@ Per minute					8280				16560
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Opportunity Display Object View Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="420482358">Modern Opportunity Display Object View Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -7021,7 +7030,7 @@ Per minute					8280				16560
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Entity Display Object View Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="-428862939">Entity Display Object View Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -7099,7 +7108,7 @@ Per minute					8280				16560
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="FH Display Object View" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="636609990">FH Display Object View Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -7157,7 +7166,7 @@ Per minute					8280				16560
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Wage Determination Display Object View" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="1773572157">Wage Determination Display Object View Fragment</stringProp>
             </collectionProp>
           </ModuleController>
@@ -10862,7 +10871,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
         </DebugPostProcessor>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authenticated User Calls - off" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authenticated User Calls - off" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -10874,7 +10883,7 @@ Per Minute	5.16	12.9	25.8	38.7	51.6	64.5	77.4	90.3	103.2
         <longProp name="ThreadGroup.end_time">1523502000000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">600</stringProp>
-        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <stringProp name="ThreadGroup.delay">40</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
@@ -10889,13 +10898,13 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
 1/15th	8	20	40	60	80	100	120	140	160</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>140.0</value>
+            <value>80.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="false">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (API Umbrella)" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -10913,7 +10922,7 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">ed225091-2fc5-4ff8-b03f-601642256d17</stringProp>
+              <stringProp name="Header.value">120c5ce0-abca-485a-9622-b29e125fb1b0</stringProp>
             </elementProp>
             <elementProp name="api_key" elementType="Header">
               <stringProp name="Header.name">X-Api-Key</stringProp>
@@ -10921,7 +10930,7 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">iPlanetDirectoryPro</stringProp>
-              <stringProp name="Header.value">ed225091-2fc5-4ff8-b03f-601642256d17</stringProp>
+              <stringProp name="Header.value">120c5ce0-abca-485a-9622-b29e125fb1b0</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -10970,7 +10979,7 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/${API_PATH}/feeds/v1/requests</stringProp>
+          <stringProp name="HTTPSampler.path">/feeds/v1/requests</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -10997,7 +11006,7 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/${API_PATH}/feeds/v1/filter</stringProp>
+          <stringProp name="HTTPSampler.path">/feeds/v1/filter</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -11075,13 +11084,15 @@ Per Minute 	120	300	600	900	1200	1500	1800	2100	2400
 
 Per second	3.9	9.75	19.5	29.25	39	48.75	58.5	68.25	78
 Per Minute (constant throughput value)	234	585	1170	1755	2340	2925	3510	4095	4680
-1/15th	15.6	39	78	117	156	195	234	273	312</stringProp>
+1/15th	15.6	39	78	117	156	195	234	273	312
+
+Note: The current load is 1req/sec.(content/v1)</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Content &amp; CM" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-654276379">Content &amp; CM Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -11161,7 +11172,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>900.0</value>
+            <value>4.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -11171,7 +11182,7 @@ Per Minute			30		60		90		120
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">5c6a43ae-62b5-47e9-8489-0f1e2d4d901e</stringProp>
+              <stringProp name="Header.value">120c5ce0-abca-485a-9622-b29e125fb1b0</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -12930,7 +12941,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">5c6a43ae-62b5-47e9-8489-0f1e2d4d901e</stringProp>
+              <stringProp name="Header.value">120c5ce0-abca-485a-9622-b29e125fb1b0</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -12996,7 +13007,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>900.0</value>
+            <value>4.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -13005,7 +13016,7 @@ Per Minute			30		60		90		120
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Tier 2 controller" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-233123020">Opp Tier2 Workspace</stringProp>
           </collectionProp>
         </ModuleController>
@@ -14585,17 +14596,17 @@ Per Minute			15		30		45		60
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Federal Hierarchy Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Federal Hierarchy Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">15</stringProp>
+        <stringProp name="ThreadGroup.num_threads">45</stringProp>
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">600</stringProp>
-        <stringProp name="ThreadGroup.delay">80</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
         <longProp name="ThreadGroup.start_time">1551891946000</longProp>
         <longProp name="ThreadGroup.end_time">1551891946000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -14619,10 +14630,12 @@ Per Minute			15		30		45		60
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
 Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
 Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
-1/15th	18	45	90	135	180	225	270	315	360</stringProp>
+1/15th	18	45	90	135	180	225	270	315	360
+
+Note : Current load on the endpoint is 300 reqs/sec(federalorganizations/v1/org).</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>270.0</value>
+            <value>1500.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -14630,8 +14643,8 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Federal Hierarchy Fragment" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-1116592482">Federal Hierarchy Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -15139,14 +15152,17 @@ Per Minute			60		120		180		240
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module is not a true UI functionality that a user can browse
 
-Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
-Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
-Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
-1/15th	18	45	90	135	180	225	270	315	360</stringProp>
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2 	3
+Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90	135
+Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400	8100
+1/15th	18	45	90	135	180	225	270	315	360	540
+
+Note : The current load is 150req/sec(location/v1/naics).
+</stringProp>
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>900.0</value>
+            <value>540.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
@@ -15166,7 +15182,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="LocationModule" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="983627428">Location API Service</stringProp>
           </collectionProp>
         </ModuleController>
@@ -15251,7 +15267,7 @@ Per Minute			30		60		90		120
 1/15th			2		4		6		8</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>8.0</value>
+            <value>4.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -15259,14 +15275,34 @@ Per Minute			30		60		90		120
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="OpportunitiesPublicServiceModule" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-1227702913">WorkBench</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-960394937">Opportunities Public API Service</stringProp>
           </collectionProp>
         </ModuleController>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
           <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept-Encoding</stringProp>
+              <stringProp name="Header.value">gzip, deflate, br</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept-Language</stringProp>
+              <stringProp name="Header.value">en-US,en;q=0.8</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Connection</stringProp>
+              <stringProp name="Header.value">keep-alive</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">User-Agent</stringProp>
+              <stringProp name="Header.value">JMeter</stringProp>
+            </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Api-Key</stringProp>
               <stringProp name="Header.value">LufX5GmXxw2EOEolwkBZBzzcVymAv11AdcTRXVD7</stringProp>
@@ -15606,7 +15642,7 @@ Per minute 	600	360	720	1080	6000	1800	2160	2520	12000
             </elementProp>
             <elementProp name="fpds_user_token" elementType="Argument">
               <stringProp name="Argument.name">fpds_user_token</stringProp>
-              <stringProp name="Argument.value">9f548d52-5d50-4a42-a1a9-16e3fff6e877</stringProp>
+              <stringProp name="Argument.value">db107ed1-11ed-4c12-babc-90850b3ec994</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -15629,10 +15665,12 @@ The true THROUGHPUT for 1x workload is 10 requests / second. Now we set the thro
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
 Per second			5		10		15		20
 Per Minute			300		600		900		1200
-1/15th			20		40		60		80</stringProp>
+1/15th			20		40		60		80
+
+Note: The current load is 1req/sec(qbe/config). We want to change the throughput to 5 when testing the CO and FAL report execution.</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>900.0</value>
+            <value>10.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
@@ -15641,7 +15679,7 @@ Per Minute			300		600		900		1200
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Report through QBE" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-1811419104">Reports - QBE</stringProp>
           </collectionProp>
         </ModuleController>
@@ -16781,8 +16819,8 @@ $(SEARCH_TERM) - any text. Will be sent as query
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="false">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="-355135239">Org Picker API Calls</stringProp>
             </collectionProp>
           </ModuleController>
@@ -17781,8 +17819,8 @@ vars.put(&quot;ASSISTANCETYPE_ID&quot;, generateRandomAssistanceType());</string
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="-355135239">Org Picker API Calls</stringProp>
             </collectionProp>
           </ModuleController>
@@ -19248,8 +19286,8 @@ vars.put(&quot;SET_ASIDE&quot;, generateRandomSetAside());</stringProp>
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="false">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="-355135239">Org Picker API Calls</stringProp>
             </collectionProp>
           </ModuleController>
@@ -19441,8 +19479,8 @@ $(SEARCH_TERM) - any text. Will be sent as query
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="false">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-355135239">Org Picker API Calls</stringProp>
           </collectionProp>
         </ModuleController>
@@ -19701,8 +19739,8 @@ $(SEARCH_TERM) - any text. Will be sent as query
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="-355135239">Org Picker API Calls</stringProp>
             </collectionProp>
           </ModuleController>
@@ -20888,20 +20926,13 @@ $(FAL_ID) - A FAL ID (UUID)
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">mode</stringProp>
                 </elementProp>
-                <elementProp name="orgKey" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${FAL_ORG_ID}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">orgKey</stringProp>
-                </elementProp>
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${API_PATH}/v1/organizations</stringProp>
+            <stringProp name="HTTPSampler.path">${API_PATH}/v1/organizations/${FAL_ORG_ID}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -21250,8 +21281,8 @@ $(SEARCH_TERM) - any text. Will be sent as query
         <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Featured Search" enabled="true">
           <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
             <stringProp name="-1733558794">Featured Search Fragment</stringProp>
           </collectionProp>
         </ModuleController>
@@ -21269,8 +21300,8 @@ $(SEARCH_TERM) - any text. Will be sent as query
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Org Picker" enabled="true">
             <collectionProp name="ModuleController.node_path">
-              <stringProp name="-1227702913">WorkBench</stringProp>
-              <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+              <stringProp name="764597751">Test Plan</stringProp>
+              <stringProp name="-1738104533">Beta SAM Release 28.01 Load Test</stringProp>
               <stringProp name="-355135239">Org Picker API Calls</stringProp>
             </collectionProp>
           </ModuleController>
@@ -23205,13 +23236,13 @@ vars.put(&quot;PSC_LIST&quot;, PSC_LIST);</stringProp>
           </BeanShellPostProcessor>
           <hashTree/>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If naics code exists" enabled="true">
-          <stringProp name="IfController.condition">${__jexl3(&quot;${NAICS_LIST}&quot; != &quot;&quot;)}</stringProp>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If naics code exists" enabled="false">
+          <stringProp name="IfController.condition"></stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
         </IfController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ls - NAICS Location Lookup" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ls - NAICS Location Lookup" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="sourceyear" elementType="HTTPArgument">
@@ -23571,20 +23602,13 @@ $(FH_ORG_ID) - ID used to find the object</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="Argument.name">mode</stringProp>
                   </elementProp>
-                  <elementProp name="orgKey" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">${PARENT_ORG_ID}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">orgKey</stringProp>
-                  </elementProp>
                 </collectionProp>
               </elementProp>
               <stringProp name="HTTPSampler.domain"></stringProp>
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">${API_PATH}/federalorganizations/v1/organizations</stringProp>
+              <stringProp name="HTTPSampler.path">${API_PATH}/federalorganizations/v1/organizations/${PARENT_ORG_ID}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -24045,7 +24069,7 @@ $(WAGE_DETERMINATION_ID) - ID used to find the object</stringProp>
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">${API_PATH}/federalorganizations/v1/organizations</stringProp>
+              <stringProp name="HTTPSampler.path">${API_PATH}/federalorganizations/v1/organizations/</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -26166,7 +26190,7 @@ ${SEARCH_TERM} - used in FH org picker search query
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="cmsbuttonenabled" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="cmsbuttonenabled" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -26595,7 +26619,7 @@ ${SEARCH_TERM} - used in FH org picker search query
               </elementProp>
               <elementProp name="contentid" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">13</stringProp>
+                <stringProp name="Argument.value">5</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">contentid</stringProp>
@@ -31379,7 +31403,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">api-nonprod.prod-iae.bsp.gsa.gov/</stringProp>
+          <stringProp name="HTTPSampler.domain">api-nonprod.prod-iae.bsp.gsa.gov</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -32357,7 +32381,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="RMS Fragment" enabled="true"/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="RMS Fragment -" enabled="true"/>
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Get Access Call" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -32763,7 +32787,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
             <boolProp name="InterleaveControl.accrossThreads">false</boolProp>
           </InterleaveControl>
           <hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Report - Assistance Listings" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Report - Assistance Listings" enabled="false"/>
             <hashTree>
               <InterleaveControl guiclass="InterleaveControlGui" testclass="InterleaveControl" testname="Interleave Controller - Run One scenario on each iteration" enabled="true">
                 <intProp name="InterleaveControl.style">1</intProp>
@@ -33294,7 +33318,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="true"/>
+                  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="false"/>
                   <hashTree>
                     <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST) - (CD-SR)" enabled="true">
                       <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -33386,7 +33410,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                     <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree/>
-                  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="true"/>
+                  <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="false"/>
                   <hashTree>
                     <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST) - (CD-AR)" enabled="true">
                       <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -33426,7 +33450,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                 </hashTree>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Report - Contract Opportunities" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Report - Contract Opportunities" enabled="false"/>
             <hashTree>
               <InterleaveControl guiclass="InterleaveControlGui" testclass="InterleaveControl" testname="Interleave Controller - Run One scenario on each iteration" enabled="true">
                 <intProp name="InterleaveControl.style">1</intProp>
@@ -33803,7 +33827,7 @@ vars.put(&quot;asOfDate&quot;, pscDate);</stringProp>
                   <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree/>
-                <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="true"/>
+                <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MicroStrategy" enabled="false"/>
                 <hashTree>
                   <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="mstrWeb - (POST) - (FH-AR)" enabled="true">
                     <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
