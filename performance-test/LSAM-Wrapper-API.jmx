@@ -60,12 +60,12 @@
           </elementProp>
           <elementProp name="xauthtoken-nonfed" elementType="Argument">
             <stringProp name="Argument.name">xauthtoken-nonfed</stringProp>
-            <stringProp name="Argument.value">acd309aa-e775-4271-a3ae-d3b109060e69</stringProp>
+            <stringProp name="Argument.value">3cf18fb4-d177-4061-aef0-cb9d03de7f69</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="xauthtoken-fed" elementType="Argument">
             <stringProp name="Argument.name">xauthtoken-fed</stringProp>
-            <stringProp name="Argument.value">c5920ff6-4c3d-4144-b6a9-759b3ee3cd9f</stringProp>
+            <stringProp name="Argument.value">93445ff5-3c9b-4004-ac47-280b3f0465dc</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -150,9 +150,9 @@
       </CSVDataSet>
       <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Biopref Contract ID CSV Data Set Config" enabled="true">
-        <stringProp name="filename">data/biopref_contract_ids.csv</stringProp>
+        <stringProp name="filename">data/biopref_contract_data.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="variableNames">BIOPREF_CONTRACT_ID</stringProp>
+        <stringProp name="variableNames">BIOPREF_CONTRACT_ID, KEYWORD</stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
         <stringProp name="delimiter">,</stringProp>
         <boolProp name="quotedData">false</boolProp>
@@ -354,12 +354,12 @@ catch (Throwable ex) {
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">limit</stringProp>
               </elementProp>
-              <elementProp name="state" elementType="HTTPArgument">
+              <elementProp name="keywordSearch" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${STATE_CODE_CDC}</stringProp>
+                <stringProp name="Argument.value">${KEYWORD}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">state</stringProp>
+                <stringProp name="Argument.name">keywordSearch</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -461,12 +461,12 @@ catch (Throwable ex) {
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="scr-duns" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="duns" elementType="HTTPArgument">
+              <elementProp name="state" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${SCR_DUNS}</stringProp>
+                <stringProp name="Argument.value">${SCR_STATE}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">duns</stringProp>
+                <stringProp name="Argument.name">state</stringProp>
               </elementProp>
               <elementProp name="limit" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
