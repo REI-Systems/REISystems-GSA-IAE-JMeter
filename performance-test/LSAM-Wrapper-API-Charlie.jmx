@@ -40,7 +40,7 @@
           </elementProp>
           <elementProp name="RAMP_TIME" elementType="Argument">
             <stringProp name="Argument.name">RAMP_TIME</stringProp>
-            <stringProp name="Argument.value">2</stringProp>
+            <stringProp name="Argument.value">10</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="Threads" elementType="Argument">
@@ -50,7 +50,7 @@
           </elementProp>
           <elementProp name="Duration" elementType="Argument">
             <stringProp name="Argument.name">Duration</stringProp>
-            <stringProp name="Argument.value">300</stringProp>
+            <stringProp name="Argument.value">1800</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="minc_url" elementType="Argument">
@@ -60,7 +60,7 @@
           </elementProp>
           <elementProp name="xauthtoken-nonfed" elementType="Argument">
             <stringProp name="Argument.name">xauthtoken-nonfed</stringProp>
-            <stringProp name="Argument.value">37200d7c-262a-4e88-bacc-b05b3ae15137</stringProp>
+            <stringProp name="Argument.value">d98e579f-7717-4467-ae0d-cda1a1ea1f5b</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="xauthtoken-fed" elementType="Argument">
@@ -6551,7 +6551,7 @@ M9l&#x11;�&#xc;L��Wm��$���&#x14;�&amp;�gv�`Oih��&#xe;2
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">${Threads}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <longProp name="ThreadGroup.start_time">1591207426000</longProp>
         <longProp name="ThreadGroup.end_time">1591207426000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -6562,32 +6562,19 @@ M9l&#x11;�&#xc;L��Wm��$���&#x14;�&amp;�gv�`Oih��&#xe;2
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <doubleProp>
             <name>throughput</name>
-            <value>100.0</value>
+            <value>20.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
-          <stringProp name="TestPlan.comments">Samplers: 1
+          <stringProp name="TestPlan.comments">1.0X Load Test
+Expected Response time is &lt;100ms
 
-!!! Update table below to include other search indices when enabled
-Opportunity 1X load expects = 885 requests/second. Update table below to include other display service when enabled
-WDOL 1X load expects = 1 requests/second.
-FAL 1X load expects = 1 requests/second. 
-FH 1X load expects = 1 requests/second. 
-Awards 1X load expects = ??? requests/second. 
-Exclusion 1X load expects = ??? requests/second. 
-Entity 1X load expects = ??? requests/second. 
 
-OLD ---------
+
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
-Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
-1/15th	18	45	90	135	180	225	270	315	360
-
-NEW ---------
-	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-Per second					885				1770
-Per Minute 					53100				106200
-1/15th	12				3540				7080</stringProp>
+Per second					5				10
+Per Minute 					300				600
+1/15th					20				40</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="false">
@@ -6647,7 +6634,7 @@ catch (Throwable ex) {
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Federal Module" enabled="true">
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Federal Module" enabled="false">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="764597751">Test Plan</stringProp>
@@ -6701,7 +6688,7 @@ catch (Throwable ex) {
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="bio-pref-products" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="bio-pref-products" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="contractId" elementType="HTTPArgument">
@@ -6728,7 +6715,7 @@ catch (Throwable ex) {
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="compliance-count" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="compliance-count" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -6747,7 +6734,7 @@ catch (Throwable ex) {
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="entity-info" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="entity-info" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="duns" elementType="HTTPArgument">
@@ -6781,7 +6768,7 @@ catch (Throwable ex) {
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="scr-duns" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="scr-duns" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="state" elementType="HTTPArgument">
@@ -6815,7 +6802,7 @@ catch (Throwable ex) {
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="scr-sub-contractors" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="scr-sub-contractors" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="contractId" elementType="HTTPArgument">
