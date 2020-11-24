@@ -53,11 +53,6 @@
             <stringProp name="Argument.value">300</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="minc_url" elementType="Argument">
-            <stringProp name="Argument.name">minc_url</stringProp>
-            <stringProp name="Argument.value">100samfrontendaltlogin.apps.prod-iae.bsp.gsa.gov</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="xauthtoken-nonfed" elementType="Argument">
             <stringProp name="Argument.name">xauthtoken-nonfed</stringProp>
             <stringProp name="Argument.value">054485f3-6782-404d-b924-bbae85dbf1e9</stringProp>
@@ -245,7 +240,7 @@
       </CSVDataSet>
       <hashTree/>
       <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
@@ -6575,6 +6570,11 @@ M9l&#x11;�&#xc;L��Wm��$���&#x14;�&amp;�gv�`Oih��&#xe;2
             </DebugSampler>
             <hashTree/>
           </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+            <stringProp name="IfController.condition"></stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree/>
         </hashTree>
         <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Get Federal XAuthToken" enabled="false"/>
         <hashTree>
@@ -12904,28 +12904,15 @@ M9l&#x11;�&#xc;L��Wm��$���&#x14;�&amp;�gv�`Oih��&#xe;2
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
-          <stringProp name="TestPlan.comments">Samplers: 1
+          <stringProp name="TestPlan.comments">1.0X Load Test
+Expected Response time is &lt;100ms
 
-!!! Update table below to include other search indices when enabled
-Opportunity 1X load expects = 885 requests/second. Update table below to include other display service when enabled
-WDOL 1X load expects = 1 requests/second.
-FAL 1X load expects = 1 requests/second. 
-FH 1X load expects = 1 requests/second. 
-Awards 1X load expects = ??? requests/second. 
-Exclusion 1X load expects = ??? requests/second. 
-Entity 1X load expects = ??? requests/second. 
 
-OLD ---------
+
 	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
-Per Minute 	270	675	1350	2025	2700	3375	4050	4725	5400
-1/15th	18	45	90	135	180	225	270	315	360
-
-NEW ---------
-	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
-Per second					885				1770
-Per Minute 					53100				106200
-1/15th	12				3540				7080</stringProp>
+Per second					5				10
+Per Minute 					300				600
+1/15th					20				40</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="false">
@@ -13480,7 +13467,7 @@ catch (Throwable ex) {
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
