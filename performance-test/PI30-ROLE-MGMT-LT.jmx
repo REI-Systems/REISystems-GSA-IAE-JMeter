@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 30.00 Load Test" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Beta SAM Release 20.02 Load Test" enabled="true">
       <stringProp name="TestPlan.comments">JMeter tips &amp; techniques used in this test plan.
 
 **************** (Run against Login with 20.2 Code) ****************
 
-* All samplers are in test fragments to be re-usable. Test fragments describe what variables should be set (passed in) from their caller. 
+* All samplers are in test fragments to be re-usable. Test fragments describe what variables should be set (passed in) from their caller.
 * CSV data files are used in thread groups to get data that should be passed to the fragments (search terms, object IDs)
 * Some test fragments call other fragments (some searches trigger a featured search for example)
-* User defined variables and request defaults are heavily used to make the test easily repointable at other environment/url schemes. 
+* User defined variables and request defaults are heavily used to make the test easily repointable at other environment/url schemes.
 * Throughput controllers are used to distribute percentages of users in a thread group to different tests.
 * Constant throughput timers are used to achieve target workloads, and the test has been calibrated from 1-5x workloads. Details on constant throughput timer settings are embedded in the threadgroup comments.
-* Many fragments use JSON Extractor and Regex Extractor post processers to parse values from API responses to use in future API calls. 
-* The Dummy Sampler, a JMeter plugin, is used to test these extractors. 
+* Many fragments use JSON Extractor and Regex Extractor post processers to parse values from API responses to use in future API calls.
+* The Dummy Sampler, a JMeter plugin, is used to test these extractors.
 * Double check the connect and response timeouts in HTTP Request Defaults (they&apos;re set very low to calibrate the test)</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
@@ -124,6 +124,45 @@
         <boolProp name="useExpires">true</boolProp>
       </CacheManager>
       <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Alerts" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">150</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1800</stringProp>
+        <longProp name="ThreadGroup.start_time">1523500380000</longProp>
+        <longProp name="ThreadGroup.end_time">1523502000000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">1800</stringProp>
+        <stringProp name="ThreadGroup.delay">11100</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="TestPlan.comments">Samplers: 3
+
+	0.1	0.25	0.5	0.75	1	1.25	1.5	1.175	2
+Per second	9	22.5	45	67.5	90	112.5	135	157.5	180
+Per Minute         540	1350	2700	4050	5400	6750	8100	9450	10800
+1/15th	36	90	180	270	360	450	540	630	720</stringProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>360.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <intProp name="calcMode">2</intProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Alerts" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="-4311623">Alerts Fragment</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
+      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Front End Load" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -317,7 +356,7 @@ vars.put(&quot;RANDOM_DATE_YEAR&quot;, generateRandomYear());</stringProp>
         </JSR223PreProcessor>
         <hashTree/>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="TestPlan.comments">Samplers: 
+          <stringProp name="TestPlan.comments">Samplers:
   All Indexes 7
   FAL 7
   Opportunities 7
@@ -546,11 +585,11 @@ Per minute 	144	360	720	1080	1440	1800	2160	2520	2880
 
 Opportunity 1X load expects = 250 requests/second. Update table below to include other display service when enabled
 WDOL 1X load expects = 2 requests/second.
-FAL 1X load expects = 20 requests/second. 
-FH 1X load expects = 2 requests/second. 
-Awards 1X load expects = ??? requests/second. 
-Exclusion 1X load expects = ??? requests/second. 
-Entity 1X load expects = 20 requests/second. 
+FAL 1X load expects = 20 requests/second.
+FH 1X load expects = 2 requests/second.
+Awards 1X load expects = ??? requests/second.
+Exclusion 1X load expects = ??? requests/second.
+Entity 1X load expects = 20 requests/second.
 
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
 Per second	25	62	125	187	250	312	375	437	500
@@ -3829,7 +3868,7 @@ for (String user : users) {
         </BeanShellSampler>
         <hashTree/>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="TestPlan.comments">Samplers: 
+          <stringProp name="TestPlan.comments">Samplers:
 Loops: 2 (2 users)
 Value in parentheses represent the actual throughput since we have a loop for 2 (users) for the same script
 
@@ -6301,7 +6340,7 @@ for (String user : users) {
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
-          <stringProp name="TestPlan.comments">Samplers: 
+          <stringProp name="TestPlan.comments">Samplers:
 Loops: 2 (2 users)
 Value in parentheses represent the actual throughput since we have a loop for 2 (users) for the same script
 
@@ -7689,7 +7728,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
             <value>80.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
-          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts 
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
 
 Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
 Per second	1		5		10		15		20
@@ -8070,7 +8109,7 @@ Per Minute	30	60	90	120
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LoginGov Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LoginGov Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -8138,7 +8177,7 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">44496c45-5dbf-4419-99a3-b8e971947a63</stringProp>
+              <stringProp name="Header.value">dfc439ba-ef50-4b84-bc05-67bb82ece056</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Content-Type</stringProp>
@@ -8155,7 +8194,7 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller" enabled="false">
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="-1227702913">WorkBench</stringProp>
             <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
@@ -8163,7 +8202,7 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V3/Session" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V3/Session" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="random" elementType="HTTPArgument">
@@ -8202,7 +8241,7 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
               </elementProp>
               <elementProp name="X-Auth-Token" elementType="Header">
                 <stringProp name="Header.name">X-Auth-Token</stringProp>
-                <stringProp name="Header.value">dfc439ba-ef50-4b84-bc05-67bb82ece056</stringProp>
+                <stringProp name="Header.value">44496c45-5dbf-4419-99a3-b8e971947a63</stringProp>
               </elementProp>
               <elementProp name="Accept-Encoding" elementType="Header">
                 <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -8224,101 +8263,6 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
           </HeaderManager>
           <hashTree/>
         </hashTree>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LoginGov Group - off" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <intProp name="LoopController.loops">-1</intProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
-        <longProp name="ThreadGroup.start_time">1549661311000</longProp>
-        <longProp name="ThreadGroup.end_time">1549661311000</longProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
-        <stringProp name="ThreadGroup.delay">0</stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-      </ThreadGroup>
-      <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <intProp name="calcMode">2</intProp>
-          <doubleProp>
-            <name>throughput</name>
-            <value>400.0</value>
-            <savedValue>0.0</savedValue>
-          </doubleProp>
-          <stringProp name="TestPlan.comments">Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
-Per second	10	6	12	18	100	30	36	42	200
-Per minute 	600	360	720	1080	6000	1800	2160	2520	12000
-1/15th		24	48	72	400	120	144	168	800</stringProp>
-        </ConstantThroughputTimer>
-        <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>true</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
-        <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-          <collectionProp name="HeaderManager.headers">
-            <elementProp name="" elementType="Header">
-              <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">dfc439ba-ef50-4b84-bc05-67bb82ece056</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="Header">
-              <stringProp name="Header.name">Content-Type</stringProp>
-              <stringProp name="Header.value">application/json</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="Header">
-              <stringProp name="Header.name">X-Api-Key</stringProp>
-              <stringProp name="Header.value">5QYnc07txGAFnZR66ltU4F0uJhOiyW9uY6yZi5Ui</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="Header">
-              <stringProp name="Header.name">iPlanetDirectoryPro</stringProp>
-              <stringProp name="Header.value">08b6d57e-5b03-4765-b20b-a7d341f735cd</stringProp>
-            </elementProp>
-          </collectionProp>
-        </HeaderManager>
-        <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller" enabled="true">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="-1227702913">WorkBench</stringProp>
-            <stringProp name="1315900339">Beta SAM Release 30.00 Load Test</stringProp>
-            <stringProp name="2106393515">LoginGov Fragment</stringProp>
-          </collectionProp>
-        </ModuleController>
-        <hashTree/>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Search Suggestion Fragment" enabled="true">
         <stringProp name="TestPlan.comments">Requires this configuration supplied by caller
@@ -10077,14 +10021,14 @@ return fragments[Math.floor(Math.random() * fragments.length)];
 }
 
 function generateRandomPsc() {
-    var fragments = [&quot;A&quot;,&quot;19&quot;,&quot;37&quot;,&quot;29&quot;,&quot;31&quot;,&quot;74&quot;,&quot;25&quot;,&quot;83&quot;,&quot;87&quot;,&quot;88&quot;,&quot;30&quot;,&quot;94&quot;,&quot;55&quot;,&quot;96&quot;,&quot;17&quot;,&quot;40&quot;];   
+    var fragments = [&quot;A&quot;,&quot;19&quot;,&quot;37&quot;,&quot;29&quot;,&quot;31&quot;,&quot;74&quot;,&quot;25&quot;,&quot;83&quot;,&quot;87&quot;,&quot;88&quot;,&quot;30&quot;,&quot;94&quot;,&quot;55&quot;,&quot;96&quot;,&quot;17&quot;,&quot;40&quot;];
 
 return fragments[Math.floor(Math.random() * fragments.length)];
 }
 
 
 function generateRandomSetAside() {
-    var fragments = [&quot;1000003&quot;,&quot;1000004&quot;,&quot;1000011&quot;,&quot;1000012&quot;,&quot;1000005&quot;,&quot;1000006&quot;,&quot;1000013&quot;,&quot;1000002&quot;,&quot;1000007&quot;,&quot;1000001&quot;,&quot;1000009&quot;];   
+    var fragments = [&quot;1000003&quot;,&quot;1000004&quot;,&quot;1000011&quot;,&quot;1000012&quot;,&quot;1000005&quot;,&quot;1000006&quot;,&quot;1000013&quot;,&quot;1000002&quot;,&quot;1000007&quot;,&quot;1000001&quot;,&quot;1000009&quot;];
 
 return fragments[Math.floor(Math.random() * fragments.length)];
 }
@@ -11988,36 +11932,36 @@ return fragments[Math.floor(Math.random() * fragments.length)];
 function generateRandomAKCounty() {
 	var fragments = [&quot;17606&quot;,&quot;20000&quot;,&quot;17990&quot;,&quot;17980&quot;,&quot;17981&quot;];
 
-return fragments[Math.floor(Math.random() * fragments.length)];	
+return fragments[Math.floor(Math.random() * fragments.length)];
 }
 
 function generateRandomCACounty() {
 	var fragments = [&quot;16325&quot;,&quot;16329&quot;,&quot;16330&quot;,&quot;16331&quot;,&quot;16332&quot;];
 
-return fragments[Math.floor(Math.random() * fragments.length)];	
+return fragments[Math.floor(Math.random() * fragments.length)];
 }
 
 function generateRandomVACounty() {
 	var fragments = [&quot;16445&quot;,&quot;16462&quot;,&quot;16880&quot;,&quot;16464&quot;,&quot;16468&quot;];
 
-return fragments[Math.floor(Math.random() * fragments.length)];	
+return fragments[Math.floor(Math.random() * fragments.length)];
 }
 
 function generateRandomMDCounty() {
 	var fragments = [&quot;15409&quot;,&quot;17668&quot;,&quot;15404&quot;,&quot;16456&quot;,&quot;15406&quot;];
 
-return fragments[Math.floor(Math.random() * fragments.length)];	
+return fragments[Math.floor(Math.random() * fragments.length)];
 }
 
 function generateRandomService() {
-    var fragments = [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;10&quot;,&quot;11&quot;];   
+    var fragments = [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;10&quot;,&quot;11&quot;];
 
 return fragments[Math.floor(Math.random() * fragments.length)];
 }
 
 
 function generateRandomConstructionType() {
-    var fragments = [&quot;Building&quot;,&quot;Heavy&quot;,&quot;Highway&quot;,&quot;Residential&quot;];   
+    var fragments = [&quot;Building&quot;,&quot;Heavy&quot;,&quot;Highway&quot;,&quot;Residential&quot;];
 
 return fragments[Math.floor(Math.random() * fragments.length)];
 }
@@ -13855,7 +13799,7 @@ $(OPPORTUNITY_ID) - ID used to find the object</stringProp>
           <hashTree>
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Opportunity Files ID Regex Extractor" enabled="true">
               <stringProp name="TestPlan.comments">Hateos response includes link like .
-       /opps/v1/opportunities/resources/files/5fdc1e213dc1b9ec2428f0639d28d561?api_key=C6op... 
+       /opps/v1/opportunities/resources/files/5fdc1e213dc1b9ec2428f0639d28d561?api_key=C6op...
 This regex extractor parses the UUID embedded in this URL for use later on to retrieve the files.</stringProp>
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">OPPORTUNITY_FILES_ID</stringProp>
@@ -13894,7 +13838,7 @@ This regex extractor parses the UUID embedded in this URL for use later on to re
           <hashTree>
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Opportunity Files ID Regex Extractor" enabled="true">
               <stringProp name="TestPlan.comments">Hateos response includes link like .
-       /opps/v1/opportunities/resources/files/5fdc1e213dc1b9ec2428f0639d28d561?api_key=C6op... 
+       /opps/v1/opportunities/resources/files/5fdc1e213dc1b9ec2428f0639d28d561?api_key=C6op...
 This regex extractor parses the UUID embedded in this URL for use later on to retrieve the files.</stringProp>
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">OPPORTUNITY_FILES_ID</stringProp>
