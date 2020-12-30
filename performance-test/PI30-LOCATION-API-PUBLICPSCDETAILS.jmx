@@ -22109,7 +22109,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Public PSC Details By Code  /api/publicpscdetails" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Public PSC Details By Code  /api/publicpscdetails" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="q" elementType="HTTPArgument">
@@ -22164,7 +22164,7 @@ $(SEARCH_TERM) - any text. Will be sent as query
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Public PSC Details By Size  /api/publicpscdetails" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Public PSC Details By Size  /api/publicpscdetails" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="size" elementType="HTTPArgument">
@@ -22195,13 +22195,20 @@ $(SEARCH_TERM) - any text. Will be sent as query
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">offset</stringProp>
               </elementProp>
+              <elementProp name="random" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${COUNTRY_CODE}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">random</stringProp>
+              </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.domain">${location_api_url}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">https://65locationserviceslogin.apps.prod-iae.bsp.gsa.gov/locationservices/v1/api/publicpscdetails?api_key=B3bgu8L3mBzb3xqvarU2V4NBlwQ1EWySvqWdxHHF</stringProp>
+          <stringProp name="HTTPSampler.path">/locationservices/v1/api/publicpscdetails?api_key=B3bgu8L3mBzb3xqvarU2V4NBlwQ1EWySvqWdxHHF</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
