@@ -76,7 +76,7 @@
           </elementProp>
           <elementProp name="SESSION_TOKEN" elementType="Argument">
             <stringProp name="Argument.name">SESSION_TOKEN</stringProp>
-            <stringProp name="Argument.value">5141a62b-0c33-48a8-9ecd-c626dadaf987</stringProp>
+            <stringProp name="Argument.value">259c5ca6-23c5-4356-b416-a5a3abed7eb3</stringProp>
             <stringProp name="Argument.desc">User Logged in Session Token</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -173,7 +173,7 @@
           <stringProp name="shareMode">shareMode.all</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Public Search GET v1/search/id" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Public Search GET v1/search/id" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="random" elementType="HTTPArgument">
@@ -235,7 +235,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Public Search GET v1/search/" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Public Search GET v1/search/" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="random" elementType="HTTPArgument">
@@ -272,6 +272,13 @@
                 <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="q" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.value">${search_name}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">q</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
