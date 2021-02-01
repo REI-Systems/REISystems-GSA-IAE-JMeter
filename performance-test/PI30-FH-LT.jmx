@@ -134,7 +134,7 @@
           </elementProp>
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">X-Auth-Token</stringProp>
-            <stringProp name="Header.value">9484944b-bfd3-404f-adc2-11e16e370aa5</stringProp>
+            <stringProp name="Header.value">c35fb1d3-b4da-4c5b-a696-c827d6a2e81c</stringProp>
           </elementProp>
         </collectionProp>
       </HeaderManager>
@@ -15329,8 +15329,8 @@ Per Minute			15		30		45		60
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">15</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
@@ -15416,7 +15416,7 @@ Note : Current load on the endpoint is 300 reqs/sec(federalorganizations/v1/org)
           <stringProp name="shareMode">shareMode.group</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FH-Other-Calls - 10%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="FH-Other-Calls - 100%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -27809,7 +27809,7 @@ ${SEARCH_TERM} - used in FH org picker search query
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Hierarchy Look-Up " enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Hierarchy Look-Up " enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -28045,6 +28045,54 @@ ${SEARCH_TERM} - used in FH org picker search query
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${API_PATH}/federalorganizations/v1/organizations/hierarchykeys/${FH_ORG_ID}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="v1 orgs " enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="mode" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">slim</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">mode</stringProp>
+              </elementProp>
+              <elementProp name="orgKey" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${FH_ORG_ID}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">orgKey</stringProp>
+              </elementProp>
+              <elementProp name="status" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">active</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">status</stringProp>
+              </elementProp>
+              <elementProp name="api_key" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${API_KEY}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">api_key</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">57federalhierarchyapilogin.apps.prod-iae.bsp.gsa.gov</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v1/orgs</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
