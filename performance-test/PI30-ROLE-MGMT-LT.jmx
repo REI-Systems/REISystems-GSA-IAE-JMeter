@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="X-Auth-Token" elementType="Argument">
             <stringProp name="Argument.name">X-Auth-Token</stringProp>
-            <stringProp name="Argument.value">a5b686fa-53de-4491-bc4c-b6cc2d842bb0</stringProp>
+            <stringProp name="Argument.value">ba456d8e-04fc-43ad-b2ca-3462876d616f</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="role-management-container-url" elementType="Argument">
@@ -8167,7 +8167,7 @@ Per Minute	30	60	90	120
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>4.0</value>
+            <value>21.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
@@ -8400,7 +8400,7 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
           </FloatProperty>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM v1 userprofile widget" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM v1 userprofile widget" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="random" elementType="HTTPArgument">
@@ -8563,7 +8563,7 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
             <hashTree/>
           </hashTree>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM v1 userdomainterms" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM v1 userdomainterms" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="random" elementType="HTTPArgument">
@@ -8600,6 +8600,40 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">api/login/rms/v1/userdomainterms/user/4d04abef-1bc7-469e-927c-ad440cf4295c/</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM v1 userprofile widget" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="widgetId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">2</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">widgetId</stringProp>
+              </elementProp>
+              <elementProp name="random" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">random</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${FRONTEND_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/login/rms/v1/userprofile/widget</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
