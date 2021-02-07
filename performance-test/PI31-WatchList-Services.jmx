@@ -5028,7 +5028,7 @@ Per minute					300
 1/15th					20	</stringProp>
           <doubleProp>
             <name>throughput</name>
-            <value>21.0</value>
+            <value>20.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">0</intProp>
@@ -5070,7 +5070,41 @@ Per minute					300
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="WatchList recorddetails 100%" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="WatchList Requests follow" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;domainId&quot;: &quot;8&quot;,&#xd;
+    &quot;type&quot;: &quot;FH&quot;,&#xd;
+    &quot;recordId&quot;: &quot;${watchlist_id}&quot;,&#xd;
+    &quot;title&quot;: &quot;HEALTH AND HUMAN SERVICES, DEPARTMENT OF&quot;,&#xd;
+    &quot;active&quot;: &quot;Y&quot;,&#xd;
+    &quot;frequency&quot;: &quot;instant&quot;,&#xd;
+    &quot;uri&quot;: &quot;/organization/100004222&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/login/watchlistservice/v1/api/recorddetail</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="WatchList recorddetails 100%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -5088,7 +5122,7 @@ Per minute					300
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-    &quot;domainId&quot;: &quot;5&quot;,&#xd;
+    &quot;domainId&quot;: &quot;7&quot;,&#xd;
     &quot;type&quot;: &quot;FH&quot;,&#xd;
     &quot;recordId&quot;: &quot;${watchlist_id}&quot;,&#xd;
     &quot;title&quot;: &quot;HEALTH AND HUMAN SERVICES, DEPARTMENT OF&quot;,&#xd;
