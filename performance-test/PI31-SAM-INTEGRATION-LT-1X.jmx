@@ -185,30 +185,30 @@
           </elementProp>
           <elementProp name="xauthtoken-fed" elementType="Argument">
             <stringProp name="Argument.name">xauthtoken-fed</stringProp>
-            <stringProp name="Argument.value">bef45932-7ed7-4db0-9b7a-df3686f93cf8</stringProp>
+            <stringProp name="Argument.value">bb4ad09b-dd79-4720-a36f-6a6a3a4b45cb</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Entity Domain account token</stringProp>
           </elementProp>
           <elementProp name="X-Auth-Token" elementType="Argument">
             <stringProp name="Argument.name">X-Auth-Token</stringProp>
-            <stringProp name="Argument.value">5da34925-1bca-4e7d-bba3-773e642dead5</stringProp>
+            <stringProp name="Argument.value">faad6bb9-74f5-4319-aae3-5938c8b1b308</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="X-AUTH-TOKEN-IS-GOV" elementType="Argument">
             <stringProp name="Argument.name">X-AUTH-TOKEN-IS-GOV</stringProp>
-            <stringProp name="Argument.value">5da34925-1bca-4e7d-bba3-773e642dead5</stringProp>
+            <stringProp name="Argument.value">faad6bb9-74f5-4319-aae3-5938c8b1b308</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Same as X-Auth-Token</stringProp>
           </elementProp>
           <elementProp name="X-AUTH-TOKEN-NON-FED" elementType="Argument">
             <stringProp name="Argument.name">X-AUTH-TOKEN-NON-FED</stringProp>
-            <stringProp name="Argument.value">4a5b4e8f-98d9-4d1e-9e67-930ec41889eb</stringProp>
+            <stringProp name="Argument.value">f3754164-b49f-43af-b139-2d5766ba4ef0</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">larrytestingemail+charlie1@gmail.com (NF T2 WS)</stringProp>
           </elementProp>
           <elementProp name="X-AUTH-TOKEN-MYDOWNLOADS" elementType="Argument">
             <stringProp name="Argument.name">X-AUTH-TOKEN-MYDOWNLOADS</stringProp>
-            <stringProp name="Argument.value">5da34925-1bca-4e7d-bba3-773e642dead5</stringProp>
+            <stringProp name="Argument.value">faad6bb9-74f5-4319-aae3-5938c8b1b308</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">rinkesh.patel@gsa.gov</stringProp>
           </elementProp>
@@ -305,7 +305,7 @@
           </elementProp>
           <elementProp name="SESSION_TOKEN" elementType="Argument">
             <stringProp name="Argument.name">SESSION_TOKEN</stringProp>
-            <stringProp name="Argument.value">7a881f91-e018-4c64-8391-f6e050726797</stringProp>
+            <stringProp name="Argument.value">0cd7a5b9-e344-4b8f-8644-b6728a4937a2</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">System-account - Lava Team</stringProp>
           </elementProp>
@@ -1339,21 +1339,21 @@ Note : The current load is 150req/sec. </stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">${SESSION_TIME}</stringProp>
-        <stringProp name="ThreadGroup.delay">100</stringProp>
+        <stringProp name="ThreadGroup.duration">16000</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <intProp name="calcMode">2</intProp>
+          <intProp name="calcMode">1</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>350.0</value>
+            <value>10.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">
@@ -1362,6 +1362,10 @@ Per second	175
 Per minute 	10500 
 1/15th	700</stringProp>
         </ConstantThroughputTimer>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+          <stringProp name="ConstantTimer.delay">2000</stringProp>
+        </ConstantTimer>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -1428,13 +1432,13 @@ Per minute 	10500
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v3 session 14.28%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v3 session " enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>14.28</value>
+            <value>100.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -1448,7 +1452,7 @@ Per minute 	10500
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v4 roles 85.72%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v4 roles 85.72%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -1611,13 +1615,13 @@ Per minute 	10500
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">${SESSION_TIME}</stringProp>
-        <stringProp name="ThreadGroup.delay">110</stringProp>
+        <stringProp name="ThreadGroup.duration">16000</stringProp>
+        <stringProp name="ThreadGroup.delay">1</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
@@ -1625,7 +1629,7 @@ Per minute 	10500
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>350.0</value>
+            <value>10.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">
@@ -1634,6 +1638,10 @@ Per second	175
 Per minute 	10500 
 1/15th	700</stringProp>
         </ConstantThroughputTimer>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+          <stringProp name="ConstantTimer.delay">2000</stringProp>
+        </ConstantTimer>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -1700,13 +1708,13 @@ Per minute 	10500
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v3 session 14.28%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v3 session" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>14.28</value>
+            <value>100.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -1720,7 +1728,7 @@ Per minute 	10500
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v4 roles 85.72%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v4 roles 85.72%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -1883,13 +1891,13 @@ Per minute 	10500
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">${SESSION_TIME}</stringProp>
-        <stringProp name="ThreadGroup.delay">120</stringProp>
+        <stringProp name="ThreadGroup.duration">16000</stringProp>
+        <stringProp name="ThreadGroup.delay">10</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
@@ -1897,7 +1905,7 @@ Per minute 	10500
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>350.0</value>
+            <value>10.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">
@@ -1906,6 +1914,10 @@ Per second	175
 Per minute 	10500 
 1/15th	700</stringProp>
         </ConstantThroughputTimer>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+          <stringProp name="ConstantTimer.delay">2000</stringProp>
+        </ConstantTimer>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -1972,13 +1984,13 @@ Per minute 	10500
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v3 session 14.28%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v3 session" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>14.28</value>
+            <value>100.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -1992,7 +2004,7 @@ Per minute 	10500
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v4 roles 85.72%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v4 roles 85.72%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -2019,13 +2031,13 @@ Per minute 	10500
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">${SESSION_TIME}</stringProp>
-        <stringProp name="ThreadGroup.delay">125</stringProp>
+        <stringProp name="ThreadGroup.duration">16000</stringProp>
+        <stringProp name="ThreadGroup.delay">15</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
@@ -2033,7 +2045,7 @@ Per minute 	10500
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>350.0</value>
+            <value>10.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">
@@ -2042,6 +2054,10 @@ Per second	175
 Per minute 	10500 
 1/15th	700</stringProp>
         </ConstantThroughputTimer>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+          <stringProp name="ConstantTimer.delay">2000</stringProp>
+        </ConstantTimer>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -2108,13 +2124,13 @@ Per minute 	10500
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v3 session 14.28%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v3 session" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>14.28</value>
+            <value>100.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -2128,7 +2144,7 @@ Per minute 	10500
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v4 roles 85.72%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Login v4 roles 85.72%" enabled="false">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -15135,6 +15151,7 @@ And Header manager, cookie manager, and http cache manager per your use case
                   <stringProp name="Argument.name">random</stringProp>
                   <stringProp name="Argument.value">1602018004284</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
