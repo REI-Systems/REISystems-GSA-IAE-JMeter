@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="X-Auth-Token" elementType="Argument">
             <stringProp name="Argument.name">X-Auth-Token</stringProp>
-            <stringProp name="Argument.value">ba456d8e-04fc-43ad-b2ca-3462876d616f</stringProp>
+            <stringProp name="Argument.value">c6ab3135-44ce-40ab-bc94-033d23e99fd4</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="role-management-container-url" elementType="Argument">
@@ -79,7 +79,7 @@
           </elementProp>
           <elementProp name="X-AUTH-TOKEN-NON-FED" elementType="Argument">
             <stringProp name="Argument.name">X-AUTH-TOKEN-NON-FED</stringProp>
-            <stringProp name="Argument.value">5e853972-f6a8-4339-a4c5-2f000d58ee31</stringProp>
+            <stringProp name="Argument.value">ae7348eb-6200-4d33-9f0a-64138bb89711</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -8148,7 +8148,7 @@ Per Minute	30	60	90	120
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS  Group" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS  Group" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -8645,13 +8645,13 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS  entity Group (Please have only 1 user)" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS  entity Group " enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1549661311000</longProp>
         <longProp name="ThreadGroup.end_time">1549661311000</longProp>
@@ -8660,6 +8660,28 @@ Per minute 	600	360	 720	1080	6000	1800	2160	2520	12000
         <stringProp name="ThreadGroup.delay">0</stringProp>
       </ThreadGroup>
       <hashTree>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Random record id generator" enabled="true">
+          <stringProp name="scriptLanguage">javascript</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey"></stringProp>
+          <stringProp name="script">
+function random(length){
+	 // Declare all characters
+    var chars = &apos;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&apos;;
+
+    // Pick characers randomly
+    var str = &apos;&apos;;
+    for (var i = 0; i &lt; length; i++) {
+        str += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    return str;
+
+}
+vars.put(&quot;RMS_ENTITY_ID&quot;, random(4));</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
@@ -9007,7 +9029,7 @@ Per minute 	600
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;entityID&quot;: &quot;007009817&quot;,&#xd;
+  &quot;entityID&quot;: &quot;${RMS_ENTITY_ID}&quot;,&#xd;
   &quot;cageCode&quot;: &quot;string&quot;,&#xd;
   &quot;legalBusinessName&quot;: &quot;string&quot;,&#xd;
   &quot;draftRegistrationUserEmail&quot;: &quot;string&quot;,&#xd;
@@ -9033,15 +9055,6 @@ Per minute 	600
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
-            <stringProp name="RegexExtractor.useHeaders">code</stringProp>
-            <stringProp name="RegexExtractor.refname">nonfed_status_code</stringProp>
-            <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
-            <stringProp name="RegexExtractor.template">$1$</stringProp>
-            <stringProp name="RegexExtractor.default">300</stringProp>
-            <stringProp name="RegexExtractor.match_number"></stringProp>
-          </RegexExtractor>
-          <hashTree/>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
