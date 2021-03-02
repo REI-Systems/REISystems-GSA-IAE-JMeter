@@ -2225,6 +2225,1772 @@ Per Minute 	3000	4500	6000
         </ModuleController>
         <hashTree/>
       </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MFE Front End" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1614376906000</longProp>
+        <longProp name="ThreadGroup.end_time">1614376906000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">0</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>100.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Entitty MFE 20%" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>100.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+            <boolProp name="clearEachIteration">true</boolProp>
+            <boolProp name="useExpires">false</boolProp>
+          </CacheManager>
+          <hashTree/>
+          <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller- MFE" enabled="true"/>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="298 /workspace/em/entities/federal" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/entities/federal</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                  </elementProp>
+                  <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                    <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="299 /Universal-Federated-Analytics-Min.js" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="agency" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">agency</stringProp>
+                    <stringProp name="Argument.value">GSA</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">dap.digitalgov.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/Universal-Federated-Analytics-Min.js</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="300 /workspace/em/runtime.js" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/runtime.js</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="301 /workspace/em/polyfills.js" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/polyfills.js</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="303 /workspace/em/styles.css" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/styles.css</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">text/css,*/*;q=0.1</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="302 /workspace/em/main.js" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/main.js</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="304 /api/login/iam/rms/v3/session" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="random" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">random</stringProp>
+                    <stringProp name="Argument.value">1613064880309</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="api_key" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">api_key</stringProp>
+                    <stringProp name="Argument.value">null</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/api/login/iam/rms/v3/session</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Auth-Token" elementType="Header">
+                    <stringProp name="Header.name">X-Auth-Token</stringProp>
+                    <stringProp name="Header.value">bdb3d23a-e6b3-405f-8faa-b164e3477d2d</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="305 /api/login/feeds/v1/requests" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="random" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">random</stringProp>
+                    <stringProp name="Argument.value">1613064880339</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="api_key" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">api_key</stringProp>
+                    <stringProp name="Argument.value">null</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="feedTypeId" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">feedTypeId</stringProp>
+                    <stringProp name="Argument.value">2</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="limit" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">limit</stringProp>
+                    <stringProp name="Argument.value">1</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="statIds" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">statIds</stringProp>
+                    <stringProp name="Argument.value">1</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/api/login/feeds/v1/requests</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Auth-Token" elementType="Header">
+                    <stringProp name="Header.name">X-Auth-Token</stringProp>
+                    <stringProp name="Header.value">bdb3d23a-e6b3-405f-8faa-b164e3477d2d</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="308 /workspace/em/assets/img/logo-gsa.svg" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/assets/img/logo-gsa.svg</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">image/webp,*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="306 /api/login/alert/v2/alerts" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="api_key" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">api_key</stringProp>
+                    <stringProp name="Argument.value">null</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="random" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">random</stringProp>
+                    <stringProp name="Argument.value">1613064880352</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="limit" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">limit</stringProp>
+                    <stringProp name="Argument.value">2</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="offset" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">offset</stringProp>
+                    <stringProp name="Argument.value">0</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/api/login/alert/v2/alerts</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Auth-Token" elementType="Header">
+                    <stringProp name="Header.name">X-Auth-Token</stringProp>
+                    <stringProp name="Header.value">bdb3d23a-e6b3-405f-8faa-b164e3477d2d</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="309 /workspace/em/2.js" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/2.js</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="312 /workspace/em/us_flag_small.png" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/us_flag_small.png</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/styles.css</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">image/webp,*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="314 /workspace/em/external-link.svg" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/external-link.svg</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/styles.css</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">image/webp,*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="307 /workspace/em/assets/img/sam-logo.png" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/assets/img/sam-logo.png</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">image/webp,*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="311 /workspace/em/10.js" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/10.js</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="313 /workspace/em/angle-arrow-down-primary.svg" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/angle-arrow-down-primary.svg</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/styles.css</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">image/webp,*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="315 /analytics.js" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">www.google-analytics.com</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/analytics.js</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="310 /workspace/em/common.js" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/common.js</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="316 /j/collect?v=1&amp;_v=j87&amp;aip=1&amp;a=794563781&amp;t=pageview&amp;_s=1&amp;dl=https%3A%2F%2F55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov%2Fworkspace%2Fem%2Fentities%2Ffederal&amp;dr=&amp;dp=%2Fworkspace%2Fem%2Fentities%2Ffederal&amp;ul=en-us&amp;de=UTF-8&amp;dt=SAM.gov&amp;sd=24-bit&amp;sr=1503x720&amp;vp=1486x334&amp;je=0&amp;_u=QACAAQABAAAAAC~&amp;jid=1976149030&amp;gjid=1748949871&amp;cid=934177895.1612457235&amp;tid=UA-33523145-1&amp;_gid=860784790.1612984123&amp;_r=1&amp;cd1=GSA&amp;cd2=GSA%20-%2055samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov&amp;cd3=20181010%20v4.1%20-%20Universal%20Analytics&amp;cd4=unspecified%3A55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov&amp;cd5=unspecified%3A55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov&amp;cd6=https%3A%2F%2Fdap.digitalgov.gov%2FUniversal-Federated-Analytics-Min.js&amp;cd7=https%3A&amp;z=1520372710" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">www.google-analytics.com</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/j/collect?v=1&amp;_v=j87&amp;aip=1&amp;a=794563781&amp;t=pageview&amp;_s=1&amp;dl=https%3A%2F%2F55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov%2Fworkspace%2Fem%2Fentities%2Ffederal&amp;dr=&amp;dp=%2Fworkspace%2Fem%2Fentities%2Ffederal&amp;ul=en-us&amp;de=UTF-8&amp;dt=SAM.gov&amp;sd=24-bit&amp;sr=1503x720&amp;vp=1486x334&amp;je=0&amp;_u=QACAAQABAAAAAC~&amp;jid=1976149030&amp;gjid=1748949871&amp;cid=934177895.1612457235&amp;tid=UA-33523145-1&amp;_gid=860784790.1612984123&amp;_r=1&amp;cd1=GSA&amp;cd2=GSA%20-%2055samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov&amp;cd3=20181010%20v4.1%20-%20Universal%20Analytics&amp;cd4=unspecified%3A55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov&amp;cd5=unspecified%3A55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov&amp;cd6=https%3A%2F%2Fdap.digitalgov.gov%2FUniversal-Federated-Analytics-Min.js&amp;cd7=https%3A&amp;z=1520372710</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">text/plain</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="317 /api/login/iam/rms/v3/session" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="api_key" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">api_key</stringProp>
+                    <stringProp name="Argument.value">null</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/api/login/iam/rms/v3/session</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Auth-Token" elementType="Header">
+                    <stringProp name="Header.name">X-Auth-Token</stringProp>
+                    <stringProp name="Header.value">bdb3d23a-e6b3-405f-8faa-b164e3477d2d</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="318 /1/NRJS-5e87c0af8c9a813f03b" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="a" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">a</stringProp>
+                    <stringProp name="Argument.value">270637501</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sa" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sa</stringProp>
+                    <stringProp name="Argument.value">1</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="v" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">v</stringProp>
+                    <stringProp name="Argument.value">1153.61ee9ba</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="t" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">t</stringProp>
+                    <stringProp name="Argument.value">Unnamed%20Transaction</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="rst" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">rst</stringProp>
+                    <stringProp name="Argument.value">4398</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ref" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ref</stringProp>
+                    <stringProp name="Argument.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="be" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">be</stringProp>
+                    <stringProp name="Argument.value">355</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="fe" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">fe</stringProp>
+                    <stringProp name="Argument.value">4238</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="dc" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">dc</stringProp>
+                    <stringProp name="Argument.value">2757</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="af" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">af</stringProp>
+                    <stringProp name="Argument.value">err,xhr,stn,ins,spa</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="perf" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">perf</stringProp>
+                    <stringProp name="Argument.value">%7B%22timing%22:%7B%22of%22:1613064878138,%22n%22:0,%22u%22:327,%22ue%22:330,%22f%22:0,%22dn%22:49,%22dne%22:50,%22c%22:50,%22s%22:0,%22ce%22:50,%22rq%22:51,%22rp%22:53,%22rpe%22:316,%22dl%22:327,%22di%22:407,%22ds%22:2753,%22de%22:2768,%22dc%22:4236,%22l%22:4236,%22le%22:4240%7D,%22navigation%22:%7B%22ty%22:1%7D%7D</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="jsonp" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">jsonp</stringProp>
+                    <stringProp name="Argument.value">NREUM.setToken</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">bam.nr-data.net</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/1/NRJS-5e87c0af8c9a813f03b</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="320 /resources/1/NRJS-5e87c0af8c9a813f03b?a=270637501&amp;sa=1&amp;v=1153.61ee9ba&amp;t=Unnamed%20Transaction&amp;rst=4850&amp;ref=https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal&amp;st=1613064878138" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;res&quot;:[{&quot;n&quot;:&quot;navigationStart&quot;,&quot;s&quot;:0,&quot;e&quot;:0,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;unloadEventStart&quot;,&quot;s&quot;:327,&quot;e&quot;:327,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;unloadEventEnd&quot;,&quot;s&quot;:330,&quot;e&quot;:330,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;fetchStart&quot;,&quot;s&quot;:0,&quot;e&quot;:0,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;domainLookupStart&quot;,&quot;s&quot;:49,&quot;e&quot;:49,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;domainLookupEnd&quot;,&quot;s&quot;:50,&quot;e&quot;:50,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;connectStart&quot;,&quot;s&quot;:50,&quot;e&quot;:50,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;connectEnd&quot;,&quot;s&quot;:50,&quot;e&quot;:50,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;secureConnectionStart&quot;,&quot;s&quot;:0,&quot;e&quot;:0,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;requestStart&quot;,&quot;s&quot;:51,&quot;e&quot;:51,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;responseStart&quot;,&quot;s&quot;:53,&quot;e&quot;:53,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;responseEnd&quot;,&quot;s&quot;:316,&quot;e&quot;:316,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;domLoading&quot;,&quot;s&quot;:327,&quot;e&quot;:327,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;domInteractive&quot;,&quot;s&quot;:407,&quot;e&quot;:407,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;domContentLoadedEventStart&quot;,&quot;s&quot;:2753,&quot;e&quot;:2753,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;domContentLoadedEventEnd&quot;,&quot;s&quot;:2768,&quot;e&quot;:2768,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;domComplete&quot;,&quot;s&quot;:4236,&quot;e&quot;:4236,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;loadEventStart&quot;,&quot;s&quot;:4236,&quot;e&quot;:4236,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;loadEventEnd&quot;,&quot;s&quot;:4240,&quot;e&quot;:4240,&quot;o&quot;:&quot;document&quot;,&quot;t&quot;:&quot;timing&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:342,&quot;e&quot;:564,&quot;o&quot;:&quot;https://dap.digitalgov.gov:443/Universal-Federated-Analytics-Min.js&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:344,&quot;e&quot;:658,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/runtime.js&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:344,&quot;e&quot;:748,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/polyfills.js&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:345,&quot;e&quot;:1748,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/main.js&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:579,&quot;e&quot;:3983,&quot;o&quot;:&quot;https://www.google-analytics.com:443/analytics.js&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:2584,&quot;e&quot;:3049,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/2.js&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:2587,&quot;e&quot;:3999,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/common.js&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:2608,&quot;e&quot;:3625,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/10.js&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:4238,&quot;e&quot;:4389,&quot;o&quot;:&quot;https://js-agent.newrelic.com:443/nr-spa-1153.min.js&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:4399,&quot;e&quot;:4805,&quot;o&quot;:&quot;https://bam.nr-data.net:443/1/NRJS-5e87c0af8c9a813f03b&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;link&quot;,&quot;s&quot;:342,&quot;e&quot;:1144,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/styles.css&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;other&quot;,&quot;s&quot;:408,&quot;e&quot;:3780,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/favicon.ico&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;other&quot;,&quot;s&quot;:2363,&quot;e&quot;:3575,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/assets/img/sam-logo.png&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;other&quot;,&quot;s&quot;:2489,&quot;e&quot;:2693,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/assets/img/logo-gsa.svg&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;other&quot;,&quot;s&quot;:2640,&quot;e&quot;:3652,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/angle-arrow-down-primary.svg&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;other&quot;,&quot;s&quot;:2646,&quot;e&quot;:3435,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/external-link.svg&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:2174,&quot;e&quot;:2656,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:2200,&quot;e&quot;:2685,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:2213,&quot;e&quot;:2967,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:4016,&quot;e&quot;:4281,&quot;o&quot;:&quot;https://www.google-analytics.com:443/j/collect&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:4206,&quot;e&quot;:4802,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;img&quot;,&quot;s&quot;:2639,&quot;e&quot;:3208,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/us_flag_small.png&quot;,&quot;t&quot;:&quot;resource&quot;}]}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">bam.nr-data.net</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/resources/1/NRJS-5e87c0af8c9a813f03b?a=270637501&amp;sa=1&amp;v=1153.61ee9ba&amp;t=Unnamed%20Transaction&amp;rst=4850&amp;ref=https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal&amp;st=1613064878138</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+                  </elementProp>
+                  <elementProp name="content-type" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">text/plain</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="319 /sam-wrapper-api/fed-entities" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="page" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">page</stringProp>
+                    <stringProp name="Argument.value">1</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="limit" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">limit</stringProp>
+                    <stringProp name="Argument.value">25</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sortBy" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sortBy</stringProp>
+                    <stringProp name="Argument.value">legalBusinessName</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sortOrder" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sortOrder</stringProp>
+                    <stringProp name="Argument.value">asc</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sam-wrapper-api/fed-entities</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Auth-Token" elementType="Header">
+                    <stringProp name="Header.name">X-Auth-Token</stringProp>
+                    <stringProp name="Header.value">bdb3d23a-e6b3-405f-8faa-b164e3477d2d</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="321 /api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="api_key" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">api_key</stringProp>
+                    <stringProp name="Argument.value">null</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="fetchWidget" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">fetchWidget</stringProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Auth-Token" elementType="Header">
+                    <stringProp name="Header.name">X-Auth-Token</stringProp>
+                    <stringProp name="Header.value">bdb3d23a-e6b3-405f-8faa-b164e3477d2d</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="322 /api/login/user-flag-service/v2/get-user-flags" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="api_key" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">api_key</stringProp>
+                    <stringProp name="Argument.value">null</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/api/login/user-flag-service/v2/get-user-flags</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Auth-Token" elementType="Header">
+                    <stringProp name="Header.name">X-Auth-Token</stringProp>
+                    <stringProp name="Header.value">bdb3d23a-e6b3-405f-8faa-b164e3477d2d</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="323 /workspace/em/search.svg" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/search.svg</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/styles.css</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">image/webp,*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="324 /workspace/em/arrow-down.svg" enabled="false">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/workspace/em/arrow-down.svg</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/styles.css</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">max-age=0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">image/webp,*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="325 /events/1/NRJS-5e87c0af8c9a813f03b?a=270637501&amp;sa=1&amp;v=1153.61ee9ba&amp;t=Unnamed%20Transaction&amp;rst=11940&amp;ref=https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">bel.7;1,5,,949,7mp,lx,&apos;initialPageLoad,&apos;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal,1,1,,,!!!!&apos;0db5370b-0411-4319-8449-e279ed7c49bf,&apos;1,!!;2,,1oe,wh,i,w,&apos;GET,5k,&apos;55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443,&apos;/api/login/iam/rms/v3/session,,cp,,&apos;3,!!!;2,,1p4,wm,g,1h,4,5k,5,&apos;/api/login/feeds/v1/requests,,9g,,&apos;4,!!!;2,,1ph,x7,19,1m,4,5k,5,&apos;/api/login/alert/v2/alerts,,o2,,&apos;5,!!!;2,,33k,8f,1,8,&apos;POST,5k,&apos;www.google-analytics.com:443,&apos;/j/collect,,1,,&apos;6,!!!;2,1,38u,h0,p,v,4,5k,5,6,,cp,,&apos;7,!!!;2,1,3q5,3fq,2q,3m,4,5k,5,&apos;/sam-wrapper-api/fed-entities,,fmq,,&apos;8,!!!;2,1,77p,e7,q,1d,4,5k,5,&apos;/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/,,16q,,&apos;9,!!!;2,,7m9,t7,ot,oy,4,5k,5,&apos;/api/login/user-flag-service/v2/get-user-flags,,2j,,&apos;10,!!!;b,93,!3,!-96,1d,1,,-1e,1e,1,2,7b,b,28,1t6,f,14s,,4</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">bam.nr-data.net</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/events/1/NRJS-5e87c0af8c9a813f03b?a=270637501&amp;sa=1&amp;v=1153.61ee9ba&amp;t=Unnamed%20Transaction&amp;rst=11940&amp;ref=https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+                  </elementProp>
+                  <elementProp name="content-type" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">text/plain</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="326 /resources/1/NRJS-5e87c0af8c9a813f03b?a=270637501&amp;sa=1&amp;v=1153.61ee9ba&amp;t=Unnamed%20Transaction&amp;rst=14905&amp;ref=https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal&amp;st=1613064878138&amp;ptid=768c57d5-0001-b209-a855-01779228cc90" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;res&quot;:[{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2171,&quot;e&quot;:2172,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2199,&quot;e&quot;:2199,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2212,&quot;e&quot;:2212,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2781,&quot;e&quot;:2786,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2786,&quot;e&quot;:2786,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2786,&quot;e&quot;:2819,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2819,&quot;e&quot;:2819,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2838,&quot;e&quot;:2846,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2847,&quot;e&quot;:2847,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2848,&quot;e&quot;:2852,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:2852,&quot;e&quot;:2852,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3100,&quot;e&quot;:3109,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3109,&quot;e&quot;:3109,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3283,&quot;e&quot;:3287,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3287,&quot;e&quot;:3287,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3343,&quot;e&quot;:3346,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3346,&quot;e&quot;:3346,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3374,&quot;e&quot;:3377,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3377,&quot;e&quot;:3378,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3408,&quot;e&quot;:3409,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:3409,&quot;e&quot;:3409,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4015,&quot;e&quot;:4016,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4205,&quot;e&quot;:4205,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4306,&quot;e&quot;:4307,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4306,&quot;e&quot;:4307,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4307,&quot;e&quot;:4307,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4318,&quot;e&quot;:4318,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4318,&quot;e&quot;:4319,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4319,&quot;e&quot;:4319,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4319,&quot;e&quot;:4320,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4319,&quot;e&quot;:4320,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4320,&quot;e&quot;:4320,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4810,&quot;e&quot;:4815,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4815,&quot;e&quot;:4815,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4816,&quot;e&quot;:4818,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4818,&quot;e&quot;:4818,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4818,&quot;e&quot;:4820,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4820,&quot;e&quot;:4820,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4828,&quot;e&quot;:4828,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:4852,&quot;e&quot;:4852,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:5276,&quot;e&quot;:5277,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:5277,&quot;e&quot;:5277,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:5277,&quot;e&quot;:5277,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:5277,&quot;e&quot;:5278,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:5278,&quot;e&quot;:5278,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:5278,&quot;e&quot;:5278,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9246,&quot;e&quot;:9274,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9275,&quot;e&quot;:9275,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9275,&quot;e&quot;:9281,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9281,&quot;e&quot;:9282,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9283,&quot;e&quot;:9288,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9289,&quot;e&quot;:9289,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9346,&quot;e&quot;:9347,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9837,&quot;e&quot;:9856,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9857,&quot;e&quot;:9857,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9857,&quot;e&quot;:9860,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9860,&quot;e&quot;:9860,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9860,&quot;e&quot;:9864,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9864,&quot;e&quot;:9864,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:9871,&quot;e&quot;:9871,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:10918,&quot;e&quot;:10921,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:10921,&quot;e&quot;:10921,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:10922,&quot;e&quot;:10923,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:10923,&quot;e&quot;:10924,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:10924,&quot;e&quot;:10925,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:10926,&quot;e&quot;:10926,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:11942,&quot;e&quot;:11942,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:12294,&quot;e&quot;:12295,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:12295,&quot;e&quot;:12295,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:12295,&quot;e&quot;:12295,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:12295,&quot;e&quot;:12295,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:12296,&quot;e&quot;:12296,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;readystatechange&quot;,&quot;s&quot;:12296,&quot;e&quot;:12296,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;undefined POST: bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:3110,&quot;e&quot;:3117,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:3117,&quot;e&quot;:3126,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:3126,&quot;e&quot;:3130,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:3130,&quot;e&quot;:3153,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:12161,&quot;e&quot;:12175,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:12175,&quot;e&quot;:12186,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:12186,&quot;e&quot;:12202,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:12202,&quot;e&quot;:12226,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:12226,&quot;e&quot;:12235,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;finish&quot;,&quot;s&quot;:12235,&quot;e&quot;:12273,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;unknown&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:3330,&quot;e&quot;:3334,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;script&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:3347,&quot;e&quot;:3361,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:3378,&quot;e&quot;:3390,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:3409,&quot;e&quot;:3453,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:3663,&quot;e&quot;:3665,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;script&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:4228,&quot;e&quot;:4230,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;script&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:4240,&quot;e&quot;:4240,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;window&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:4320,&quot;e&quot;:4320,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:4820,&quot;e&quot;:4843,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:5278,&quot;e&quot;:5279,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:9289,&quot;e&quot;:9381,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:9864,&quot;e&quot;:9886,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:10926,&quot;e&quot;:11817,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;},{&quot;n&quot;:&quot;load&quot;,&quot;s&quot;:12296,&quot;e&quot;:12297,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;200 POST: bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;},{&quot;n&quot;:&quot;mousing&quot;,&quot;s&quot;:3928,&quot;e&quot;:3928,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;div#extended-logo.usa-logo.ng-star-inserted&quot;},{&quot;n&quot;:&quot;mousing&quot;,&quot;s&quot;:8214,&quot;e&quot;:8715,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;div#extended-logo.usa-logo.ng-star-inserted&quot;},{&quot;n&quot;:&quot;mousing&quot;,&quot;s&quot;:8762,&quot;e&quot;:8792,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;a#help.usa-nav__link.ng-star-inserted&quot;},{&quot;n&quot;:&quot;mousing&quot;,&quot;s&quot;:8815,&quot;e&quot;:8815,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;div.sds-feedback&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:2173,&quot;e&quot;:3361,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:2199,&quot;e&quot;:3390,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/feeds/v1/requests&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:2212,&quot;e&quot;:3453,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/alert/v2/alerts&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:4016,&quot;e&quot;:4320,&quot;o&quot;:&quot;200 POST: www.google-analytics.com:443/j/collect&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:4205,&quot;e&quot;:4843,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/iam/rms/v3/session&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:4852,&quot;e&quot;:5279,&quot;o&quot;:&quot;200 POST: bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:4828,&quot;e&quot;:9379,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:9347,&quot;e&quot;:9886,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:9872,&quot;e&quot;:11817,&quot;o&quot;:&quot;200 GET: 55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;Ajax&quot;,&quot;s&quot;:11942,&quot;e&quot;:12296,&quot;o&quot;:&quot;200 POST: bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;,&quot;t&quot;:&quot;ajax&quot;},{&quot;n&quot;:&quot;setInterval&quot;,&quot;s&quot;:8716,&quot;e&quot;:8716,&quot;o&quot;:&quot;window&quot;,&quot;t&quot;:&quot;timer&quot;},{&quot;n&quot;:&quot;setInterval&quot;,&quot;s&quot;:9405,&quot;e&quot;:9405,&quot;o&quot;:&quot;window&quot;,&quot;t&quot;:&quot;timer&quot;},{&quot;n&quot;:&quot;blur&quot;,&quot;s&quot;:10647,&quot;e&quot;:10648,&quot;t&quot;:&quot;event&quot;,&quot;o&quot;:&quot;document&quot;},{&quot;n&quot;:&quot;setTimeout&quot;,&quot;s&quot;:14411,&quot;e&quot;:14411,&quot;o&quot;:&quot;window&quot;,&quot;t&quot;:&quot;timer&quot;},{&quot;n&quot;:&quot;script&quot;,&quot;s&quot;:4399,&quot;e&quot;:4805,&quot;o&quot;:&quot;https://bam.nr-data.net:443/1/NRJS-5e87c0af8c9a813f03b&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:4829,&quot;e&quot;:9236,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/sam-wrapper-api/fed-entities&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:4853,&quot;e&quot;:5263,&quot;o&quot;:&quot;https://bam.nr-data.net:443/resources/1/NRJS-5e87c0af8c9a813f03b&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:9349,&quot;e&quot;:9833,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/rms/v1/userprofile/lawrence.allphin+fedcharlie1@gsa.gov/&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:9873,&quot;e&quot;:10881,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/api/login/user-flag-service/v2/get-user-flags&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;xmlhttprequest&quot;,&quot;s&quot;:11942,&quot;e&quot;:12241,&quot;o&quot;:&quot;https://bam.nr-data.net:443/events/1/NRJS-5e87c0af8c9a813f03b&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;img&quot;,&quot;s&quot;:11000,&quot;e&quot;:11190,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/search.svg&quot;,&quot;t&quot;:&quot;resource&quot;},{&quot;n&quot;:&quot;img&quot;,&quot;s&quot;:11859,&quot;e&quot;:12063,&quot;o&quot;:&quot;https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov:443/workspace/em/arrow-down.svg&quot;,&quot;t&quot;:&quot;resource&quot;}]}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">bam.nr-data.net</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">ISO-8859-1</stringProp>
+              <stringProp name="HTTPSampler.path">/resources/1/NRJS-5e87c0af8c9a813f03b?a=270637501&amp;sa=1&amp;v=1153.61ee9ba&amp;t=Unnamed%20Transaction&amp;rst=14905&amp;ref=https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/workspace/em/entities/federal&amp;st=1613064878138&amp;ptid=768c57d5-0001-b209-a855-01779228cc90</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov/</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">https://55samfrontend.login.apps-internal.prod-iae.bsp.gsa.gov</stringProp>
+                  </elementProp>
+                  <elementProp name="content-type" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">text/plain</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Search MFE 20%" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>20.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Content MFE 60%" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>60.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree/>
+      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Suggestions Group 1" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
