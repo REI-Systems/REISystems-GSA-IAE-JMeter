@@ -7839,7 +7839,7 @@ Per Minute			60		120		180		240
         <longProp name="ThreadGroup.end_time">1522867177000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">600</stringProp>
-        <stringProp name="ThreadGroup.delay">4</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
@@ -7890,7 +7890,7 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <longProp name="ThreadGroup.end_time">1522867177000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">600</stringProp>
-        <stringProp name="ThreadGroup.delay">4</stringProp>
+        <stringProp name="ThreadGroup.delay">15</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
@@ -7941,7 +7941,160 @@ Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
         <longProp name="ThreadGroup.end_time">1522867177000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">600</stringProp>
-        <stringProp name="ThreadGroup.delay">4</stringProp>
+        <stringProp name="ThreadGroup.delay">30</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module is not a true UI functionality that a user can browse
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second	20	50	100	150	200	250	300	350	400
+Per minute	1200	3000	6000	9000	12000	15000	18000	21000	24000
+1/15th	80	200	400	600	800	1000	1200	1400	1600</stringProp>
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>800.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config " enabled="true">
+          <stringProp name="filename">data/location_data_csv.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">STATE_CODE_CDC,COUNTRY_CODE,COUNTRY_NAME_SHORT,COUNTRY_NAME,STATE_CODE,STATE_NAME_SHORT,STATE_NAME,COUNTY_CODE,COUNTY_NAME_SHORT,COUNTY_NAME,CITY_CODE,CITY_NAME_SHORT,CITY_NAME,ZIP,PSC_CODE,PSC_NAME_SHORT,PSC_NAME,PSC_LEVEL_1,PSC_LEVEL_2,NAICS_CODE,NAICS_TITLE_SHORT,NAICS_TITLE,SET_A_SIDE_CODE</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="LocationModule" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="-1227702913">WorkBench</stringProp>
+            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="983627428">Location API Service</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Location Services Group 4" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">15</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <longProp name="ThreadGroup.start_time">1522867177000</longProp>
+        <longProp name="ThreadGroup.end_time">1522867177000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">660</stringProp>
+        <stringProp name="ThreadGroup.delay">45</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module is not a true UI functionality that a user can browse
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
+Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
+1/15th	18	45	90	135	180	225	270	315	360</stringProp>
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>800.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config " enabled="true">
+          <stringProp name="filename">data/location_data_csv.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">STATE_CODE_CDC,COUNTRY_CODE,COUNTRY_NAME_SHORT,COUNTRY_NAME,STATE_CODE,STATE_NAME_SHORT,STATE_NAME,COUNTY_CODE,COUNTY_NAME_SHORT,COUNTY_NAME,CITY_CODE,CITY_NAME_SHORT,CITY_NAME,ZIP,PSC_CODE,PSC_NAME_SHORT,PSC_NAME,PSC_LEVEL_1,PSC_LEVEL_2,NAICS_CODE,NAICS_TITLE_SHORT,NAICS_TITLE,SET_A_SIDE_CODE</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="LocationModule" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="-1227702913">WorkBench</stringProp>
+            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="983627428">Location API Service</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Location Services Group 5" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">15</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <longProp name="ThreadGroup.start_time">1522867177000</longProp>
+        <longProp name="ThreadGroup.end_time">1522867177000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">660</stringProp>
+        <stringProp name="ThreadGroup.delay">60</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module is not a true UI functionality that a user can browse
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second	4.5	11.25	22.5	33.75	45	56.25	67.5	78.75	90
+Per minute 	270	675	1350	2025	2700	3375	4050	4725	5400
+1/15th	18	45	90	135	180	225	270	315	360</stringProp>
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>800.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config " enabled="true">
+          <stringProp name="filename">data/location_data_csv.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">STATE_CODE_CDC,COUNTRY_CODE,COUNTRY_NAME_SHORT,COUNTRY_NAME,STATE_CODE,STATE_NAME_SHORT,STATE_NAME,COUNTY_CODE,COUNTY_NAME_SHORT,COUNTY_NAME,CITY_CODE,CITY_NAME_SHORT,CITY_NAME,ZIP,PSC_CODE,PSC_NAME_SHORT,PSC_NAME,PSC_LEVEL_1,PSC_LEVEL_2,NAICS_CODE,NAICS_TITLE_SHORT,NAICS_TITLE,SET_A_SIDE_CODE</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="LocationModule" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="-1227702913">WorkBench</stringProp>
+            <stringProp name="509413108">Beta SAM Release 20.02 Load Test</stringProp>
+            <stringProp name="983627428">Location API Service</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Location Services Group 6" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">15</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <longProp name="ThreadGroup.start_time">1522867177000</longProp>
+        <longProp name="ThreadGroup.end_time">1522867177000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">660</stringProp>
+        <stringProp name="ThreadGroup.delay">75</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
