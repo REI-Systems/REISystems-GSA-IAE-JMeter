@@ -33,7 +33,7 @@
           </elementProp>
           <elementProp name="API_KEY" elementType="Argument">
             <stringProp name="Argument.name">API_KEY</stringProp>
-            <stringProp name="Argument.value">2LdFb3T8UBJXsIyvhaZV4rihrvH46nbWZbcfUUJu</stringProp>
+            <stringProp name="Argument.value">LufX5GmXxw2EOEolwkBZBzzcVymAv11AdcTRXVD7</stringProp>
             <stringProp name="Argument.desc">API Key used to access API Umbrella</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="X-Auth-Token" elementType="Argument">
             <stringProp name="Argument.name">X-Auth-Token</stringProp>
-            <stringProp name="Argument.value">b0d74523-3c0f-4a2c-9a7a-b6c4d59825dd</stringProp>
+            <stringProp name="Argument.value">91578a7d-8393-4d29-8f3f-a07e6e8d6458</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="role-management-container-url" elementType="Argument">
@@ -138,6 +138,10 @@
             <stringProp name="Header.name">Content-Type</stringProp>
             <stringProp name="Header.value">application/json</stringProp>
           </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">X-Auth-Token</stringProp>
+            <stringProp name="Header.value">${X-Auth-Token}</stringProp>
+          </elementProp>
         </collectionProp>
       </HeaderManager>
       <hashTree/>
@@ -192,13 +196,6 @@ Per minute	6	15	30	45	60	75	90	105	120
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">loginid</stringProp>
               </elementProp>
-              <elementProp name="random" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">1612365387131</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">random</stringProp>
-              </elementProp>
               <elementProp name="domainid" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">DS</stringProp>
@@ -214,11 +211,11 @@ Per minute	6	15	30	45	60	75	90	105	120
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${FRONTEND_URL}</stringProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">api/login/rms/v1/userdomainterms/user/4d04abef-1bc7-469e-927c-ad440cf4295c/</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/rms/v1/userdomainterms/user/4d04abef-1bc7-469e-927c-ad440cf4295c/</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -400,7 +397,7 @@ Per minute	30	75	150	225	300	375	450	525	600
               </elementProp>
               <elementProp name="user" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">john</stringProp>
+                <stringProp name="Argument.value">ruchir</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">user</stringProp>
@@ -411,7 +408,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/rms/v2/userdirectory/</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/rms/v2/userdirectory/</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -525,27 +522,13 @@ Per minute	30	75	150	225	300	375	450	525	600
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Get User Profile Call userprofile/user - V1" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="q" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">${search_name}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">q</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-            </collectionProp>
+            <collectionProp name="Arguments.arguments"/>
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/rms/v1/userprofile/narayan547ac@gmail.com/</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/rms/v1/userprofile/charan.mareedu+3@gsa.gov/</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -693,7 +676,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/rms/v1/widget/</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/rms/v1/widget/</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -739,7 +722,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-Auth-Token</stringProp>
-              <stringProp name="Header.value">f85161ba-85a0-4eeb-8803-b2d7a51f6f8d</stringProp>
+              <stringProp name="Header.value">${X-Auth-Token}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Content-Type</stringProp>
@@ -751,7 +734,7 @@ Per minute	30	75	150	225	300	375	450	525	600
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">iPlanetDirectoryPro</stringProp>
-              <stringProp name="Header.value">c2e1aac7-dfd4-4349-a75c-73f03c4a3049</stringProp>
+              <stringProp name="Header.value">${X-Auth-Token}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Authorization</stringProp>
@@ -776,7 +759,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/rms/v1/checkaccess</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/rms/v1/checkaccess</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -841,7 +824,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/login/rms/v1/userprofile/widget</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/rms/v1/userprofile/widget</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -885,30 +868,81 @@ Per minute	300	750	1500	2250	3000	3750	4500	5250	6000
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
           <collectionProp name="HeaderManager.headers">
-            <elementProp name="Referer" elementType="Header">
-              <stringProp name="Header.name">Referer</stringProp>
-              <stringProp name="Header.value">${scheme}://${host}//workspace?redirect</stringProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Auth-Token</stringProp>
+              <stringProp name="Header.value">${X-Auth-Token}</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Session - V3" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="random" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.name">random</stringProp>
-                <stringProp name="Argument.value">1603222772053</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-            </collectionProp>
+            <collectionProp name="Arguments.arguments"/>
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-          <stringProp name="HTTPSampler.path">/rms/v3/session</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/iam/rms/v3/session?api_key=${API_KEY}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS_Session Non Fed" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">50</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1615929676000</longProp>
+        <longProp name="ThreadGroup.end_time">1615929676000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>225.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second	5	12.5	25	37.5	50	62.5	75	87.5	100
+Per minute	300	750	1500	2250	3000	3750	4500	5250	6000
+1/15th	20	50	100	150	200	250	300	350	400</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Auth-Token</stringProp>
+              <stringProp name="Header.value">${X-AUTH-TOKEN-NON-FED}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Session - V3" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/iam/rms/v3/session?api_key=${API_KEY}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -950,37 +984,26 @@ Per minute	1800	4500	9000	13500	18000	22500	27000	31500	36000
 1/15th	120	300	600	900	1200	1500	1800	2100	2400</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-          <stringProp name="filename">data/single_term_search_and_suggestion_data.csv</stringProp>
-          <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="variableNames">SEARCH_TERM,SUGGESTION_PART1,SUGGESTION_PART2,SUGGESTION_PART3,Length</stringProp>
-          <boolProp name="ignoreFirstLine">true</boolProp>
-          <stringProp name="delimiter">,</stringProp>
-          <boolProp name="quotedData">false</boolProp>
-          <boolProp name="recycle">true</boolProp>
-          <boolProp name="stopThread">false</boolProp>
-          <stringProp name="shareMode">shareMode.group</stringProp>
-        </CSVDataSet>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">iPlanetDirectoryPro</stringProp>
+              <stringProp name="Header.value">${X-Auth-Token}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Roles - V4" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="q" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">${SEARCH_TERM}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">q</stringProp>
-              </elementProp>
-            </collectionProp>
+            <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.domain">${role-management-container-url}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">login/iam/auth/v4/roles</stringProp>
+          <stringProp name="HTTPSampler.path">/iam/auth/v4/roles?api_key=${API_KEY}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
