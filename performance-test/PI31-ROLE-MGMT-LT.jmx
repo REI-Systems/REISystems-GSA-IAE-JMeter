@@ -163,7 +163,7 @@
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -175,7 +175,7 @@
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>6.0</value>
+            <value>75.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -234,7 +234,7 @@ Per minute	6	15	30	45	60	75	90	105	120
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -341,7 +341,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -353,7 +353,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>20.0</value>
+            <value>375.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -427,7 +427,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -439,7 +439,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>20.0</value>
+            <value>375.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -485,7 +485,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -493,6 +493,21 @@ Per minute	30	75	150	225	300	375	450	525	600
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>375.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second	0.5	1.25	2.5	3.75	5	6.25	7.5	8.75	10
+Per minute	30	75	150	225	300	375	450	525	600
+1/15th	2	5	10	15	20	25	30	35	40</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="filename">data/user_perfomance_search_name.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
@@ -504,21 +519,6 @@ Per minute	30	75	150	225	300	375	450	525	600
           <boolProp name="stopThread">false</boolProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
         </CSVDataSet>
-        <hashTree/>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <intProp name="calcMode">2</intProp>
-          <doubleProp>
-            <name>throughput</name>
-            <value>20.0</value>
-            <savedValue>0.0</savedValue>
-          </doubleProp>
-          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
-
-Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
-Per second	0.5	1.25	2.5	3.75	5	6.25	7.5	8.75	10
-Per minute	30	75	150	225	300	375	450	525	600
-1/15th	2	5	10	15	20	25	30	35	40</stringProp>
-        </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Get User Profile Call userprofile/user - V1" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -547,7 +547,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -637,7 +637,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -649,7 +649,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>20.0</value>
+            <value>375.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -695,7 +695,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -707,7 +707,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>20.0</value>
+            <value>375.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -778,7 +778,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -790,7 +790,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>20.0</value>
+            <value>375.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -843,7 +843,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">50</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">50</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -855,7 +855,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>200.0</value>
+            <value>3750.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -902,7 +902,7 @@ Per minute	300	750	1500	2250	3000	3750	4500	5250	6000
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">50</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">50</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -961,7 +961,7 @@ Per minute	300	750	1500	2250	3000	3750	4500	5250	6000
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">100</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -973,7 +973,7 @@ Per minute	300	750	1500	2250	3000	3750	4500	5250	6000
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>1200.0</value>
+            <value>22500.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
