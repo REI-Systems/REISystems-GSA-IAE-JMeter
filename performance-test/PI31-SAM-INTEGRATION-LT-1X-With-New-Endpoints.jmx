@@ -183,12 +183,6 @@
             <stringProp name="Argument.desc">MicroStrategy Server</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="xauthtoken-fed" elementType="Argument">
-            <stringProp name="Argument.name">xauthtoken-fed</stringProp>
-            <stringProp name="Argument.value">d6692744-50cc-4939-ac7f-795dce890c42</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc">Entity Domain account token</stringProp>
-          </elementProp>
           <elementProp name="X-Auth-Token" elementType="Argument">
             <stringProp name="Argument.name">X-Auth-Token</stringProp>
             <stringProp name="Argument.value">f6b48cbe-cce8-48c6-826a-8c83381d6005</stringProp>
@@ -202,7 +196,7 @@
           </elementProp>
           <elementProp name="X-AUTH-TOKEN-NON-FED" elementType="Argument">
             <stringProp name="Argument.name">X-AUTH-TOKEN-NON-FED</stringProp>
-            <stringProp name="Argument.value">ba18f10e-48f7-4187-ba98-2db6211b2a99</stringProp>
+            <stringProp name="Argument.value">38a7b901-d0cc-4042-aed1-ab49c5535f37</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">larrytestingemail+charlie1@gmail.com (NF T2 WS)</stringProp>
           </elementProp>
@@ -216,6 +210,12 @@
             <stringProp name="Argument.name">EXCL_TOKEN</stringProp>
             <stringProp name="Argument.value">wBYyWufbJu</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="xauthtoken-fed" elementType="Argument">
+            <stringProp name="Argument.name">xauthtoken-fed</stringProp>
+            <stringProp name="Argument.value">${X-Auth-Token}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Entity Domain account token</stringProp>
           </elementProp>
           <elementProp name="TOKEN" elementType="Argument">
             <stringProp name="Argument.name">TOKEN</stringProp>
@@ -305,7 +305,7 @@
           </elementProp>
           <elementProp name="SESSION_TOKEN" elementType="Argument">
             <stringProp name="Argument.name">SESSION_TOKEN</stringProp>
-            <stringProp name="Argument.value">c2c48396-842e-442a-a755-608554cfd5ba</stringProp>
+            <stringProp name="Argument.value">488b1996-bb63-4f98-8e6e-2dbd4229aa2e</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">System-account - Lava Team</stringProp>
           </elementProp>
@@ -1627,7 +1627,7 @@ Per minute 	10500
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LoginGov Group - NONFED" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LoginGov Group - NONFED" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -16023,7 +16023,7 @@ Per minute					600
         <longProp name="ThreadGroup.start_time">1610868691000</longProp>
         <longProp name="ThreadGroup.end_time">1610868691000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">c</stringProp>
+        <stringProp name="ThreadGroup.duration">${Time}</stringProp>
         <stringProp name="ThreadGroup.delay">900</stringProp>
       </ThreadGroup>
       <hashTree>
