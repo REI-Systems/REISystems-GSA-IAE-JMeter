@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="X-Auth-Token" elementType="Argument">
             <stringProp name="Argument.name">X-Auth-Token</stringProp>
-            <stringProp name="Argument.value">91578a7d-8393-4d29-8f3f-a07e6e8d6458</stringProp>
+            <stringProp name="Argument.value">61ce9c9e-9c18-4510-9260-3584c3e5ef08</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="role-management-container-url" elementType="Argument">
@@ -84,7 +84,12 @@
           </elementProp>
           <elementProp name="Duration" elementType="Argument">
             <stringProp name="Argument.name">Duration</stringProp>
-            <stringProp name="Argument.value">1200</stringProp>
+            <stringProp name="Argument.value">700</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="RampUp" elementType="Argument">
+            <stringProp name="Argument.name">RampUp</stringProp>
+            <stringProp name="Argument.value">30</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -162,20 +167,20 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>75.0</value>
+            <value>5.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -233,13 +238,13 @@ Per minute	6	15	30	45	60	75	90	105	120
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">3</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
       </ThreadGroup>
       <hashTree>
         <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Random record id generator" enabled="true">
@@ -277,7 +282,7 @@ vars.put(&quot;RMS_ENTITY_ID&quot;, random(4));</stringProp>
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>22.0</value>
+            <value>25.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -340,20 +345,20 @@ Per minute	30	75	150	225	300	375	450	525	600
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">15</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>375.0</value>
+            <value>25.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -426,20 +431,20 @@ Per minute	30	75	150	225	300	375	450	525	600
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">30</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>375.0</value>
+            <value>25.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -484,20 +489,20 @@ Per minute	30	75	150	225	300	375	450	525	600
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">45</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>375.0</value>
+            <value>25.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -547,7 +552,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -559,7 +564,7 @@ Per minute	30	75	150	225	300	375	450	525	600
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>22.0</value>
+            <value>25.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -636,20 +641,20 @@ Per minute	30	75	150	225	300	375	450	525	600
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">60</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>375.0</value>
+            <value>25.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -694,20 +699,20 @@ Per minute	30	75	150	225	300	375	450	525	600
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">75</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>375.0</value>
+            <value>25.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -777,20 +782,20 @@ Per minute	30	75	150	225	300	375	450	525	600
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">90</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>375.0</value>
+            <value>25.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -836,26 +841,85 @@ Per minute	30	75	150	225	300	375	450	525	600
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS_Session" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS_Session Group 1" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">50</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">50</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>3750.0</value>
+            <value>125.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second	5	12.5	25	37.5	50	62.5	75	87.5	100
+Per minute	300	750	1500	2250	3000	3750	4500	5250	6000
+1/15th	20	50	100	150	200	250	300	350	400</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Auth-Token</stringProp>
+              <stringProp name="Header.value">${X-Auth-Token}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Session - V3" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/iam/rms/v3/session?api_key=${API_KEY}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS_Session Group 2" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
+        <longProp name="ThreadGroup.start_time">1615929676000</longProp>
+        <longProp name="ThreadGroup.end_time">1615929676000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">25</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>125.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -902,7 +966,7 @@ Per minute	300	750	1500	2250	3000	3750	4500	5250	6000
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">50</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">50</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -914,7 +978,7 @@ Per minute	300	750	1500	2250	3000	3750	4500	5250	6000
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>225.0</value>
+            <value>250.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -954,26 +1018,26 @@ Per minute	300	750	1500	2250	3000	3750	4500	5250	6000
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS_Roles" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS_Roles Group 1" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">100</stringProp>
+        <stringProp name="ThreadGroup.num_threads">15</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
         <longProp name="ThreadGroup.start_time">1615929676000</longProp>
         <longProp name="ThreadGroup.end_time">1615929676000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">2</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">2</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>22500.0</value>
+            <value>300.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
@@ -1013,7 +1077,184 @@ Per minute	1800	4500	9000	13500	18000	22500	27000	31500	36000
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS_Roles Group 2" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">15</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
+        <longProp name="ThreadGroup.start_time">1615929676000</longProp>
+        <longProp name="ThreadGroup.end_time">1615929676000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">15</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>300.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second	30	75	150	225	300	375	450	525	600
+Per minute	1800	4500	9000	13500	18000	22500	27000	31500	36000
+1/15th	120	300	600	900	1200	1500	1800	2100	2400</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">iPlanetDirectoryPro</stringProp>
+              <stringProp name="Header.value">${X-Auth-Token}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Roles - V4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${role-management-container-url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/iam/auth/v4/roles?api_key=${API_KEY}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS_Roles Group 3" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">15</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
+        <longProp name="ThreadGroup.start_time">1615929676000</longProp>
+        <longProp name="ThreadGroup.end_time">1615929676000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">30</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>300.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second	30	75	150	225	300	375	450	525	600
+Per minute	1800	4500	9000	13500	18000	22500	27000	31500	36000
+1/15th	120	300	600	900	1200	1500	1800	2100	2400</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">iPlanetDirectoryPro</stringProp>
+              <stringProp name="Header.value">${X-Auth-Token}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Roles - V4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${role-management-container-url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/iam/auth/v4/roles?api_key=${API_KEY}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RMS_Roles Group 4" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">15</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RampUp}</stringProp>
+        <longProp name="ThreadGroup.start_time">1615929676000</longProp>
+        <longProp name="ThreadGroup.end_time">1615929676000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">45</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>300.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Samplers: Approx with 1x load as this module will be tested by other test scripts
+
+Workload	0.1	0.25	0.5	0.75	1	1.25	1.5	1.75	2
+Per second	30	75	150	225	300	375	450	525	600
+Per minute	1800	4500	9000	13500	18000	22500	27000	31500	36000
+1/15th	120	300	600	900	1200	1500	1800	2100	2400</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">iPlanetDirectoryPro</stringProp>
+              <stringProp name="Header.value">${X-Auth-Token}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RM - Roles - V4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${role-management-container-url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/iam/auth/v4/roles?api_key=${API_KEY}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
