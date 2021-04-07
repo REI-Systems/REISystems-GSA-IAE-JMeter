@@ -115,8 +115,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">20</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${10Min}</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
@@ -125,15 +125,16 @@
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="TestPlan.comments">
-load
-per sec 	5
-per min 	300
-1/15 	20</stringProp>
+          <stringProp name="TestPlan.comments">Samplers: 20
+	1	 1.5	2
+
+Per second	50	75	100
+Per Minute 	3000	4500	6000
+1/15th	200	300	400</stringProp>
           <intProp name="calcMode">0</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>20.0</value>
+            <value>200.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
