@@ -36,7 +36,7 @@
         <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
       </CookieManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Front End Content Load" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Front End Content Load" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -79,7 +79,7 @@
           <boolProp name="useExpires">false</boolProp>
         </CacheManager>
         <hashTree/>
-        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller - Content" enabled="false"/>
+        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller - Content" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="442 /content/home/" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -2156,7 +2156,7 @@ hÏ¿fsï¿½ï¿½ï¿½ï¿½rï¿½xzd&#x11;ï¿½ï¿½ï¿½yï¿½Rï¿½BIï¿½ï¿½*ï¿½T&#x1b;.p}ï¿½mï¿½X4ï¿
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="187 /Universal-Federated-Analytics-Min.js" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="187 /Universal-Federated-Analytics-Min.js" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="agency" elementType="HTTPArgument">
@@ -2164,6 +2164,7 @@ hÏ¿fsï¿½ï¿½ï¿½ï¿½rï¿½xzd&#x11;ï¿½ï¿½ï¿½yï¿½Rï¿½BIï¿½ï¿½*ï¿½T&#x1b;.p}ï¿½mï¿½X4ï¿
                   <stringProp name="Argument.name">agency</stringProp>
                   <stringProp name="Argument.value">GSA</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -4046,7 +4047,7 @@ hÏ¿fsï¿½ï¿½ï¿½ï¿½rï¿½xzd&#x11;ï¿½ï¿½ï¿½yï¿½Rï¿½BIï¿½ï¿½*ï¿½T&#x1b;.p}ï¿½mï¿½X4ï¿
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="219 /videos/thumbnails/before-and-after-guide-phase1.png" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="219 /videos/thumbnails/before-and-after-guide-phase1.png" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="X-Amz-Algorithm" elementType="HTTPArgument">
@@ -4054,36 +4055,42 @@ hÏ¿fsï¿½ï¿½ï¿½ï¿½rï¿½xzd&#x11;ï¿½ï¿½ï¿½yï¿½Rï¿½BIï¿½ï¿½*ï¿½T&#x1b;.p}ï¿½mï¿½X4ï¿
                   <stringProp name="Argument.name">X-Amz-Algorithm</stringProp>
                   <stringProp name="Argument.value">AWS4-HMAC-SHA256</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="X-Amz-Date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">X-Amz-Date</stringProp>
                   <stringProp name="Argument.value">20210511T135734Z</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="X-Amz-SignedHeaders" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">X-Amz-SignedHeaders</stringProp>
                   <stringProp name="Argument.value">host</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="X-Amz-Expires" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">X-Amz-Expires</stringProp>
                   <stringProp name="Argument.value">86398</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="X-Amz-Credential" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">X-Amz-Credential</stringProp>
                   <stringProp name="Argument.value">AKIAY3LPYEEXZ55TSIBB%2F20210511%2Fus-east-1%2Fs3%2Faws4_request</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="X-Amz-Signature" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">X-Amz-Signature</stringProp>
                   <stringProp name="Argument.value">b76d6b04fe6f1e77a16c73ad387219d44ceefd41cfcc345b1a32bbc039730d91</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -9515,7 +9522,7 @@ xï¿½Rï¿½54ï¿½&#x7f;ï¿½D&amp;gï¿½2z&#x17;ï¿½tï¿½Kï¿½aï¿½&#x11;a&#xf;Ë‰Ztï¿½	&#xf;
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="348 /Universal-Federated-Analytics-Min.js" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="348 /Universal-Federated-Analytics-Min.js" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="agency" elementType="HTTPArgument">
@@ -9523,6 +9530,7 @@ xï¿½Rï¿½54ï¿½&#x7f;ï¿½D&amp;gï¿½2z&#x17;ï¿½tï¿½Kï¿½aï¿½&#x11;a&#xf;Ë‰Ztï¿½	&#xf;
                   <stringProp name="Argument.name">agency</stringProp>
                   <stringProp name="Argument.value">GSA</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -12144,7 +12152,7 @@ xï¿½Rï¿½54ï¿½&#x7f;ï¿½D&amp;gï¿½2z&#x17;ï¿½tï¿½Kï¿½aï¿½&#x11;a&#xf;Ë‰Ztï¿½	&#xf;
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="399 /" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="399 /" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
