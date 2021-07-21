@@ -1975,7 +1975,7 @@ log.info(&quot;count: &quot; + count);
 for (int i = 0; i &lt; count; i++) {
 	int counter = 4 + i;
 	String query = initialString.substring(0,counter);
-   	vars.put(&quot;query_&quot; + i, query);
+   	vars.put(&quot;DUNS_&quot; + i, query);
 }</stringProp>
                     <stringProp name="BeanShellSampler.filename"></stringProp>
                     <stringProp name="BeanShellSampler.parameters">${DUNS}</stringProp>
@@ -1983,8 +1983,8 @@ for (int i = 0; i &lt; count; i++) {
                   </BeanShellSampler>
                   <hashTree/>
                   <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="ForEach Controller" enabled="true">
-                    <stringProp name="ForeachController.inputVal">query</stringProp>
-                    <stringProp name="ForeachController.returnVal">query_value</stringProp>
+                    <stringProp name="ForeachController.inputVal">DUNS</stringProp>
+                    <stringProp name="ForeachController.returnVal">DUNS_QUERY</stringProp>
                     <boolProp name="ForeachController.useSeparator">true</boolProp>
                   </ForeachController>
                   <hashTree>
@@ -2000,7 +2000,7 @@ for (int i = 0; i &lt; count; i++) {
                           </elementProp>
                           <elementProp name="query" elementType="HTTPArgument">
                             <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                            <stringProp name="Argument.value">${query_value}</stringProp>
+                            <stringProp name="Argument.value">${DUNS_QUERY}</stringProp>
                             <stringProp name="Argument.metadata">=</stringProp>
                             <boolProp name="HTTPArgument.use_equals">true</boolProp>
                             <stringProp name="Argument.name">query</stringProp>
@@ -2105,7 +2105,7 @@ log.info(&quot;count: &quot; + count);
 for (int i = 0; i &lt; 9; i++) {
 	int counter = 4 + i;
 	String query = initialString.substring(0,counter);
-   	vars.put(&quot;query_&quot; + i, query);
+   	vars.put(&quot;EMAIL_&quot; + i, query);
 }</stringProp>
                     <stringProp name="BeanShellSampler.filename"></stringProp>
                     <stringProp name="BeanShellSampler.parameters">${USER_EMAIL}</stringProp>
@@ -2113,8 +2113,8 @@ for (int i = 0; i &lt; 9; i++) {
                   </BeanShellSampler>
                   <hashTree/>
                   <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="ForEach Controller" enabled="true">
-                    <stringProp name="ForeachController.inputVal">query</stringProp>
-                    <stringProp name="ForeachController.returnVal">act_value</stringProp>
+                    <stringProp name="ForeachController.inputVal">EMAIL</stringProp>
+                    <stringProp name="ForeachController.returnVal">EMAIL_QUERY</stringProp>
                     <boolProp name="ForeachController.useSeparator">true</boolProp>
                   </ForeachController>
                   <hashTree>
@@ -2130,14 +2130,14 @@ for (int i = 0; i &lt; 9; i++) {
                           </elementProp>
                           <elementProp name="fle" elementType="HTTPArgument">
                             <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                            <stringProp name="Argument.value">${query_value}</stringProp>
+                            <stringProp name="Argument.value">${EMAIL_QUERY}</stringProp>
                             <stringProp name="Argument.metadata">=</stringProp>
                             <boolProp name="HTTPArgument.use_equals">true</boolProp>
                             <stringProp name="Argument.name">fle</stringProp>
                           </elementProp>
                           <elementProp name="organization" elementType="HTTPArgument">
                             <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                            <stringProp name="Argument.value">044814741</stringProp>
+                            <stringProp name="Argument.value">${DUNS}</stringProp>
                             <stringProp name="Argument.metadata">=</stringProp>
                             <boolProp name="HTTPArgument.use_equals">true</boolProp>
                             <stringProp name="Argument.name">organization</stringProp>
@@ -2757,108 +2757,6 @@ for (int i = 0; i &lt; 9; i++) {
                     </collectionProp>
                   </HeaderManager>
                   <hashTree/>
-                </hashTree>
-                <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Search by Name" enabled="true">
-                  <boolProp name="TransactionController.includeTimers">false</boolProp>
-                  <boolProp name="TransactionController.parent">false</boolProp>
-                </TransactionController>
-                <hashTree>
-                  <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Search Loop" enabled="true">
-                    <stringProp name="BeanShellSampler.query">String initialString = vars.get(&quot;USER_EMAIL&quot;);
-
-log.info(&quot;Email: &quot; + initialString);
-
-int count = initialString.length() - 3;
-
-log.info(&quot;count: &quot; + count);
-
-for (int i = 0; i &lt; 9; i++) {
-	int counter = 4 + i;
-	String query = initialString.substring(0,counter);
-   	vars.put(&quot;query_&quot; + i, query);
-}</stringProp>
-                    <stringProp name="BeanShellSampler.filename"></stringProp>
-                    <stringProp name="BeanShellSampler.parameters">${USER_EMAIL}</stringProp>
-                    <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
-                  </BeanShellSampler>
-                  <hashTree/>
-                  <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="ForEach Controller" enabled="true">
-                    <stringProp name="ForeachController.inputVal">query</stringProp>
-                    <stringProp name="ForeachController.returnVal">act_value</stringProp>
-                    <boolProp name="ForeachController.useSeparator">true</boolProp>
-                  </ForeachController>
-                  <hashTree>
-                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://${BASE_URL_1}/${ENV_URL}/rms/v1/userpicker/filter/?random=86&amp;fle=${query_value}&amp;organization=044814741&amp;isGov=F" enabled="true">
-                      <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                        <collectionProp name="Arguments.arguments">
-                          <elementProp name="random" elementType="HTTPArgument">
-                            <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                            <stringProp name="Argument.name">random</stringProp>
-                            <stringProp name="Argument.value">${Random_Var}86</stringProp>
-                            <stringProp name="Argument.metadata">=</stringProp>
-                            <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                          </elementProp>
-                          <elementProp name="fle" elementType="HTTPArgument">
-                            <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                            <stringProp name="Argument.value">${query_value}</stringProp>
-                            <stringProp name="Argument.metadata">=</stringProp>
-                            <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                            <stringProp name="Argument.name">fle</stringProp>
-                          </elementProp>
-                          <elementProp name="organization" elementType="HTTPArgument">
-                            <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                            <stringProp name="Argument.value">044814741</stringProp>
-                            <stringProp name="Argument.metadata">=</stringProp>
-                            <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                            <stringProp name="Argument.name">organization</stringProp>
-                          </elementProp>
-                          <elementProp name="isGov" elementType="HTTPArgument">
-                            <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                            <stringProp name="Argument.value">F</stringProp>
-                            <stringProp name="Argument.metadata">=</stringProp>
-                            <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                            <stringProp name="Argument.name">isGov</stringProp>
-                          </elementProp>
-                        </collectionProp>
-                      </elementProp>
-                      <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-                      <stringProp name="HTTPSampler.port"></stringProp>
-                      <stringProp name="HTTPSampler.protocol">https</stringProp>
-                      <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                      <stringProp name="HTTPSampler.path">${ENV_URL}/rms/v1/autocomplete/entity</stringProp>
-                      <stringProp name="HTTPSampler.method">GET</stringProp>
-                      <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                      <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                      <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                      <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                      <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                      <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                      <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    </HTTPSamplerProxy>
-                    <hashTree>
-                      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                        <collectionProp name="HeaderManager.headers">
-                          <elementProp name="Accept" elementType="Header">
-                            <stringProp name="Header.name">Accept</stringProp>
-                            <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
-                          </elementProp>
-                          <elementProp name="X-Auth-Token" elementType="Header">
-                            <stringProp name="Header.name">X-Auth-Token</stringProp>
-                            <stringProp name="Header.value">${X_AUTH_TOKEN}</stringProp>
-                          </elementProp>
-                          <elementProp name="" elementType="Header">
-                            <stringProp name="Header.name">Authorization</stringProp>
-                            <stringProp name="Header.value">${AUTHORIZATION}</stringProp>
-                          </elementProp>
-                          <elementProp name="" elementType="Header">
-                            <stringProp name="Header.name">Content-Type</stringProp>
-                            <stringProp name="Header.value">application/json</stringProp>
-                          </elementProp>
-                        </collectionProp>
-                      </HeaderManager>
-                      <hashTree/>
-                    </hashTree>
-                  </hashTree>
                 </hashTree>
               </hashTree>
             </hashTree>
@@ -4492,7 +4390,7 @@ for (int i = 0; i &lt; 9; i++) {
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="false">
+      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
         <boolProp name="ResultCollector.error_logging">true</boolProp>
         <objProp>
           <name>saveConfig</name>
