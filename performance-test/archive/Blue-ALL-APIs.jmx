@@ -79,6 +79,14 @@
             </collectionProp>
           </ModuleController>
           <hashTree/>
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Fed Roles By Org Controller" enabled="true">
+            <collectionProp name="ModuleController.node_path">
+              <stringProp name="764597751">WorkBench</stringProp>
+              <stringProp name="-401094241">Blue APIs</stringProp>
+              <stringProp name="2127195993">Fed Roles By Org</stringProp>
+            </collectionProp>
+          </ModuleController>
+          <hashTree/>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
@@ -106,7 +114,7 @@
         <hashTree>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Exclusion Details Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
-             <stringProp name="-1227702913">WorkBench</stringProp>
+              <stringProp name="-1227702913">WorkBench</stringProp>
               <stringProp name="-401094241">Blue APIs</stringProp>
               <stringProp name="-646624685">Update Exclusion - PUT</stringProp>
             </collectionProp>
@@ -1096,7 +1104,17 @@
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
-        <hashTree/>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Auth-Token</stringProp>
+                <stringProp name="Header.value">${X-AUTH-TOKEN-IS-GOV}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Exclusions Hierarchy" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
@@ -2190,6 +2208,11 @@
             <stringProp name="Argument.value">124samentitymanagementapiminc.apps.prod-iae.bsp.gsa.gov</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="HS_CONTAINER_URL" elementType="Argument">
+            <stringProp name="Argument.name">HS_CONTAINER_URL</stringProp>
+            <stringProp name="Argument.value">133entityhierarchyservicelogin.apps.prod-iae.bsp.gsa.gov</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -2789,6 +2812,95 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Update Entity V3 - PUT" enabled="true"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Registrations Details V3 - PUT" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;duns&quot; : &quot;${duns}&quot;,&#xd;
+	&quot;regStatus&quot; : &quot;2&quot;,&#xd;
+	&quot;regName&quot; : &quot;FPDS&quot;,&#xd;
+	&quot;expirationDate&quot; : &quot;2023-09-09&quot;,&#xd;
+	&quot;porCode&quot; : &quot;Z3&quot;,&#xd;
+	&quot;regAddressLine&quot; : &quot;51 Main St&quot;,&#xd;
+	&quot;regCity&quot; : &quot;Herndon&quot;,&#xd;
+	&quot;regStateCode&quot; : &quot;VA&quot;,&#xd;
+	&quot;regZipCode&quot; : &quot;55997-3509&quot;,&#xd;
+	&quot;regCountryCode&quot; : &quot;USA&quot;,&#xd;
+	&quot;regDBAName&quot; : &quot;Upper&quot;,&#xd;
+	&quot;cageMatchFlag&quot; : &quot;Y&quot;,&#xd;
+	&quot;notaryFlag&quot; : &quot;N&quot;,&#xd;
+	&quot;tinMatchFlag&quot; : null,&#xd;
+	&quot;sourceType&quot; : 3,&#xd;
+	&quot;npdyFlag&quot; : &quot;Y&quot;,&#xd;
+	&quot;phrrFlag&quot; : &quot;Y&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${API_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/entity-hierarchy/v3/api/registration-details?api_key=${API_KEY}</stringProp>
+          <stringProp name="HTTPSampler.method">PUT</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Fed Roles By Org" enabled="true"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Fed Roles By Org V2" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${HS_CONTAINER_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/entity-hierarchy/v2/fedRolesByOrg?api_key=${API_KEY}&amp;uei=${UEI}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Auth-Token</stringProp>
+                <stringProp name="Header.value">${X-AUTH-TOKEN-IS-GOV}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
       </hashTree>
     </hashTree>
   </hashTree>
