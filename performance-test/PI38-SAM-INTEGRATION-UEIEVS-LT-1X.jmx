@@ -5711,19 +5711,18 @@ Per minute					360
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <doubleProp>
             <name>throughput</name>
-            <value>5.0</value>
+            <value>2.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
-          <stringProp name="TestPlan.comments">
-
-Workload	0.1	0.25	0.5	0.75	1	
-Per second					10
-Per minute					600	
-1/15th					40</stringProp>
+          <stringProp name="TestPlan.comments">Workload	0.10	0.25	0.50	0.75	1.00	1.25	1.50	1.75	2.00
+Per second	0.05	0.13	0.25	0.38	0.50	0.63	0.75	0.88	1.00
+Per minute	3.00	7.50	15.00	22.50	30.00	37.50	45.00	52.50	60.00
+1/15th Instance	0.20	0.50	1.00	1.50	2.00	2.50	3.00	3.50	4.00
+If 2 Group	1.00								</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 30%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 15%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -5743,13 +5742,13 @@ Per minute					600
           </ModuleController>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 70%" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 85%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
-            <value>70.0</value>
+            <value>85.0</value>
             <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
@@ -19996,7 +19995,21 @@ $(WAGE_DETERMINATION_ID) - ID used to find the object</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;userId&quot;:&quot;loadtest.${FILE_NAME}@gsa.gov&quot;,&quot;domain&quot;:&quot;Entity Information&quot;,&quot;downloadType&quot;:0,&quot;format&quot;:&quot;.csv&quot;,&quot;fileName&quot;:&quot;Entity_DataSvc_Extract_${FILE_NAME}&quot;,&quot;searchType&quot;:&quot;Extract Results&quot;,&quot;searchCriteria&quot;:&quot;q - llc, format - csv&quot;,&quot;status&quot;:&quot;W&quot;,&quot;token&quot;:&quot;${FILE_NAME}&quot;,&quot;count&quot;:243536,&quot;isDeleted&quot;:false,&quot;sensitivityLevel&quot;:&quot;PUBLIC&quot;,&quot;isExpired&quot;:false}</stringProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;userId&quot;:&quot;loadtest.${FILE_NAME}@gsa.gov&quot;,&#xd;
+	&quot;domain&quot;:&quot;Entity Information&quot;,&#xd;
+	&quot;downloadType&quot;:0,&#xd;
+	&quot;format&quot;:&quot;.csv&quot;,&#xd;
+	&quot;fileName&quot;:&quot;Entity_DataSvc_Extract_${FILE_NAME}&quot;,&#xd;
+	&quot;searchType&quot;:&quot;Extract Results&quot;,&#xd;
+	&quot;searchCriteria&quot;:&quot;q - llc, format - csv&quot;,&#xd;
+	&quot;status&quot;:&quot;W&quot;,&#xd;
+	&quot;token&quot;:&quot;${FILE_NAME}&quot;,&#xd;
+	&quot;count&quot;:243536,&#xd;
+	&quot;isDeleted&quot;:false,&#xd;
+	&quot;sensitivityLevel&quot;:&quot;PUBLIC&quot;,&#xd;
+	&quot;isExpired&quot;:false&#xd;
+	}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -20040,13 +20053,56 @@ $(WAGE_DETERMINATION_ID) - ID used to find the object</stringProp>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="My Download Info" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="page" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">0</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">page</stringProp>
+              </elementProp>
+              <elementProp name="sort" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">-createDate</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">sort</stringProp>
+              </elementProp>
+              <elementProp name="fileName" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">fileName</stringProp>
+              </elementProp>
+              <elementProp name="status" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">status</stringProp>
+              </elementProp>
+              <elementProp name="type" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">type</stringProp>
+              </elementProp>
+              <elementProp name="domain" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Assistance%20Listings,Contract%20Opportunities,Contract%20Data,Entity%20Information,Federal%20Hierarchy,Wage%20Determination</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">domain</stringProp>
+              </elementProp>
+            </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${API_PATH}/logging-service/v1/mydownloads-info?random=1610864416937&amp;page=0&amp;sort=-createDate&amp;fileName=&amp;status=&amp;type=&amp;domain=Assistance%20Listings,Contract%20Opportunities,Contract%20Data,Entity%20Information,Federal%20Hierarchy,Wage%20Determination</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}/logging-service/v1/mydownloads-info</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
