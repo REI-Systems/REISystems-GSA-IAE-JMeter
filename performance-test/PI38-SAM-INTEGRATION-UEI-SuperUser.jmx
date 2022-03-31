@@ -108,7 +108,7 @@
           </elementProp>
           <elementProp name="TOKEN" elementType="Argument">
             <stringProp name="Argument.name">TOKEN</stringProp>
-            <stringProp name="Argument.value">XwDIqGGlHw</stringProp>
+            <stringProp name="Argument.value">cwJeKKyXVK</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Valid for a week.</stringProp>
           </elementProp>
@@ -145,6 +145,11 @@
           <elementProp name="X-AUTH-TOKEN-NON-FED-SUPER4" elementType="Argument">
             <stringProp name="Argument.name">X-AUTH-TOKEN-NON-FED-SUPER4</stringProp>
             <stringProp name="Argument.value">b13b6d5b-ffff-49e4-8c1b-298dee2716aa</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="EXCL_TOKEN" elementType="Argument">
+            <stringProp name="Argument.name">EXCL_TOKEN</stringProp>
+            <stringProp name="Argument.value">cwJeKKyXVK</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -3661,12 +3666,11 @@ If 2 Group	2.00								</stringProp>
             <value>42.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
-          <stringProp name="TestPlan.comments">
-
-Workload	0.1	0.25	0.5	0.75	1	
-Per second					6
-Per minute					360	
-1/15th					24	</stringProp>
+          <stringProp name="TestPlan.comments">Workload	0.10	0.25	0.50	0.75	1.00	1.25	1.50	1.75	2.00
+Per second	1.05	2.63	5.25	7.88	10.50	13.13	15.75	18.38	21.00
+Per minute	63.00	157.50	315.00	472.50	630.00	787.50	945.00	1102.50	1260.00
+1/15th Instance	4.20	10.50	21.00	31.50	42.00	52.50	63.00	73.50	84.00
+If 2 Group	21.00								</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
@@ -3826,14 +3830,6 @@ Per minute					360
             </collectionProp>
           </ModuleController>
           <hashTree/>
-          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Entity Management V3 Controller" enabled="true">
-            <collectionProp name="ModuleController.node_path">
-              <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="-707977286">PI 35 SAM INTEGRATION LOAD TESTING</stringProp>
-              <stringProp name="-302583267">Entity Management V3</stringProp>
-            </collectionProp>
-          </ModuleController>
-          <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="LBN Module Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
@@ -3863,6 +3859,102 @@ Per minute					360
           </ModuleController>
           <hashTree/>
         </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Entity API Search Thread Group | V3-Entities" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <longProp name="ThreadGroup.start_time">1606937240000</longProp>
+        <longProp name="ThreadGroup.end_time">1606937240000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Time}</stringProp>
+        <stringProp name="ThreadGroup.delay">270</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">0</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>84.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Workload	0.10	0.25	0.50	0.75	1.00	1.25	1.50	1.75	2.00
+Per second	2.00	5.00	10.00	15.00	20.00	25.00	30.00	35.00	40.00
+Per minute	120.00	300.00	600.00	900.00	1200.00	1500.00	1800.00	2100.00	2400.00
+1/15th Instance	8.00	20.00	40.00	60.00	80.00	100.00	120.00	140.00	160.00
+If 2 Group	40.00								</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+          <stringProp name="maximumValue">100</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="outputFormat">000</stringProp>
+          <boolProp name="perThread">true</boolProp>
+          <stringProp name="randomSeed">1</stringProp>
+          <stringProp name="variableName">pageRandom</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Blue - UEI EY Data Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">data/uei_data_EY.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">ueiEyData</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Entity Details CSV Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">data/entity_details_data.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Blue - Dates Data Set Config" enabled="true">
+          <stringProp name="filename">data/date_search.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">Dates</stringProp>
+          <stringProp name="delimiter">|</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Blue - Entity Search Data Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">data/Entity_Search_Terms.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">duns,cage_code,legal_business_name</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Entity Management V3 Controller" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-707977286">PI 35 SAM INTEGRATION LOAD TESTING</stringProp>
+            <stringProp name="-302583267">Entity Management V3</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Entity Display API Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -3941,14 +4033,6 @@ If 2 Group	4.00								</stringProp>
             </collectionProp>
           </ModuleController>
           <hashTree/>
-          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Compliance Report Controller" enabled="true">
-            <collectionProp name="ModuleController.node_path">
-              <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="-707977286">PI 35 SAM INTEGRATION LOAD TESTING</stringProp>
-              <stringProp name="-1662730626">Compliance Report Section</stringProp>
-            </collectionProp>
-          </ModuleController>
-          <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="EXCLUSION INFO Controller" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
@@ -3986,6 +4070,57 @@ If 2 Group	4.00								</stringProp>
           </ModuleController>
           <hashTree/>
         </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Entity Display API Thread Group -Compliance Report" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">100</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Time}</stringProp>
+        <stringProp name="ThreadGroup.delay">270</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <longProp name="ThreadGroup.start_time">1609269736000</longProp>
+        <longProp name="ThreadGroup.end_time">1609269736000</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config | EntityDetailData" enabled="true">
+          <stringProp name="filename">data/entity_details_data.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">DUNS,EMR_KEY_VAL,STATUS,SCR_CONTRACT_ID,BIO_CONTRACT_ID,UEI</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">0</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>12.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Workload	0.10	0.25	0.50	0.75	1.00	1.25	1.50	1.75	2.00
+Per second	0.30	0.75	1.50	2.25	3.00	3.75	4.50	5.25	6.00
+Per minute	18.00	45.00	90.00	135.00	180.00	225.00	270.00	315.00	360.00
+1/15th Instance	1.20	3.00	6.00	9.00	12.00	15.00	18.00	21.00	24.00
+If 2 Group	6.00								</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Compliance Report Controller" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="-707977286">PI 35 SAM INTEGRATION LOAD TESTING</stringProp>
+            <stringProp name="-1662730626">Compliance Report Section</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Entity Hierarchy Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -4212,8 +4347,8 @@ If 2 Group	2.00	</stringProp>
         </ModuleController>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Entity Hierarchy Service Login" enabled="true">
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Entity Hierarchy Service Login | Entity-hierarchy" enabled="true">
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${Time}</stringProp>
@@ -4288,6 +4423,47 @@ If 2 Group	5.00								</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Entity Hierarchy Service Login | SearchEntity" enabled="true">
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Time}</stringProp>
+        <stringProp name="ThreadGroup.delay">330</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>4.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Workload	0.10	0.25	0.50	0.75	1.00	1.25	1.50	1.75	2.00
+Per second	0.25	0.63	1.25	1.88	2.50	3.13	3.75	4.38	5.00
+Per minute	15.00	37.50	75.00	112.50	150.00	187.50	225.00	262.50	300.00
+1/15th Instance	1.00	2.50	5.00	7.50	10.00	12.50	15.00	17.50	20.00
+If 2 Group	5.00								</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Entity Details CSV Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">data/uei_dataEY_II.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">uei</stringProp>
+        </CSVDataSet>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://${API_URL}${API_PATH}uei-matcher/v2/searchEntity" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -4337,6 +4513,47 @@ If 2 Group	5.00								</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Entity Hierarchy Service Login | Registration" enabled="true">
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Time}</stringProp>
+        <stringProp name="ThreadGroup.delay">330</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <intProp name="calcMode">2</intProp>
+          <doubleProp>
+            <name>throughput</name>
+            <value>4.0</value>
+            <savedValue>0.0</savedValue>
+          </doubleProp>
+          <stringProp name="TestPlan.comments">Workload	0.10	0.25	0.50	0.75	1.00	1.25	1.50	1.75	2.00
+Per second	0.25	0.63	1.25	1.88	2.50	3.13	3.75	4.38	5.00
+Per minute	15.00	37.50	75.00	112.50	150.00	187.50	225.00	262.50	300.00
+1/15th Instance	1.00	2.50	5.00	7.50	10.00	12.50	15.00	17.50	20.00
+If 2 Group	5.00								</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Entity Details CSV Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">data/uei_dataEY_II.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">uei</stringProp>
+        </CSVDataSet>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://${API_URL}${API_PATH}entity-hierarchy/v2/registration" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -6191,13 +6408,13 @@ If 2 Group	4.00								</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Exclusions API Search Thread Group" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Exclusions API Search Thread Group - Q &amp; No Q Module" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">3</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
         <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <longProp name="ThreadGroup.start_time">1606937240000</longProp>
         <longProp name="ThreadGroup.end_time">1606937240000</longProp>
@@ -6210,16 +6427,15 @@ If 2 Group	4.00								</stringProp>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <doubleProp>
             <name>throughput</name>
-            <value>4.0</value>
+            <value>6.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
           <intProp name="calcMode">2</intProp>
-          <stringProp name="TestPlan.comments">
-
-Workload	0.1	0.25	0.5	0.75	1	
-Per second					6
-Per minute					360	
-1/15th					24	</stringProp>
+          <stringProp name="TestPlan.comments">Workload	0.10	0.25	0.50	0.75	1.00	1.25	1.50	1.75	2.00
+Per second	0.15	0.38	0.75	1.13	1.50	1.88	2.25	2.63	3.00
+Per minute	9.00	22.50	45.00	67.50	90.00	112.50	135.00	157.50	180.00
+1/15th Instance	0.60	1.50	3.00	4.50	6.00	7.50	9.00	10.50	12.00
+If 2 Group	3.00								</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
@@ -6246,27 +6462,6 @@ Per minute					360
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 10%" enabled="true">
-          <intProp name="ThroughputController.style">1</intProp>
-          <boolProp name="ThroughputController.perThread">false</boolProp>
-          <intProp name="ThroughputController.maxThroughput">1</intProp>
-          <FloatProperty>
-            <name>ThroughputController.percentThroughput</name>
-            <value>10.0</value>
-            <savedValue>0.0</savedValue>
-          </FloatProperty>
-        </ThroughputController>
-        <hashTree>
-          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Download File Module Controller" enabled="true">
-            <stringProp name="TestPlan.comments">Run this test independently (disable others) as it muddles response time in Aggregate report</stringProp>
-            <collectionProp name="ModuleController.node_path">
-              <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="-707977286">PI 35 SAM INTEGRATION LOAD TESTING</stringProp>
-              <stringProp name="1279994578">Exclusions API Fragment - Download File</stringProp>
-            </collectionProp>
-          </ModuleController>
-          <hashTree/>
-        </hashTree>
         <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 90%" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
@@ -6299,6 +6494,82 @@ Per minute					360
               <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-707977286">PI 35 SAM INTEGRATION LOAD TESTING</stringProp>
               <stringProp name="-507591184">Exclusions API Fragment - No Param</stringProp>
+            </collectionProp>
+          </ModuleController>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Exclusions API Search Thread Group - Download File Module" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <longProp name="ThreadGroup.start_time">1606937240000</longProp>
+        <longProp name="ThreadGroup.end_time">1606937240000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${Time}</stringProp>
+        <stringProp name="ThreadGroup.delay">490</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <doubleProp>
+            <name>throughput</name>
+            <value>4.0</value>
+            <savedValue>4.0</savedValue>
+          </doubleProp>
+          <intProp name="calcMode">2</intProp>
+          <stringProp name="TestPlan.comments">Workload	0.10	0.25	0.50	0.75	1.00	1.25	1.50	1.75	2.00
+Per second	0.10	0.25	0.50	0.75	1.00	1.25	1.50	1.75	2.00
+Per minute	6.00	15.00	30.00	45.00	60.00	75.00	90.00	105.00	120.00
+1/15th Instance	0.40	1.00	2.00	3.00	4.00	5.00	6.00	7.00	8.00
+If 2 Group	2.00								</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+          <stringProp name="maximumValue">999</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="outputFormat">000</stringProp>
+          <boolProp name="perThread">true</boolProp>
+          <stringProp name="randomSeed">1</stringProp>
+          <stringProp name="variableName">pageRandom</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Variables | Start Date - End Date" enabled="false">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="START_DATE" elementType="Argument">
+              <stringProp name="Argument.name">START_DATE</stringProp>
+              <stringProp name="Argument.value">01/01/2018</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="END_DATE" elementType="Argument">
+              <stringProp name="Argument.name">END_DATE</stringProp>
+              <stringProp name="Argument.value">12/31/2018</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 100%" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>100.0</value>
+            <savedValue>100.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Download File Module Controller" enabled="true">
+            <stringProp name="TestPlan.comments">Run this test independently (disable others) as it muddles response time in Aggregate report</stringProp>
+            <collectionProp name="ModuleController.node_path">
+              <stringProp name="764597751">Test Plan</stringProp>
+              <stringProp name="-707977286">PI 35 SAM INTEGRATION LOAD TESTING</stringProp>
+              <stringProp name="1279994578">Exclusions API Fragment - Download File</stringProp>
             </collectionProp>
           </ModuleController>
           <hashTree/>
@@ -32818,7 +33089,7 @@ ${SEARCH_TERM} - used in FH org picker search query
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${API_PATH}entity-information/v3/entities?format=json&amp;ueiSAM=${ueiduns}</stringProp>
+          <stringProp name="HTTPSampler.path">${API_PATH}entity-information/v3/entities?format=json&amp;ueiSAM=${ueiEyData}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
